@@ -1,7 +1,9 @@
 package Model;
 
+import java.io.Serializable;
+
 //Kasper Falk Mikkelsen
-public class student implements renter {
+public class student implements renter, Serializable {
 
     String name, email;
 

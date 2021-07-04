@@ -1,8 +1,12 @@
 package Model;
 
+import Util.FileHandler;
+
+import java.io.IOException;
+
 //Kasper Falk Mikkelsen
 public class tempMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         /*renter r = new notRented();
         product p = new product("CD","En særlig bog", "Kim larsen","12345678");
 

@@ -1,13 +1,14 @@
 package Model;
 
 //Kasper Falk Mikkelsen
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class productList {
-    private ArrayList<product> arr = new ArrayList<>();
+public class productList implements Serializable {
+    private ArrayList<product> arr;
 
     public productList() {
-        //READ FROM FILE HERE
+        arr = new ArrayList<>();
     }
 
     public void addProduct(String productKind,String title,String author,String isbn) {
@@ -18,6 +19,8 @@ public class productList {
     public ArrayList<product> getProducts() {
         return arr;
     }
+
+
 
     public product getProductFromIsbn(String isbn) {
         for (int i = 0; i < arr.size(); i++) {

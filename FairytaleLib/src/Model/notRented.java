@@ -1,7 +1,9 @@
 package Model;
 
+import java.io.Serializable;
+
 //Kasper Falk Mikkelsen
-public class notRented implements renter{
+public class notRented implements renter, Serializable {
 
     public String getName() {
         return null;

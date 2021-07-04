@@ -1,7 +1,9 @@
 package Model;
 
+import java.io.Serializable;
+
 //Kasper Falk Mikkelsen
-public class product {
+public class product implements Serializable {
     renter Renter = new notRented();
     renter reserver = new notRented();
     String productKind;
