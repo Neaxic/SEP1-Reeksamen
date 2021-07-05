@@ -13,9 +13,7 @@ public class ViewHandler {
 
   public void start() {
     stage = new Stage();
-    openToDashView();
   }
-
 
     public Parent getRoot() {
       return root;
