@@ -4,10 +4,11 @@ import Model.ClientModel;
 
 public class ModelFactory {
 
-  private Model model;
+  private ClientModel model;
 
-  public Model getModel() {
-    if(model == null) model = new ClientModel();
+  public ClientModel getModel() {
+    if(model == null)
+      model = new ClientModel();
     return model;
   }
 }
