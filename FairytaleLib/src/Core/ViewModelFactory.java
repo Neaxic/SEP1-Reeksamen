@@ -5,21 +5,22 @@ import View.browseItems.BrowseViewModel;
 
 public class ViewModelFactory {
 
-   private BrowseViewModel ViewModelBrowse;
-  //private TaskListViewModel taskListViewModel;
-  //private NextTaskViewModel nextTaskViewModel;
+  private ModelFactory mf;
+  private BrowseViewModel browseViewModel;
 
   public ViewModelFactory(ModelFactory mf) {
-    //        addViewModel = new AddViewModel(mf.getModel());
-    //    taskListViewModel = new TaskListViewModel(mf.getModel());
-    // nextTaskViewModel = new NextTaskViewModel(mf.getModel());
+    this.mf = mf;
   }
 
-  //   public AddViewModel getAddViewModel() {
-  //    return addViewModel;
-  // }
+  public BrowseViewModel getBrowseViewModel(){
+    if (browseViewModel == null)
+      browseViewModel = new BrowseViewModel(mf.getModel());
+    return browseViewModel;
 
-  public BrowseViewModel getViewModelBrowse() {
-    return ViewModelBrowse;
-  };
+  }
+
+
+
+
+
 }

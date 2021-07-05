@@ -14,8 +14,9 @@ public class main extends Application{
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
 
-        ViewHandler view = new ViewHandler(stage, viewModelFactory);
-        //view.start(primaryStage);
+
+        ViewHandler view = new ViewHandler(viewModelFactory);
+        view.start();
 
     }
 }

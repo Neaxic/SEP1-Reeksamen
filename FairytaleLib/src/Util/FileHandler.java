@@ -1,6 +1,4 @@
 package Util;
-
-
 import Model.productList;
 
 import java.io.*;
