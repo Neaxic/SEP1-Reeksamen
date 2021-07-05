@@ -1,3 +1,4 @@
+
 package Core;
 
 public class ViewModelFactory {
@@ -6,7 +7,7 @@ public class ViewModelFactory {
   //private TaskListViewModel taskListViewModel;
   //private NextTaskViewModel nextTaskViewModel;
 
-  public ViewModelFactory(ModelFactory mf) {
+ // public ViewModelFactory(ModelFactory mf) {
     //        addViewModel = new AddViewModel(mf.getModel());
     //    taskListViewModel = new TaskListViewModel(mf.getModel());
     // nextTaskViewModel = new NextTaskViewModel(mf.getModel());
@@ -15,4 +16,4 @@ public class ViewModelFactory {
   //   public AddViewModel getAddViewModel() {
   //    return addViewModel;
   // }
-}
+//}
