@@ -1,6 +1,11 @@
-public class main {
-    public static void main(String[] args) {
-        System.out.println("Program started ");
-        System.out.println("test");
+import Core.ModelFactory;
+import javafx.stage.Stage;
+import javafx.application.Application;
+
+public class main extends Application{
+    @Override public void start(Stage stage) throws Exception
+    {
+        stage.setOnCloseRequest(e -> System.exit(0));
+
     }
 }
