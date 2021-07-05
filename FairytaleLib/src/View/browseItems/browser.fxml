@@ -71,7 +71,7 @@
                      <columns>
                         <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
                         <TableColumn fx:id="titelCollum" prefWidth="125.0" text="Title" />
-                        <TableColumn fx:id="statusCollum" prefWidth="120.0" text="Status" />
+                        <TableColumn fx:id="releaseDate" prefWidth="75.0" text="Udgivet" />
                      </columns>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
@@ -93,11 +93,12 @@
                   <TableView fx:id="rentetMaterialView" prefHeight="504.0" prefWidth="842.0">
                     <columns>
                       <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
-                        <TableColumn fx:id="titelCollum" prefWidth="125.0" text="Title" />
-                        <TableColumn fx:id="statusCollum" prefWidth="120.0" text="Status" />
-                      <TableColumn fx:id="renterCollum" prefWidth="131.0" text="Låner" />
-                        <TableColumn fx:id="emailCollum" prefWidth="182.0" text="Email" />
-                        <TableColumn fx:id="returnDateCollum" prefWidth="147.0" text="Retuneringsdato" />
+                        <TableColumn fx:id="titelCollum" prefWidth="108.79999542236328" text="Title" />
+                        <TableColumn fx:id="statusCollum" prefWidth="96.80003356933594" text="Låner Status" />
+                      <TableColumn fx:id="renterCollum" prefWidth="63.20001220703125" text="Låner" />
+                        <TableColumn fx:id="emailCollum" prefWidth="156.00006103515625" text="Email" />
+                        <TableColumn fx:id="returnDateCollum" prefWidth="161.60000610351562" text="Retuneringsdato" />
+                        <TableColumn fx:id="deadline" prefWidth="198.40008544921875" text="sidste frist" />
                     </columns>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
@@ -120,7 +121,7 @@
                      <columns>
                         <TableColumn fx:id="tupeCollum" prefWidth="73.0" text="Type" />
                         <TableColumn fx:id="titelCollum" prefWidth="126.0" text="Title" />
-                        <TableColumn fx:id="statusCollum" prefWidth="120.0" text="Status" />
+                        <TableColumn fx:id="statusCollum" prefWidth="120.0" text="Låner Status" />
                         <TableColumn fx:id="rentetByCollum" prefWidth="423.0" text="Reserveret af" />
                      </columns>
                      <VBox.margin>
