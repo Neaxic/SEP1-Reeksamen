@@ -35,14 +35,13 @@ public class BrowseViewController {
     @FXML private TableView reservedMaterialView;
     @FXML private TableColumn tupeCollum;
 
-    public void init(BrowseViewModel viewmodel,ViewHandler viewHandler)
+    public void init(BrowseViewModel viewmodel, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
         viewmodel.loadProducts();
         avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
         avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
-
 
         AuthorCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("author"));
         ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("isbn"));
@@ -76,7 +75,6 @@ public class BrowseViewController {
     public void removeReserved(){
 
     }
-
 
     public void OpenRegisterItems(ActionEvent actionEvent) {
         viewHandler.openRegisterNewItems();

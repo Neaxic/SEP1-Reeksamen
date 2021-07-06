@@ -69,21 +69,21 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <ChoiceBox layoutX="449.0" layoutY="125.0" prefHeight="25.0" prefWidth="215.0" />
-                        <TextField layoutX="105.0" layoutY="51.0" prefHeight="25.0" prefWidth="215.0" />
+                        <ChoiceBox fx:id="typeInput" layoutX="449.0" layoutY="125.0" prefHeight="25.0" prefWidth="215.0" />
+                        <TextField fx:id="titleInput" layoutX="105.0" layoutY="51.0" prefHeight="25.0" prefWidth="215.0" />
                         <Text layoutX="105.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forfatter" wrappingWidth="280.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="105.0" layoutY="124.0" prefHeight="25.0" prefWidth="215.0" />
+                        <TextField fx:id="authorInput" layoutX="105.0" layoutY="124.0" prefHeight="25.0" prefWidth="215.0" />
                         <Text layoutX="449.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN" wrappingWidth="280.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="449.0" layoutY="51.0" prefHeight="25.0" prefWidth="215.0" />
-                        <Button layoutX="14.0" layoutY="569.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="806.0" text="Tilføj genstand" />
+                        <TextField fx:id="isbnInput" layoutX="449.0" layoutY="51.0" prefHeight="25.0" prefWidth="215.0" />
+                        <Button onAction="#submit" layoutX="14.0" layoutY="569.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="806.0" text="Tilføj genstand" />
                         <Text layoutX="105.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelses år" wrappingWidth="280.08203125">
                            <font>
                               <Font size="18.0" />

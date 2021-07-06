@@ -24,6 +24,7 @@ private Client client;
 
 
     public void loadProducts() {
+        System.out.println("load");
         ArrayList allProductsFromClient = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList();
         for (Object i : allProductsFromClient) {

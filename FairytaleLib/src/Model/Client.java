@@ -6,5 +6,6 @@ public interface Client
 {
 
     public ArrayList getAllProducts();
+    public void createProduct(String title, String author, String isbn, String type);
 
 }
