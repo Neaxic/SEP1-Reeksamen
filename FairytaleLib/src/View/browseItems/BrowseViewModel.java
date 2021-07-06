@@ -20,19 +20,15 @@ private Client client;
 
     public BrowseViewModel(Client client) {
         this.client = client;
-
     }
 
 
     public void loadProducts() {
+        ArrayList allProductsFromClient = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList();
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-        productObservableList.add(new product("dvd", "nej", "karl", "31","2007-10-03"));
-
+        for (Object i : allProductsFromClient) {
+            productObservableList.add((product) i);
+        }
     }
 
  // productKind,title,author,isbn
