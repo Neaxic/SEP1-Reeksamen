@@ -69,8 +69,8 @@
                   </HBox>
                   <TableView fx:id="availableMaterialView" prefHeight="552.0" prefWidth="845.0">
                      <columns>
-                        <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
-                        <TableColumn fx:id="titelCollum" prefWidth="125.0" text="Title" />
+                        <TableColumn fx:id="avaliableTypeCollum" prefWidth="78.0" text="Type" />
+                        <TableColumn fx:id="avaliableTitelCollum" prefWidth="125.0" text="Title" />
                         <TableColumn fx:id="releaseDate" prefWidth="75.0" text="Udgivet" />
                      </columns>
                      <VBox.margin>
@@ -93,8 +93,8 @@
                   <TableView fx:id="rentetMaterialView" prefHeight="504.0" prefWidth="842.0">
                     <columns>
                       <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
-                        <TableColumn fx:id="titelCollum" prefWidth="108.79999542236328" text="Title" />
-                        <TableColumn fx:id="statusCollum" prefWidth="96.80003356933594" text="Låner Status" />
+                        <TableColumn fx:id="rentedTitelCollum" prefWidth="108.79999542236328" text="Title" />
+                        <TableColumn fx:id="rentedStatusCollum" prefWidth="96.80003356933594" text="Låner Status" />
                       <TableColumn fx:id="renterCollum" prefWidth="63.20001220703125" text="Låner" />
                         <TableColumn fx:id="emailCollum" prefWidth="156.00006103515625" text="Email" />
                         <TableColumn fx:id="returnDateCollum" prefWidth="161.60000610351562" text="Retuneringsdato" />

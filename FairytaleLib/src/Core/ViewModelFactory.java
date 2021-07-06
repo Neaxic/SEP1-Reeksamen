@@ -2,6 +2,8 @@
 package Core;
 
 import View.browseItems.BrowseViewModel;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class ViewModelFactory {
 
@@ -18,6 +20,7 @@ public class ViewModelFactory {
     return browseViewModel;
 
   }
+
 
 
 

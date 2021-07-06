@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 
 //Kasper Falk Mikkelsen
@@ -7,14 +9,14 @@ public class product implements Serializable {
     renter Renter = new notRented();
     renter reserver = new notRented();
     String productKind;
-    String title, author, isbn;
+    SimpleStringProperty title, author, isbn;
 
 
-    product(String productKind, String title, String author, String isbn) {
+    public product(String productKind, String title, String author, String isbn) {
         this.productKind = productKind;
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
+        this.title = new SimpleStringProperty(title);
+        this.author = new SimpleStringProperty(author);
+        this.isbn = new SimpleStringProperty(isbn);
 
     }
 
@@ -69,11 +71,11 @@ public class product implements Serializable {
 
     //Help functions
     public String getAuthor() {
-        return author;
+        return author.get();
     }
 
     public String getIsbn() {
-        return isbn;
+        return isbn.get();
     }
 
     public String getProductKind() {
@@ -81,7 +83,7 @@ public class product implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+        return title.get();
     }
 
     public String getRenterName() {
@@ -111,11 +113,11 @@ public class product implements Serializable {
 
 
     public void setAuthor(String author) {
-        this.author = author;
+        this.author = new SimpleStringProperty(author);
     }
 
     public void setIsbn(String isbn) {
-        this.isbn = isbn;
+        this.isbn = new SimpleStringProperty(isbn);
     }
 
     public void setProductKind(String productKind) {
@@ -127,6 +129,6 @@ public class product implements Serializable {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = new SimpleStringProperty(title);
     }
 }
