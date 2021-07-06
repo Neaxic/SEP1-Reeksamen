@@ -2,6 +2,7 @@ package View.browseItems;
 
 import Core.ViewHandler;
 import Model.product;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,7 +35,7 @@ public class BrowseViewController {
     @FXML private TableView reservedMaterialView;
     @FXML private TableColumn tupeCollum;
 
-    public void init(BrowseViewModel viewmodel)
+    public void init(BrowseViewModel viewmodel,ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
@@ -61,7 +62,6 @@ public class BrowseViewController {
         rentetMaterialView.setItems(viewmodel.getProductObservableList());
         reservedMaterialView.setItems(viewmodel.getProductObservableList());
 
-
     }
 
 
@@ -78,6 +78,8 @@ public class BrowseViewController {
     }
 
 
+    public void OpenRegisterItems(ActionEvent actionEvent) {
+        viewHandler.openRegisterNewItems();
 
-
+    }
 }

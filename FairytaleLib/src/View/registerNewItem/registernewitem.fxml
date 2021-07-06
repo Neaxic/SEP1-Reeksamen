@@ -31,7 +31,7 @@
                   </HBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Hjem">
+            <Button mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="126.0" text="Hjem">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
