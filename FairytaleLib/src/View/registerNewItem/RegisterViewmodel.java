@@ -1,4 +1,4 @@
 package View.registerNewItem;
 
-public class test {
+public class RegisterViewmodel {
 }

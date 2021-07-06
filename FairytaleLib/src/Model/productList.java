@@ -11,8 +11,8 @@ public class productList implements Serializable {
         arr = new ArrayList<>();
     }
 
-    public void addProduct(String productKind,String title,String author,String isbn) {
-        product p = new product(productKind,title,author,isbn);
+    public void addProduct(String productKind, String title, String author, String isbn, String releaseDate) {
+        product p = new product(productKind,title,author,isbn,releaseDate);
         arr.add(p);
     }
 
@@ -31,4 +31,21 @@ public class productList implements Serializable {
         //SHOULD THROW SOME EXCEPTION INSTEAD
         return null;
     }
+
+    public void removeProductByProductKind(String productKind){
+        for (product product : arr) {
+            if (product.getProductKind().equals(productKind)){
+                arr.remove(product);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
 }

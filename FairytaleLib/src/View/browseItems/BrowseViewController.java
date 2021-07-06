@@ -2,19 +2,18 @@ package View.browseItems;
 
 import Core.ViewHandler;
 import Model.product;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Region;
 
-import java.util.ArrayList;
+import java.time.Instant;
+import java.util.Date;
 
 
 public class BrowseViewController {
+    public TableColumn AuthorCoulmn;
+    public TableColumn ISBNCoulmn;
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
 
@@ -39,21 +38,16 @@ public class BrowseViewController {
     {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
-
-        initializeTables();
-    }
-    ObservableList<product> avaliableList() {
-        ObservableList<product> products = FXCollections.observableArrayList();
-        products.add(new product("dvd", "nej", "karl", "31"));
-        return products;
-    }
-
-    public void initializeTables(){
+        viewmodel.loadProducts();
+        avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
         avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
-        avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
-        releaseDate.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
 
-        typeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+
+        AuthorCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("author"));
+        ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("isbn"));
+        releaseDate.setCellValueFactory(new PropertyValueFactory<product, String>("ReleaseDate"));
+
+    /*    typeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
         rentedTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
         rentedStatusCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
         renterCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
@@ -61,17 +55,15 @@ public class BrowseViewController {
         returnDateCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
         deadline.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
 
-        tupeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        tupeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));*/
 
-        availableMaterialView.setItems(avaliableList());
-        rentetMaterialView.setItems(avaliableList());
-        reservedMaterialView.setItems(avaliableList());
-        System.out.println(avaliableList().size());
+        availableMaterialView.setItems(viewmodel.getProductObservableList());
+        rentetMaterialView.setItems(viewmodel.getProductObservableList());
+        reservedMaterialView.setItems(viewmodel.getProductObservableList());
+
+
     }
 
-    public void populate(){
-        product test = new product("dvd", "test", "bente", "2");
-    };
 
     public void removeAvaliable(){
         //take from all lists - rerun populate

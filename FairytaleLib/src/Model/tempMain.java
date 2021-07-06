@@ -3,6 +3,8 @@ package Model;
 import Util.FileHandler;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
 
 //Kasper Falk Mikkelsen
 public class tempMain {
@@ -29,8 +31,8 @@ public class tempMain {
         System.out.println(p.isReserved());*/
 
         productList p = new productList();
-        p.addProduct("CD","En særlig bog", "Kim larsen","12345678");
-        p.addProduct("DVD","En anden særlig bog", "Lort Klaus","12345679");
+        p.addProduct("CD","En særlig bog", "Kim larsen","12345678", "2007-10-03");
+        p.addProduct("DVD","En anden særlig bog", "Lort Klaus","12345679","2007-10-03");
 
         p.getProducts().get(0).setRenter("student","Andreas Østergaard","AndreasErDum@gmail.com");
 
