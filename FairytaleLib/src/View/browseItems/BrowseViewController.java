@@ -80,4 +80,11 @@ public class BrowseViewController {
         viewHandler.openRegisterNewItems();
 
     }
+
+    public void remove(ActionEvent actionEvent) {
+
+        viewmodel.delete((product) availableMaterialView.getSelectionModel().getSelectedItem());
+
+
+    }
 }

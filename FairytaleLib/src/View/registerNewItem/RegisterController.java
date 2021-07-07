@@ -8,24 +8,35 @@ import javafx.scene.control.TextField;
 
 public class RegisterController {
 
+
     private ViewHandler viewHandler;
     private RegisterViewmodel registerViewmodel;
 
     @FXML private TextField titleInput;
     @FXML private TextField authorInput;
     @FXML private TextField isbnInput;
+    @FXML private TextField ReleaseDate;
     @FXML private ChoiceBox typeInput;
 
 
     public void init(RegisterViewmodel registerViewmodel,ViewHandler viewHandler) {
         this.registerViewmodel = registerViewmodel;
         this.viewHandler = viewHandler;
+        registerViewmodel.loadProductsType();
+        typeInput.setItems(registerViewmodel.getProductObservableList());
+        titleInput.textProperty().bindBidirectional(registerViewmodel.titleProperty());
+        authorInput.textProperty().bindBidirectional(registerViewmodel.authorProperty());
+        isbnInput.textProperty().bindBidirectional(registerViewmodel.isbnProperty());
+        ReleaseDate.textProperty().bindBidirectional(registerViewmodel.releaseDateProperty());
+        typeInput.valueProperty().bindBidirectional(registerViewmodel.typeProperty());
 
-        typeInput.getItems().add("Dvd");
+
+
+
     }
 
     public void submit(){
-        registerViewmodel.submit(titleInput.getText(), authorInput.getText(), isbnInput.getText(), typeInput.getValue().toString());
+        registerViewmodel.submit();
         Back();
     }
 

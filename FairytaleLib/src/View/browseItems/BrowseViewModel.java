@@ -24,12 +24,13 @@ private Client client;
 
 
     public void loadProducts() {
-        System.out.println("load");
-        ArrayList allProductsFromClient = client.getAllProducts();
-        productObservableList = FXCollections.observableArrayList();
-        for (Object i : allProductsFromClient) {
-            productObservableList.add((product) i);
-        }
+            System.out.println("load");
+            List<product>productList = client.getAllProducts();
+            productObservableList = FXCollections.observableArrayList(productList);
+
+
+
+
     }
 
  // productKind,title,author,isbn
@@ -43,7 +44,9 @@ private Client client;
         return productObservableList;
     }
 
-    public void populate(){
+    public void delete(product product){
+
+        productObservableList.remove(product);
 
 
     }

@@ -31,7 +31,7 @@ public class ViewHandler {
 
 
   public void openBrowseItem() {
-    if(browserScene == null) {
+
       try {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/browseItems/browser.fxml"));
@@ -46,7 +46,7 @@ public class ViewHandler {
       } catch (IOException e) {
         e.printStackTrace();
       }
-    }
+
     stage.setScene(browserScene);
     stage.show();
   }
@@ -54,7 +54,7 @@ public class ViewHandler {
 
 
   public void openRegisterNewItems() {
-    if(registerScene == null) {
+
       try {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/registerNewItem/registernewitem.fxml"));
@@ -69,7 +69,7 @@ public class ViewHandler {
       } catch (IOException e) {
         e.printStackTrace();
       }
-    }
+
     stage.setScene(registerScene);
     stage.show();
   }
