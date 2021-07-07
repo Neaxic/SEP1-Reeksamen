@@ -2,13 +2,11 @@ package View.browseItems;
 
 import Model.Client;
 import Model.product;
-import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BrowseViewModel {
@@ -17,9 +15,11 @@ public class BrowseViewModel {
 private Client client;
 
     private ObservableList<product> productObservableList;
+    private StringProperty search;
 
     public BrowseViewModel(Client client) {
         this.client = client;
+        search = new SimpleStringProperty();
     }
 
 
@@ -51,13 +51,28 @@ private Client client;
 
     }
 
-    public void getAvaliable(){
+    public void Search(){
+        productObservableList.setAll(client.search(search.getValue()));
 
     }
 
 
 
+    public void clearSearch(){
+        search.setValue("");
+
+    }
 
 
+    public String getSearch() {
+        return search.get();
+    }
 
+    public StringProperty searchProperty() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search.set(search);
+    }
 }

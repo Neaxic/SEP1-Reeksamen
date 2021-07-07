@@ -4,9 +4,21 @@ import java.util.ArrayList;
 
 public class ClientModel implements Client
 {
-    private ArrayList allProducts = new ArrayList();
+    private ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList();
 
+
+
+
+    public ArrayList search(String searchString){
+        ArrayList<product> productArrayList = new ArrayList<>();
+        for (product allProduct : allProducts) {
+            if (allProduct.getProductKind().equalsIgnoreCase(searchString)|| allProduct.getTitle().equalsIgnoreCase(searchString)|| allProduct.getAuthor().equalsIgnoreCase(searchString)|| allProduct.getIsbn().equalsIgnoreCase(searchString) ||allProduct.getReleaseDate().equalsIgnoreCase(searchString))
+                productArrayList.add(allProduct);
+
+        }
+        return productArrayList;
+    }
 
 
 

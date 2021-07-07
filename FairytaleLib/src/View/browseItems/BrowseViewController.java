@@ -10,13 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
-import java.time.Instant;
-import java.util.Date;
-
 
 public class BrowseViewController {
     public TableColumn AuthorCoulmn;
     public TableColumn ISBNCoulmn;
+    public TextField searchText;
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
 
@@ -71,6 +69,8 @@ public class BrowseViewController {
         ISBNCoulmn.setCellFactory(TextFieldTableCell.forTableColumn());
         releaseDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
+
     }
 
 
@@ -95,6 +95,13 @@ public class BrowseViewController {
 
         viewmodel.delete((product) availableMaterialView.getSelectionModel().getSelectedItem());
 
+
+    }
+
+    public void search(ActionEvent actionEvent) {
+
+        viewmodel.Search();
+        viewmodel.clearSearch();
 
     }
 }

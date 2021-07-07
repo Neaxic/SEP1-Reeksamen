@@ -27,7 +27,7 @@
                   <HBox alignment="CENTER" prefHeight="97.0" prefWidth="589.0">
                      <children>
                         <TextField fx:id="searchText" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: white;" />
-                        <Button fx:id="search" mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Søg">
+                        <Button mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="57.0" text="Søg">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
