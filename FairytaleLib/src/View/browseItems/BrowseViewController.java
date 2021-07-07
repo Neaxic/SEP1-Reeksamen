@@ -6,7 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.time.Instant;
 import java.util.Date;
@@ -60,6 +62,14 @@ public class BrowseViewController {
         availableMaterialView.setItems(viewmodel.getProductObservableList());
         rentetMaterialView.setItems(viewmodel.getProductObservableList());
         reservedMaterialView.setItems(viewmodel.getProductObservableList());
+
+
+        availableMaterialView.setEditable(true);
+        avaliableTypeCollum.setCellFactory(TextFieldTableCell.forTableColumn());
+        avaliableTitelCollum.setCellFactory(TextFieldTableCell.forTableColumn());
+        AuthorCoulmn.setCellFactory(TextFieldTableCell.forTableColumn());
+        ISBNCoulmn.setCellFactory(TextFieldTableCell.forTableColumn());
+        releaseDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
 
