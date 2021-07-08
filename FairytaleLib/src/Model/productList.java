@@ -11,6 +11,8 @@ public class productList implements Serializable {
         arr = new ArrayList<>();
     }
 
+    //TODO: Hvorfor ikke bare en arrayliste fremfor det her?
+    //TODO: Hvorfor ikke bare product parameter istedet for at lave nyt product her?
     public void addProduct(String productKind, String title, String author, String isbn, String releaseDate) {
         product p = new product(productKind,title,author,isbn,releaseDate);
         arr.add(p);
