@@ -41,7 +41,7 @@ public class RegisterViewmodel {
         if(validInput()){
             this.type.getValue().equals(type);
             client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(), releaseDate.getValue().toString());
-            //clearFields();
+            clearFields();
         } else {
             //invalidInputPopup();
         }

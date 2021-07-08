@@ -73,7 +73,7 @@
                         <TableColumn fx:id="avaliableTitelCollum" prefWidth="125.0" text="Title" />
                         <TableColumn fx:id="AuthorCoulmn" prefWidth="75.0" text="Author" />
                         <TableColumn fx:id="ISBNCoulmn" prefWidth="75.0" text="ISBN" />
-                        <TableColumn fx:id="renterID" prefWidth="75.0" text="Udgivet" />
+                        <TableColumn fx:id="releaseDate" prefWidth="75.0" text="Udgivet" />
                      </columns>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />

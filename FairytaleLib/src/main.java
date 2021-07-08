@@ -24,7 +24,7 @@ public class main extends Application {
             System.out.println("test");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you really want to close this applicetion?", ButtonType.YES, ButtonType.NO);
             //FileHandler.saveProductList(test);
-            System.exit(0);
+            //System.exit(0);
         });
 
         ModelFactory modelFactory = new ModelFactory();
