@@ -96,6 +96,10 @@ public class BrowseViewController {
 
     }
 
+    public void OpenregisterNewRenter(ActionEvent actionEvent){
+        viewHandler.openregisterNewRenter();
+    }
+
     public void remove(ActionEvent actionEvent) {
 
         viewmodel.delete((product) availableMaterialView.getSelectionModel().getSelectedItem());

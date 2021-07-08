@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ViewHandler {
 
-  private Scene browserScene,registerScene;
+  private Scene browserScene,registerScene,registerNewRenterScene;
   private BrowseViewController browseViewController;
   private RegisterController registerController;
   private Stage stage;
@@ -81,20 +81,20 @@ public class ViewHandler {
 
     try {
       FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("../view/registerNewRenter/registerNewRenter.fxml"));
+      loader.setLocation(getClass().getResource("../view/registreNewRenter/registerNewRenter.fxml"));
       Parent root = loader.load();
 
       registerNewRenterViewController ctrl = loader.getController();
       ctrl.init(viewModelFactory.getRegisterNewRenterViewModel(),this);
 
       stage.setTitle("registerNewRenter");
-      registerScene = new Scene(root);
+      registerNewRenterScene = new Scene(root);
 
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    stage.setScene(registerScene);
+    stage.setScene(registerNewRenterScene);
     stage.show();
   }
 

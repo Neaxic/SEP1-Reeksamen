@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
    <children>
       <HBox fx:id="forside" alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="862.0" style="-fx-background-color: lightblue;">
          <children>
@@ -38,6 +38,7 @@
                      </HBox.margin>
                   </HBox>
                </children></HBox>
+            <Button fx:id="addNewRenter" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="94.0" text="Tilføj ny låner" />
             <Button fx:id="addNewElement" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="25.0" prefWidth="126.0" text="Tilføj nyt element">
                <opaqueInsets>
                   <Insets />
