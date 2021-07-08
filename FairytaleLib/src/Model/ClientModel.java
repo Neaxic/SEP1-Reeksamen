@@ -24,7 +24,6 @@ public class ClientModel implements Client
 
         }
 
-        System.out.println(allProducts.size() + allProducts.get(1).getProductKind());
         return 0;
     }
 

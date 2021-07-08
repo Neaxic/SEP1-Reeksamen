@@ -41,8 +41,7 @@ private Client client;
     }
 
     public void delete(product product){
-
-        productObservableList.remove(product);
+        productObservableList.remove(client.deleteProduct(product));
 
 
     }
