@@ -39,6 +39,8 @@ public class BrowseViewController {
     {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
+
+        populate();
         avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
         avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
 
@@ -69,9 +71,6 @@ public class BrowseViewController {
         releaseDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
         searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
-
-
-        populate();
     }
 
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items

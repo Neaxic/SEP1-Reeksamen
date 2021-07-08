@@ -47,7 +47,7 @@ public class RegisterViewmodel {
         }
     }
 
-
+//TODO: bedre checks skal jeg nok lave
     public boolean validInput(){
         //Blank check
         if(title.getValue().isBlank()){
@@ -57,6 +57,7 @@ public class RegisterViewmodel {
         return true;
     }
 
+    //TODO: Tænker at give client et popup med hvad der mangler af inputs
     public void invalidInputPopup(){
 
     }

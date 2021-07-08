@@ -24,13 +24,8 @@ private Client client;
 
 
     public void loadProducts() {
-            System.out.println("load");
             List<product>productList = client.getAllProducts();
             productObservableList = FXCollections.observableArrayList(productList);
-
-
-
-
     }
 
  // productKind,title,author,isbn
