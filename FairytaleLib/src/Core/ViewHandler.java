@@ -80,7 +80,7 @@ public class ViewHandler {
 
     try {
       FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("../view/registreNewRenter/registerNewRenter.fxml"));
+      loader.setLocation(getClass().getResource("../view/registerNewRenter/registerNewRenter.fxml"));
       Parent root = loader.load();
 
       registerNewRenterViewController ctrl = loader.getController();

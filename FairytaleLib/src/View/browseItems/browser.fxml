@@ -38,13 +38,13 @@
                      </HBox.margin>
                   </HBox>
                </children></HBox>
-            <Button fx:id="addNewRenter" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="94.0" text="Tilføj ny låner" />
-            <Button fx:id="addNewElement" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="25.0" prefWidth="126.0" text="Tilføj nyt element">
+            <Button fx:id="addNewRenter" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="157.0" text="Tilføj ny låner" />
+            <Button fx:id="addNewElement" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="26.0" prefWidth="182.0" text="Tilføj nyt element">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="listOverRentet" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Liste over udlånte">
+            <Button fx:id="listOverRentet" mnemonicParsing="false" prefHeight="26.0" prefWidth="199.0" text="Liste over udlånte">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
