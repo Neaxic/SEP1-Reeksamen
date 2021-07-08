@@ -2,6 +2,7 @@ package Core;
 
 import View.browseItems.BrowseViewController;
 import View.registerNewItem.RegisterController;
+import View.registreNewRenter.registerNewRenterViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -76,7 +77,26 @@ public class ViewHandler {
 
 
 
+  public void openregisterNewRenter() {
 
+    try {
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("../view/registerNewRenter/registerNewRenter.fxml"));
+      Parent root = loader.load();
+
+      registerNewRenterViewController ctrl = loader.getController();
+      ctrl.init(viewModelFactory.getRegisterNewRenterViewModel(),this);
+
+      stage.setTitle("registerNewRenter");
+      registerScene = new Scene(root);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    stage.setScene(registerScene);
+    stage.show();
+  }
 
 
 
