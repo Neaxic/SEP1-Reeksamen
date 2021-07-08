@@ -84,7 +84,7 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="ReleaseDate" layoutX="105.0" layoutY="204.0" prefHeight="25.0" prefWidth="215.0" />
+                        <DatePicker fx:id="ReleaseDate" layoutX="105.0" layoutY="204.0" prefHeight="25.0" prefWidth="215.0" />
                      </children>
                   </AnchorPane>
                </children>

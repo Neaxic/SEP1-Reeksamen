@@ -4,6 +4,7 @@ import Core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class RegisterController {
@@ -15,9 +16,8 @@ public class RegisterController {
     @FXML private TextField titleInput;
     @FXML private TextField authorInput;
     @FXML private TextField isbnInput;
-    @FXML private TextField ReleaseDate;
+    @FXML private DatePicker ReleaseDate;
     @FXML private ChoiceBox typeInput;
-
 
     public void init(RegisterViewmodel registerViewmodel,ViewHandler viewHandler) {
         this.registerViewmodel = registerViewmodel;
@@ -27,12 +27,8 @@ public class RegisterController {
         titleInput.textProperty().bindBidirectional(registerViewmodel.titleProperty());
         authorInput.textProperty().bindBidirectional(registerViewmodel.authorProperty());
         isbnInput.textProperty().bindBidirectional(registerViewmodel.isbnProperty());
-        ReleaseDate.textProperty().bindBidirectional(registerViewmodel.releaseDateProperty());
+        ReleaseDate.valueProperty().bindBidirectional(registerViewmodel.releaseDateProperty());
         typeInput.valueProperty().bindBidirectional(registerViewmodel.typeProperty());
-
-
-
-
     }
 
     public void submit(){

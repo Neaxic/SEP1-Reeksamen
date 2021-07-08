@@ -2,6 +2,8 @@ package View.registerNewItem;
 
 import Model.Client;
 import Model.product;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -15,8 +17,8 @@ public class RegisterViewmodel {
     private StringProperty title;
     private StringProperty author;
     private StringProperty isbn;
-    private StringProperty releaseDate;
     private StringProperty type;
+    private Property releaseDate;
     private ObservableList<product> productObservableList;
 
 
@@ -25,26 +27,47 @@ public class RegisterViewmodel {
         title = new SimpleStringProperty();
         author = new SimpleStringProperty();
         isbn = new SimpleStringProperty();
-        releaseDate = new SimpleStringProperty();
+        releaseDate = new SimpleObjectProperty();
         type = new SimpleStringProperty();
     }
-
-
-
 
     public void loadProductsType() {
         System.out.println("load type");
         ArrayList allProductsFromClient = client.getAllProductsType();
         productObservableList = FXCollections.observableArrayList(allProductsFromClient);
-
-
     }
 
     public void submit(){
-        this.type.getValue().equals(type);
-        client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(),releaseDate.getValue());
+        if(validInput()){
+            this.type.getValue().equals(type);
+            client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(), releaseDate.getValue().toString());
+            clearFields();
+        } else {
+            invalidInputPopup();
+        }
     }
 
+
+    public boolean validInput(){
+        //Blank check
+        if(title.getValue().isBlank()){
+            return false;
+        }
+
+        return true;
+    }
+
+    public void invalidInputPopup(){
+
+    }
+
+    public void clearFields(){
+        title.setValue(null);
+        author.setValue(null);
+        isbn.setValue(null);
+        type.setValue(null);
+        releaseDate.setValue(null);
+    }
 
 
     public String getType() {
@@ -96,14 +119,14 @@ public class RegisterViewmodel {
     }
 
     public String getReleaseDate() {
-        return releaseDate.get();
+        return releaseDate.getValue().toString();
     }
 
-    public StringProperty releaseDateProperty() {
+    public Property releaseDateProperty() {
         return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
-        this.releaseDate.set(releaseDate);
+        this.releaseDate.setValue(releaseDate);
     }
 }
