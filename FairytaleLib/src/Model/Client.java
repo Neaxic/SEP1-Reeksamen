@@ -9,5 +9,6 @@ public interface Client
     void createProduct(String title, String author, String isbn, String type,String releaseDate);
     ArrayList getAllProductsType();
     ArrayList search(String searchString);
+    int deleteProduct(product product);
 
 }

@@ -17,6 +17,16 @@ public class ClientModel implements Client
         return productArrayList;
     }
 
+    public int deleteProduct(product product){
+
+        for (int i = 0; i <allProducts.size() ; i++) {
+            allProducts.remove(product);
+
+        }
+
+        System.out.println(allProducts.size() + allProducts.get(1).getProductKind());
+        return 0;
+    }
 
 
     public void fillArrayDemoItems(){
