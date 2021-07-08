@@ -1,4 +1,4 @@
-package View.registreNewRenter;
+package View.registerNewRenter;
 
 import Model.Client;
 import Model.product;

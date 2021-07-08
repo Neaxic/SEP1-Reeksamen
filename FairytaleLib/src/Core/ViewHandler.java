@@ -2,7 +2,7 @@ package Core;
 
 import View.browseItems.BrowseViewController;
 import View.registerNewItem.RegisterController;
-import View.registreNewRenter.registerNewRenterViewController;
+import View.registerNewRenter.registerNewRenterViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,15 +19,14 @@ public class ViewHandler {
   private ViewModelFactory viewModelFactory;
 
 
-  public ViewHandler(ViewModelFactory vmf) {
+  public ViewHandler(ViewModelFactory vmf, Stage stage) {
     this.viewModelFactory = vmf;
-
+    this.stage = stage;
 }
 
    public void start(){
-    stage = new Stage();
+    //stage = new Stage();
     openBrowseItem();
-
    }
 
 

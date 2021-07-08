@@ -3,9 +3,7 @@ package Core;
 
 import View.browseItems.BrowseViewModel;
 import View.registerNewItem.RegisterViewmodel;
-import View.registreNewRenter.registerNewRenterViewModel;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import View.registerNewRenter.registerNewRenterViewModel;
 
 public class ViewModelFactory {
 

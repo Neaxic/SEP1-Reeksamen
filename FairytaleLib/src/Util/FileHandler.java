@@ -2,11 +2,13 @@ package Util;
 import Model.productList;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class FileHandler {
 
 
-    public static void saveProductList(productList Plist) throws IOException {
+    public static void saveProductList(ArrayList Plist) throws IOException {
 
         String filename = "Product.bin";
         File file = new File(filename);
@@ -24,14 +26,14 @@ public class FileHandler {
 
 
 
-    public static productList loadProductList() throws IOException, ClassNotFoundException {
+    public static ArrayList loadProductList() throws IOException, ClassNotFoundException {
         String filename = "Product.bin";
         File file = new File(filename);
 
         FileInputStream fileInputStream = new FileInputStream(file);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-        productList productList = (Model.productList) objectInputStream.readObject();
+        ArrayList productList = (ArrayList) objectInputStream.readObject();
         objectInputStream.close();
 
 

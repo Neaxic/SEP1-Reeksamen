@@ -1,7 +1,6 @@
-package View.registreNewRenter;
+package View.registerNewRenter;
 
 import Core.ViewHandler;
-import View.registerNewItem.RegisterViewmodel;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;

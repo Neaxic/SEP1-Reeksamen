@@ -17,22 +17,27 @@ import java.util.ArrayList;
 public class main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        productList test = new productList();
-        test.addProduct("2", "test", "idk", "24", "13-02-2000");
 
-        stage.setOnCloseRequest(e -> {
-            System.out.println("test");
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you really want to close this applicetion?", ButtonType.YES, ButtonType.NO);
-            //FileHandler.saveProductList(test);
-            //System.exit(0);
-        });
+        ArrayList test = FileHandler.loadProductList();
+        System.out.println(test.size());
+        System.out.println(((product) test.get(0)).getTitle());
+
 
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
 
-
-        ViewHandler view = new ViewHandler(viewModelFactory);
+        ViewHandler view = new ViewHandler(viewModelFactory, stage);
         view.start();
 
+
+        stage.setOnCloseRequest(e -> {
+            System.out.println("test");
+            try {
+                FileHandler.saveProductList(ClientModel.allProducts);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            System.exit(0);
+        });
     }
 }

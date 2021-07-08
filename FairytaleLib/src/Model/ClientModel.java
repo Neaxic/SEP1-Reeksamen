@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 public class ClientModel implements Client
 {
-    private ArrayList<product> allProducts = new ArrayList();
+    public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList();
-
-
-
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();

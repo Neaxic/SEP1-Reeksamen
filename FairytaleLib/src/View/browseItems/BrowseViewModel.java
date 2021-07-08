@@ -1,6 +1,7 @@
 package View.browseItems;
 
 import Model.Client;
+import Model.ClientModel;
 import Model.product;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
