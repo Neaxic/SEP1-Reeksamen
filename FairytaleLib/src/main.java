@@ -27,7 +27,6 @@ public class main extends Application {
         ViewHandler view = new ViewHandler(viewModelFactory, stage);
         view.start();
 
-
         stage.setOnCloseRequest(e -> {
             System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {

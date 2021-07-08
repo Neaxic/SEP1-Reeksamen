@@ -30,18 +30,20 @@ public class FileHandler {
         String filename = "Product.bin";
         File file = new File(filename);
 
-        FileInputStream fileInputStream = new FileInputStream(file);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        if(file.exists()){
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-        ArrayList productList = (ArrayList) objectInputStream.readObject();
-        objectInputStream.close();
-
-
-        System.out.println("ProductList have been loaded");
-
-        return productList;
+            ArrayList productList = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
 
 
+            System.out.println("ProductList have been loaded");
+
+            return productList;
+        } else {
+            throw new FileNotFoundException();
+        }
     }
 
 
