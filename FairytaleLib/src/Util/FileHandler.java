@@ -1,4 +1,5 @@
 package Util;
+
 import Model.productList;
 
 import java.io.*;
@@ -25,12 +26,11 @@ public class FileHandler {
     }
 
 
-
     public static ArrayList loadProductList() throws IOException, ClassNotFoundException {
         String filename = "Product.bin";
         File file = new File(filename);
 
-        if(file.exists()){
+        try {
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
@@ -41,20 +41,14 @@ public class FileHandler {
             System.out.println("ProductList have been loaded");
 
             return productList;
-        } else {
-            throw new FileNotFoundException();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("fil ikke fundet");
         }
+
+        ArrayList tom = new ArrayList();
+        return tom;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }
