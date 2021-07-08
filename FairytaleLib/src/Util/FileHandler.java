@@ -42,8 +42,7 @@ public class FileHandler {
 
             return productList;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("fil ikke fundet");
+            System.out.println("Intet gemt i systmet");
         }
 
         ArrayList tom = new ArrayList();
