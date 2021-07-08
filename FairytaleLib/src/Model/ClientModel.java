@@ -31,8 +31,12 @@ public class ClientModel implements Client
     }
 
     public ArrayList getAllProducts(){
-        fillArrayDemoItems();
+        //fillArrayDemoItems();
         return allProducts;
+    }
+
+    public static void setAllProducts(ArrayList gemteListe){
+        allProducts = gemteListe;
     }
 
     public void createProduct(String title, String author, String isbn, String type,String releaseDate){

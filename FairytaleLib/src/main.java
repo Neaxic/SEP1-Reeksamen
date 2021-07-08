@@ -19,9 +19,7 @@ public class main extends Application {
     public void start(Stage stage) throws Exception {
 
         ArrayList test = FileHandler.loadProductList();
-        System.out.println(test.size());
-        System.out.println(((product) test.get(0)).getTitle());
-
+        ClientModel.setAllProducts(test);
 
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
@@ -31,7 +29,7 @@ public class main extends Application {
 
 
         stage.setOnCloseRequest(e -> {
-            System.out.println("test");
+            System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {
                 FileHandler.saveProductList(ClientModel.allProducts);
             } catch (IOException ioException) {
