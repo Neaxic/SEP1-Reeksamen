@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.util.List;
 
@@ -50,6 +52,8 @@ private Client client;
         productObservableList.setAll(client.search(search.getValue()));
 
     }
+
+
 
 
 

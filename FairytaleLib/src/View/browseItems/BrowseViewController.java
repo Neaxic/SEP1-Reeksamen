@@ -113,4 +113,49 @@ public class BrowseViewController {
         viewmodel.clearSearch();
 
     }
+
+
+    public void changeProductKindCellEdit(TableColumn.CellEditEvent editEvent){
+
+        product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
+        product.setProductKind(editEvent.getNewValue().toString());
+    }
+
+
+    public void changeTitleCellEdit(TableColumn.CellEditEvent editEvent){
+
+        product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
+        product.setTitle(editEvent.getNewValue().toString());
+    }
+
+
+
+
+    public void changeAuthorCellEdit(TableColumn.CellEditEvent editEvent){
+
+        product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
+        product.setAuthor(editEvent.getNewValue().toString());
+    }
+
+
+    public void changeIsbnCellEdit(TableColumn.CellEditEvent editEvent){
+
+        product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
+        product.setIsbn(editEvent.getNewValue().toString());
+    }
+
+
+
+    public void changeReleaseDateCellEdit(TableColumn.CellEditEvent editEvent){
+
+        product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
+        product.setReleaseDate(editEvent.getNewValue().toString());
+    }
+
+
+
+
+
+
+
 }
