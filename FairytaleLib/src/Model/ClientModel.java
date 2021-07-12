@@ -6,9 +6,11 @@ public class ClientModel implements Client
 {
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList();
+    private ArrayList allClients = new ArrayList<>();
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
+        //TODO: maybe contains + søge over brugere
         for (product allProduct : allProducts) {
             if (allProduct.getProductKind().equalsIgnoreCase(searchString)|| allProduct.getTitle().equalsIgnoreCase(searchString)|| allProduct.getAuthor().equalsIgnoreCase(searchString)|| allProduct.getIsbn().equalsIgnoreCase(searchString) ||allProduct.getReleaseDate().equalsIgnoreCase(searchString))
                 productArrayList.add(allProduct);
@@ -36,13 +38,44 @@ public class ClientModel implements Client
             allProducts.add(new product("CD", "Takwondo banden", "Kent knudsen", "E9182", "21-11-2010"));
             allProducts.add(new product("ARTIKEL", "Noget reality show", "Tank top thomas", "BDE32", "5-07-1990"));
         }
-
     }
 
     public ArrayList getAllProducts(){
         //fillArrayDemoItems();
         return allProducts;
     }
+
+    public ArrayList getAllClients(){
+        return allClients;
+    }
+
+    public ArrayList getAllRentedProducts(){
+        //TEST TODO:FJERN NÅR LÅNER VIRKER
+        student andreas = new student("Andreas", "abc@gmail.com");
+        allProducts.get(0).setRenter(andreas);
+        System.out.println(allProducts.get(0).isRented());
+        allClients.add(andreas);
+
+        ArrayList allRentedProducts = new ArrayList();
+        for(product i : allProducts){
+            if(i.isRented()){
+                allRentedProducts.add(i);
+            }
+        }
+        return allRentedProducts;
+    }
+
+    public ArrayList getAllAvaliableProducts(){
+        //Vi laver dem her for at kunne skilne mellem de 3 typer imens vi har en allproducts som rod
+        ArrayList allAvaliableProducts = new ArrayList();
+        for(product i : allProducts){
+            if(!i.isRented()){
+                allAvaliableProducts.add(i);
+            }
+        }
+        return allAvaliableProducts;
+    }
+
 
     public static void setAllProducts(ArrayList gemteListe){
         allProducts = gemteListe;
