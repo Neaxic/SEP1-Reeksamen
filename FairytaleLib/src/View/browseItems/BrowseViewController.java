@@ -62,8 +62,9 @@ public class BrowseViewController {
         renterCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterName"));
         emailCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterEmail"));
 
-        returnDateCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        //SidsteFrist
         deadline.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        returnDateCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterReturnDate"));
 
         //Reserved
         reservedMaterialView.setItems(viewmodel.getProductObservableList());
