@@ -23,7 +23,6 @@ public class productList implements Serializable {
     }
 
 
-
     public product getProductFromIsbn(String isbn) {
         for (int i = 0; i < arr.size(); i++) {
             if (arr.get(i).getIsbn() == isbn) {
@@ -41,12 +40,6 @@ public class productList implements Serializable {
             }
         }
     }
-
-
-
-
-
-
 
 
 

@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 //Kasper Falk Mikkelsen
 public class product implements Serializable {
+
    private  renter Renter = new notRented();
    private  renter reserver = new notRented();
     private String productKind;
     private String title, author, isbn;
     private String releaseDate;
 
+    private String returnDate;
 
     public product(String productKind, String title, String author, String isbn, String releaseDate) {
         this.productKind = productKind;
@@ -109,19 +111,21 @@ public class product implements Serializable {
     }
 
 
-
+    //Renter
     public String getRenterName() {
         return Renter.getName();
     }
-
     public String getRenterEmail() {
         return Renter.getEmail();
     }
-
     public String getRenterJobPostion() {
         return Renter.getJobPostion();
     }
+    public String getRenterReturnDate() {
+        return returnDate;
+    }
 
+    //Reserver
     public String getReserverName() {
         return reserver.getName();
     }
@@ -139,8 +143,9 @@ public class product implements Serializable {
         this.productKind = productKind;
     }
 
-    public void setRenter(renter renter) {
+    public void setRenter(renter renter, String returnDate) {
         Renter = renter;
+        this.returnDate = returnDate;
     }
 
 

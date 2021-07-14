@@ -23,7 +23,6 @@ public class ViewModelFactory {
 
   }
 
-
   public RegisterViewmodel getRegisterViewmodel(){
     if (registerViewmodel == null)
       registerViewmodel = new RegisterViewmodel(mf.getModel());
@@ -31,14 +30,11 @@ public class ViewModelFactory {
 
   }
 
-
   public registerNewRenterViewModel getRegisterNewRenterViewModel(){
     if (registerNewRenterViewModel == null)
       registerNewRenterViewModel = new registerNewRenterViewModel(mf.getModel());
     return registerNewRenterViewModel;
 
   }
-
-
 
 }

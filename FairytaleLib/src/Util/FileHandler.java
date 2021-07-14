@@ -17,7 +17,6 @@ public class FileHandler {
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
 
-
         outputStream.writeObject(Plist);
         outputStream.close();
 
@@ -36,7 +35,6 @@ public class FileHandler {
 
             ArrayList productList = (ArrayList) objectInputStream.readObject();
             objectInputStream.close();
-
 
             System.out.println("ProductList have been loaded");
 
