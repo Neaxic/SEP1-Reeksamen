@@ -60,6 +60,7 @@ public class product implements Serializable {
         }
     }
 
+    //TODO: Den her virker ikke hvad er forskel på renter og reserved så? Vi burde have en status field der bliver sat på setRenter / setReserver
     public boolean isReserved() {
         if (reserver.getJobPostion() == null) {
             return false;
