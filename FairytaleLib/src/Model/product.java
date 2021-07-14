@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 //Kasper Falk Mikkelsen
 public class product implements Serializable {
+
    private  renter Renter = new notRented();
    private  renter reserver = new notRented();
     private String productKind;

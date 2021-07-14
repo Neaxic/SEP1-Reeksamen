@@ -3,7 +3,6 @@ package View.browseItems;
 import Model.Client;
 import Model.ClientModel;
 import Model.product;
-import Model.renter;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -11,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BrowseViewModel {
@@ -19,8 +17,7 @@ public class BrowseViewModel {
 
 private Client client;
 
-    private ObservableList productObservableList;
-    private ObservableList renterObservableList;
+    private ObservableList<product> productObservableList;
     private StringProperty search;
 
     public BrowseViewModel(Client client) {
@@ -30,13 +27,8 @@ private Client client;
 
 
     public void loadProducts() {
-        //Det er vigtigt vi starter fra mere specifikke og ned i test purpose da vi først laver en rented i get all rented
-        ArrayList rentedProducts = client.getAllRentedProducts();
-        ArrayList productList = client.getAllAvaliableProducts();
-
+            List<product>productList = client.getAllProducts();
             productObservableList = FXCollections.observableArrayList(productList);
-
-            renterObservableList = FXCollections.observableArrayList(rentedProducts);
     }
 
  // productKind,title,author,isbn
@@ -44,14 +36,8 @@ private Client client;
 
 
 
-
-
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
-    }
-
-    public ObservableList<product> getRentedObservableList() {
-        return renterObservableList;
     }
 
     public void delete(product product){
@@ -62,6 +48,7 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
+
     }
 
 

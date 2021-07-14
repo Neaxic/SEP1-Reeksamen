@@ -12,8 +12,12 @@ public class ClientModel implements Client
         ArrayList<product> productArrayList = new ArrayList<>();
         //TODO: maybe contains + søge over brugere
         for (product allProduct : allProducts) {
-            if (allProduct.getProductKind().equalsIgnoreCase(searchString)|| allProduct.getTitle().equalsIgnoreCase(searchString)|| allProduct.getAuthor().equalsIgnoreCase(searchString)|| allProduct.getIsbn().equalsIgnoreCase(searchString) ||allProduct.getReleaseDate().equalsIgnoreCase(searchString))
-                productArrayList.add(allProduct);
+            if (allProduct.getProductKind().toLowerCase().contains(searchString.toLowerCase()) ||allProduct.getProductKind().toUpperCase().contains(searchString.toUpperCase())
+                    || allProduct.getTitle().toLowerCase().contains(searchString.toLowerCase()) || allProduct.getTitle().toUpperCase().contains(searchString.toUpperCase())
+                    || allProduct.getAuthor().toUpperCase().contains(searchString.toUpperCase()) || allProduct.getAuthor().toLowerCase().contains(searchString.toLowerCase())
+                    || allProduct.getIsbn().toLowerCase().contains(searchString.toLowerCase())  || allProduct.getIsbn().toUpperCase().contains(searchString.toUpperCase())
+                    ||allProduct.getReleaseDate().toUpperCase().contains(searchString.toUpperCase()) ||  allProduct.getReleaseDate().toLowerCase().contains(searchString.toLowerCase()))
+                    productArrayList.add(allProduct);
 
         }
         return productArrayList;
@@ -23,12 +27,10 @@ public class ClientModel implements Client
 
         for (int i = 0; i <allProducts.size() ; i++) {
             allProducts.remove(product);
-
         }
 
         return 0;
     }
-
 
     public void fillArrayDemoItems(){
         if (allProducts.isEmpty()){
@@ -86,7 +88,6 @@ public class ClientModel implements Client
 
     }
 
-
     public ArrayList getAllProductsType(){
         if (allProductsType.isEmpty()){
 
@@ -99,6 +100,5 @@ public class ClientModel implements Client
 
         return allProductsType;
     }
-
 
 }

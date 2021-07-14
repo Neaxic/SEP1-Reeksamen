@@ -20,6 +20,7 @@ public class RegisterViewmodel {
     private StringProperty type;
     private Property releaseDate;
     private ObservableList<product> productObservableList;
+    private StringProperty error;
 
 
     public RegisterViewmodel(Client client) {
@@ -29,6 +30,7 @@ public class RegisterViewmodel {
         isbn = new SimpleStringProperty();
         releaseDate = new SimpleObjectProperty();
         type = new SimpleStringProperty();
+        error = new SimpleStringProperty();
     }
 
     public void loadProductsType() {
@@ -38,29 +40,55 @@ public class RegisterViewmodel {
     }
 
     public void submit(){
-        if(validInput()){
+        if(validInput() && validCharInputs()){
             this.type.getValue().equals(type);
             client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(), releaseDate.getValue().toString());
             clearFields();
         } else {
+            error.set("unsucessfuld submit");
             //invalidInputPopup();
         }
     }
 
-//TODO: bedre checks skal jeg nok lave
+
+    //checker om fields er null
     public boolean validInput(){
-        //Blank check
-        if(title.getValue().isBlank()){
+        if(title.getValue() == null || author.getValue() == null || type.getValue() == null || releaseDate.getValue().toString() == null ){
+            error.set("fields cannot be null");
             return false;
         }
-
         return true;
     }
+
+
+    //checker om fields er mindre end 35 characters
+    public boolean validCharInputs() {
+        if(title.getValue().length() > 35) {
+            error.set("title must contain less than 35 characters");
+            return false;
+        }
+        if(author.getValue().length() > 35) {
+            error.set("author must contain less than 35 characters");
+            return false;
+        }
+        if(type.getValue().length() > 35) {
+            error.set("type must contain less than 35 characters");
+            return false;
+        }
+        else {
+
+            return true;
+        }
+
+    }
+
 
     //TODO: Tænker at give client et popup med hvad der mangler af inputs
     public void invalidInputPopup(){
 
     }
+
+
 
     public void clearFields(){
         title.setValue(null);
@@ -129,5 +157,9 @@ public class RegisterViewmodel {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate.setValue(releaseDate);
+    }
+
+    public StringProperty errorProperty() {
+        return error;
     }
 }

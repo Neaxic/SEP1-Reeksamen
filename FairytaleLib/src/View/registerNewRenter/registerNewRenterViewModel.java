@@ -18,6 +18,7 @@ public class registerNewRenterViewModel
   private StringProperty renterID;
   private StringProperty status;
   private ObservableList<product> productObservableList;
+  private StringProperty error;
 
 
   public registerNewRenterViewModel(Client client) {
@@ -27,16 +28,13 @@ public class registerNewRenterViewModel
     eMail = new SimpleStringProperty();
     renterID = new SimpleStringProperty();
     status = new SimpleStringProperty();
+    error = new SimpleStringProperty();
   }
-
-
-
 
   public void loadRenterStatus() {
     System.out.println("load status");
     ArrayList allProductsFromClient = client.getAllProductsType();
     productObservableList = FXCollections.observableArrayList(allProductsFromClient);
-
 
   }
 
@@ -46,6 +44,7 @@ public class registerNewRenterViewModel
             .getValue(),
         renterID.getValue());
   }
+
 
 
 
@@ -109,7 +108,9 @@ public class registerNewRenterViewModel
     this.renterID.set(renterID);
   }
 
-  public void loadProductsType()
-  {
+  public void loadProductsType() {}
+
+  public StringProperty errorProperty() {
+    return error;
   }
 }
