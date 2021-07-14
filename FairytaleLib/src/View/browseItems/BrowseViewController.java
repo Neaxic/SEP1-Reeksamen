@@ -173,4 +173,13 @@ public class BrowseViewController {
     public void OpenListOfUser(ActionEvent actionEvent) {
         viewHandler.openListOfUsers();
     }
+
+    public void removeReserver(ActionEvent actionEvent) {
+    }
+
+    public void removeRenter(ActionEvent actionEvent) {
+    }
+
+    public void reserveButton(ActionEvent actionEvent) {
+    }
 }

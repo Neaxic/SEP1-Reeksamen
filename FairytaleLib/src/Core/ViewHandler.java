@@ -3,8 +3,7 @@ package Core;
 import View.browseItems.BrowseViewController;
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
