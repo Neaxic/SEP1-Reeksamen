@@ -109,6 +109,12 @@ public class BrowseViewController {
 
     public void search(ActionEvent actionEvent) {
 
+
+        if (availableMaterialView.getItems().isEmpty()){
+
+            viewHandler.openBrowseItem();
+        }
+
         viewmodel.Search();
         viewmodel.clearSearch();
 
@@ -151,11 +157,4 @@ public class BrowseViewController {
         product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
         product.setReleaseDate(editEvent.getNewValue().toString());
     }
-
-
-
-
-
-
-
 }

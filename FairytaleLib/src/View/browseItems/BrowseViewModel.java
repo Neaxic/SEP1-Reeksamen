@@ -36,8 +36,6 @@ private Client client;
 
 
 
-
-
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
     }
