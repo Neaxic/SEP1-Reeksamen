@@ -86,7 +86,7 @@
                         </Text>
                         <TextField fx:id="isbnInput" layoutX="449.0" layoutY="51.0" prefHeight="25.0" prefWidth="215.0" />
                         <Button layoutX="14.0" layoutY="569.0" mnemonicParsing="false" onAction="#submit" prefHeight="39.0" prefWidth="806.0" text="Tilføj genstand" />
-                        <Text layoutX="105.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelses år" wrappingWidth="280.08203125">
+                        <Text layoutX="105.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelses dato" wrappingWidth="280.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>

@@ -3,9 +3,17 @@ package Core;
 import View.browseItems.BrowseViewController;
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -96,6 +104,33 @@ public class ViewHandler {
     stage.setScene(registerNewRenterScene);
     stage.show();
   }
+
+    public void openListOfUsers() {
+
+        //Window setup
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(stage);
+        VBox dialogVbox = new VBox(20);
+
+        //FXML
+        Text tekst = new Text("This is a Dialog");
+        dialogVbox.getChildren().add(tekst);
+        ListView listOfUsers = new ListView();
+        listOfUsers.getItems().add("Tissemand");
+        listOfUsers.getItems().add("Fissemand");
+        dialogVbox.getChildren().add(listOfUsers);
+
+        //Margins
+        VBox.setMargin(listOfUsers, new Insets(0, 16, 12, 16));
+        VBox.setMargin(tekst, new Insets(25, 16, 0, 16));
+
+        //window execution
+        Scene dialogScene = new Scene(dialogVbox, 500, 400);
+        dialog.setScene(dialogScene);
+        dialog.show();
+
+    }
 
 
 }

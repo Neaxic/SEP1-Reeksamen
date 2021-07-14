@@ -14,7 +14,7 @@
    <children>
       <HBox fx:id="forside" alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="862.0" style="-fx-background-color: lightblue;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bibliotek" wrappingWidth="354.8759765625">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bibliotek" wrappingWidth="324.8759765625">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -27,7 +27,7 @@
                   <HBox alignment="CENTER" prefHeight="97.0" prefWidth="589.0">
                      <children>
                         <TextField fx:id="searchText" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: white;" />
-                        <Button mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="57.0" text="Søg">
+                        <Button mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="131.0" text="Søg">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -57,12 +57,22 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige genstande" wrappingWidth="762.08203125">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige genstande" wrappingWidth="568.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeAvailable" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#remove" text="Fjern valgte" />
+                        <Button fx:id="ListOfUser" mnemonicParsing="false" onAction="#OpenListOfUser" prefHeight="25.0" prefWidth="96.0" text="Udlån">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button fx:id="reserveButton" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="96.0" text="Reserver">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button fx:id="removeAvailable" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="86.0" text="Fjern valgte" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
@@ -82,12 +92,13 @@
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Udlånte genstande" wrappingWidth="762.08203125">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Udlånte genstande" wrappingWidth="674.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeRentet" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Fjern valgte" />
+                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="76.0" text="Fjern låner" />
+                        <Button fx:id="removeRentet" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Fjern genstand" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
@@ -109,11 +120,12 @@
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserveret genstande" wrappingWidth="762.08203125">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserveret genstande" wrappingWidth="689.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="76.0" text="Fjern låner" />
                         <Button fx:id="removeMaterial" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Fjern valgte" />
                      </children>
                      <VBox.margin>

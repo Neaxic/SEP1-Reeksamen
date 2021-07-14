@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 
 
 public class BrowseViewController {
@@ -166,5 +167,10 @@ public class BrowseViewController {
 
         product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
         product.setReleaseDate(editEvent.getNewValue().toString());
+    }
+
+
+    public void OpenListOfUser(ActionEvent actionEvent) {
+        viewHandler.openListOfUsers();
     }
 }
