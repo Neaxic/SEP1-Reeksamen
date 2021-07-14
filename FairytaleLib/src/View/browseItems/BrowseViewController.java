@@ -13,6 +13,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 
 
 public class BrowseViewController {
+
     public TableColumn AuthorCoulmn;
     public TableColumn ISBNCoulmn;
     public TextField searchText;

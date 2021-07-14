@@ -23,12 +23,10 @@ public class ClientModel implements Client
 
         for (int i = 0; i <allProducts.size() ; i++) {
             allProducts.remove(product);
-
         }
 
         return 0;
     }
-
 
     public void fillArrayDemoItems(){
         if (allProducts.isEmpty()){
@@ -86,7 +84,6 @@ public class ClientModel implements Client
 
     }
 
-
     public ArrayList getAllProductsType(){
         if (allProductsType.isEmpty()){
 
@@ -99,6 +96,5 @@ public class ClientModel implements Client
 
         return allProductsType;
     }
-
 
 }

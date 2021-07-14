@@ -3,11 +3,13 @@ package View.registerNewRenter;
 import Core.ViewHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class registerNewRenterViewController
 {
 
+  public Label error;
   private ViewHandler viewHandler;
   private registerNewRenterViewModel registerViewmodel;
 
@@ -28,6 +30,8 @@ public class registerNewRenterViewController
     eMail.textProperty().bindBidirectional(registerViewmodel.eMailProperty());
     renterID.textProperty().bindBidirectional(registerViewmodel.renterIDProperty());
     status.valueProperty().bindBidirectional(registerViewmodel.statusProperty());
+
+    error.textProperty().bind(registerViewmodel.errorProperty());
 
 
 

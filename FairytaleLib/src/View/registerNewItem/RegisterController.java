@@ -5,11 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class RegisterController {
 
 
+    public Label error;
     private ViewHandler viewHandler;
     private RegisterViewmodel registerViewmodel;
 
@@ -29,6 +31,9 @@ public class RegisterController {
         isbnInput.textProperty().bindBidirectional(registerViewmodel.isbnProperty());
         ReleaseDate.valueProperty().bindBidirectional(registerViewmodel.releaseDateProperty());
         typeInput.valueProperty().bindBidirectional(registerViewmodel.typeProperty());
+
+        error.textProperty().bind(registerViewmodel.errorProperty());
+
     }
 
     public void submit(){

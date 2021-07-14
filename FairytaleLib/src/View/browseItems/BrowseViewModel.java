@@ -28,7 +28,6 @@ private Client client;
         search = new SimpleStringProperty();
     }
 
-
     public void loadProducts() {
         //Det er vigtigt vi starter fra mere specifikke og ned i test purpose da vi først laver en rented i get all rented
         ArrayList rentedProducts = client.getAllRentedProducts();
@@ -40,10 +39,6 @@ private Client client;
     }
 
  // productKind,title,author,isbn
-
-
-
-
 
 
     public ObservableList<product> getProductObservableList() {
@@ -65,14 +60,10 @@ private Client client;
     }
 
 
-
-
-
     public void clearSearch(){
         search.setValue("");
 
     }
-
 
     public String getSearch() {
         return search.get();
