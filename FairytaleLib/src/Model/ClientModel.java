@@ -54,8 +54,8 @@ public class ClientModel implements Client
     public ArrayList getAllRentedProducts(){
         //TEST TODO:FJERN NÅR LÅNER VIRKER
         student andreas = new student("Andreas", "abc@gmail.com");
-        allProducts.get(0).setRenter(andreas, "10-02-2020");
-        System.out.println(allProducts.get(0).isRented());
+        //allProducts.get(0).setRenter(andreas, "10-02-2020");
+        //System.out.println(allProducts.get(0).isRented());
         allClients.add(andreas);
 
         ArrayList allRentedProducts = new ArrayList();
