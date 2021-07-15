@@ -3,6 +3,7 @@ package Core;
 
 import View.browseItems.BrowseViewModel;
 import View.login.LoginViewModel;
+import View.opretLogin.opretLoginViewModel;
 import View.registerNewItem.RegisterViewmodel;
 import View.registerNewRenter.registerNewRenterViewModel;
 
@@ -13,6 +14,7 @@ public class ViewModelFactory {
   private RegisterViewmodel registerViewmodel;
   private registerNewRenterViewModel registerNewRenterViewModel;
   private LoginViewModel loginViewModel;
+  private opretLoginViewModel opretLoginViewModel;
 
   public ViewModelFactory(ModelFactory mf) {
     this.mf = mf;
@@ -45,5 +47,10 @@ public class ViewModelFactory {
 
   }
 
+  public opretLoginViewModel getOpretLoginViewModel(){
+    if (opretLoginViewModel == null)
+      opretLoginViewModel = new opretLoginViewModel(mf.getModel());
+    return opretLoginViewModel;
+  }
 
 }

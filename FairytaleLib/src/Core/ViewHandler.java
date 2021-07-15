@@ -2,6 +2,7 @@ package Core;
 
 import View.browseItems.BrowseViewController;
 import View.login.loginViewController;
+import View.opretLogin.opretLoginViewController;
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
 
@@ -20,7 +21,7 @@ import java.io.IOException;
 
 public class ViewHandler {
 
-  private Scene browserScene,registerScene,registerNewRenterScene, loginScene;
+  private Scene browserScene,registerScene,registerNewRenterScene, loginScene, opretloginScene;
   private BrowseViewController browseViewController;
   private RegisterController registerController;
   private Stage stage;
@@ -57,8 +58,29 @@ public class ViewHandler {
        }
        stage.setScene(loginScene);
        stage.show();
-
    }
+
+
+    public void openOpretLogin() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/opretLogin/opretLogin.fxml"));
+            Parent root = loader.load();
+
+            opretLoginViewController ctrl = loader.getController();
+            ctrl.init(viewModelFactory.getOpretLoginViewModel(),this);
+
+            stage.setTitle("opretLogin");
+            opretloginScene = new Scene(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(opretloginScene);
+        stage.show();
+    }
+
 
   public void openBrowseItem() {
 
@@ -81,8 +103,6 @@ public class ViewHandler {
     stage.show();
   }
 
-
-
   public void openRegisterNewItems() {
 
       try {
@@ -103,7 +123,6 @@ public class ViewHandler {
     stage.setScene(registerScene);
     stage.show();
   }
-
 
 
   public void openregisterNewRenter() {
