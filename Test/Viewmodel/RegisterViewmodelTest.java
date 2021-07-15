@@ -49,7 +49,7 @@ public class RegisterViewmodelTest {
 
 
     @Test
-    public void testOnNull(){
+    public void testWhatHappensIfValueISNull(){
 
         title.setValue("fdsgfsdgs");
         author.setValue("fdsfds");
@@ -62,6 +62,38 @@ public class RegisterViewmodelTest {
 
     }
 
+
+    @Test
+    public void TestWhatHappensIfValueIsMoreThen35Characters(){
+
+        title.setValue("Testdsadsadafdsafdsfsdfsdfsfsfsfsfsfsfdsfdsfdsfsdfdsfdsfdsfdsfdsfsd");
+        author.setValue("TEst");
+        isbn.setValue("test");
+        releaseDate.setValue("Test");
+        type.setValue("Test");
+        registerViewmodel.validInputs();
+
+
+        assertEquals("title must contain less than 35 characters",error.getValue());
+
+
+    }
+
+
+
+    @Test
+    public void testIfYouCanAddAnElementSuccessfully(){
+        title.setValue("Test");
+        author.setValue("TEst");
+        isbn.setValue("test");
+        releaseDate.setValue("Test");
+        type.setValue("Test");
+        registerViewmodel.validInputs();
+
+
+        assertEquals(null,error.getValue());
+
+    }
 
 
 
