@@ -39,31 +39,23 @@ public class RegisterViewmodel {
         productObservableList = FXCollections.observableArrayList(allProductsFromClient);
     }
 
-    public boolean submit(){
-        if(validInput() && validCharInputs()){
-            this.type.getValue().equals(type);
+    public void submit(){
             client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(), releaseDate.getValue().toString());
             clearFields();
-        } else {
-            error.set("unsucessfuld submit");
-            //invalidInputPopup();
-        }
-        return false;
     }
 
 
     //checker om fields er null
-    public boolean validInput(){
+
+
+    //checker om fields er mindre end 35 characters
+    public boolean validInputs() {
+
         if(title.getValue() == null || author.getValue() == null || type.getValue() == null || releaseDate.getValue().toString() == null ){
             error.set("fields cannot be null");
             return false;
         }
-        return true;
-    }
 
-
-    //checker om fields er mindre end 35 characters
-    public boolean validCharInputs() {
         if(title.getValue().length() > 35) {
             error.set("title must contain less than 35 characters");
             return false;

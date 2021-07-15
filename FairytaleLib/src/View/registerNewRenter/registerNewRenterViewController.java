@@ -23,8 +23,8 @@ public class registerNewRenterViewController
   public void init(registerNewRenterViewModel registerViewmodel,ViewHandler viewHandler) {
     this.registerViewmodel = registerViewmodel;
     this.viewHandler = viewHandler;
-    registerViewmodel.loadProductsType();
-    status.setItems(registerViewmodel.getProductObservableList());
+   // registerViewmodel.loadProductsType();
+   // status.setItems(registerViewmodel.getProductObservableList());
     firstName.textProperty().bindBidirectional(registerViewmodel.firstNameProperty());
     lastName.textProperty().bindBidirectional(registerViewmodel.lastNameProperty());
     eMail.textProperty().bindBidirectional(registerViewmodel.eMailProperty());

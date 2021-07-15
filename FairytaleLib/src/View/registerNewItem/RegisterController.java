@@ -1,7 +1,6 @@
 package View.registerNewItem;
 
 import Core.ViewHandler;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -37,7 +36,7 @@ public class RegisterController {
     }
 
     public void submit(){
-        if (registerViewmodel.submit()) {
+        if (registerViewmodel.validInputs()) {
             registerViewmodel.submit();
         }
 
