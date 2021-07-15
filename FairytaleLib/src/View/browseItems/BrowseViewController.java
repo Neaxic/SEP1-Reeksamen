@@ -1,6 +1,7 @@
 package View.browseItems;
 
 import Core.ViewHandler;
+import Model.ClientModel;
 import Model.product;
 import Model.renter;
 import javafx.event.ActionEvent;
@@ -11,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class BrowseViewController {
@@ -169,9 +172,11 @@ public class BrowseViewController {
         product.setReleaseDate(editEvent.getNewValue().toString());
     }
 
-
-    public void OpenListOfUser(ActionEvent actionEvent) {
-        viewHandler.openListOfUsers();
+    //RESERVE TODO:MAYBE RENAME en msule forvirrende
+    public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
+        //Åbner i viewhandler eftersom vi laver et nyt vindue popup
+        viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
     }
 
     public void removeReserver(ActionEvent actionEvent) {

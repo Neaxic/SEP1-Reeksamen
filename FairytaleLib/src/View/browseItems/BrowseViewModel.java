@@ -85,5 +85,7 @@ private Client client;
         this.search.set(search);
     }
 
-
+    public Client getClient() {
+        return client;
+    }
 }
