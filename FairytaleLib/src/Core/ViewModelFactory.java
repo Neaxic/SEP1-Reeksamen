@@ -2,6 +2,7 @@
 package Core;
 
 import View.browseItems.BrowseViewModel;
+import View.login.LoginViewModel;
 import View.registerNewItem.RegisterViewmodel;
 import View.registerNewRenter.registerNewRenterViewModel;
 
@@ -11,6 +12,7 @@ public class ViewModelFactory {
   private BrowseViewModel browseViewModel;
   private RegisterViewmodel registerViewmodel;
   private registerNewRenterViewModel registerNewRenterViewModel;
+  private LoginViewModel loginViewModel;
 
   public ViewModelFactory(ModelFactory mf) {
     this.mf = mf;
@@ -36,5 +38,12 @@ public class ViewModelFactory {
     return registerNewRenterViewModel;
 
   }
+  public LoginViewModel getLoginViewModel(){
+    if (loginViewModel == null)
+      loginViewModel = new LoginViewModel(mf.getModel());
+    return loginViewModel;
+
+  }
+
 
 }

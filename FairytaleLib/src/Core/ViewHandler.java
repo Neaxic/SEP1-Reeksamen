@@ -1,6 +1,7 @@
 package Core;
 
 import View.browseItems.BrowseViewController;
+import View.login.loginViewController;
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
 
@@ -19,7 +20,7 @@ import java.io.IOException;
 
 public class ViewHandler {
 
-  private Scene browserScene,registerScene,registerNewRenterScene;
+  private Scene browserScene,registerScene,registerNewRenterScene, loginScene;
   private BrowseViewController browseViewController;
   private RegisterController registerController;
   private Stage stage;
@@ -33,9 +34,31 @@ public class ViewHandler {
 
    public void start(){
     //stage = new Stage();
-    openBrowseItem();
+   // openBrowseItem();
+       openLogin();
    }
 
+
+   public void openLogin() {
+
+       try {
+           FXMLLoader loader = new FXMLLoader();
+           loader.setLocation(getClass().getResource("../view/login/login.fxml"));
+           Parent root = loader.load();
+
+           loginViewController ctrl = loader.getController();
+           ctrl.init(viewModelFactory.getLoginViewModel(),this);
+
+           stage.setTitle("login");
+           loginScene = new Scene(root);
+
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       stage.setScene(loginScene);
+       stage.show();
+
+   }
 
   public void openBrowseItem() {
 

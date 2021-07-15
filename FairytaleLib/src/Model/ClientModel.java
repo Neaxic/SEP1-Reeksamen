@@ -78,27 +78,23 @@ public class ClientModel implements Client
         return allAvaliableProducts;
     }
 
-
     public static void setAllProducts(ArrayList gemteListe){
         allProducts = gemteListe;
     }
 
     public void createProduct(String title, String author, String isbn, String type,String releaseDate){
         allProducts.add(new product(type, title, author, isbn, releaseDate));
-
     }
 
     public ArrayList getAllProductsType(){
         if (allProductsType.isEmpty()){
-
             allProductsType.add("dvd");
             allProductsType.add("artikel");
             allProductsType.add("cd");
             allProductsType.add("BOG");
-
         }
-
         return allProductsType;
     }
+
 
 }

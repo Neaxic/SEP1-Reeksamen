@@ -38,12 +38,64 @@ public class registerNewRenterViewModel
 
   }
 
+/*
   public void submit(){
+
+    if (validInput() && validCharInputs())
+
     this.status.getValue().equals(status);
-    client.createProduct(firstName.getValue(), lastName.getValue(), eMail.getValue(), status
-            .getValue(),
-        renterID.getValue());
+
   }
+
+
+  //checker om fields er null
+  public boolean validInput(){
+    if(firstName.getValue() == null || lastName.getValue() == null || eMail.getValue() == null || renterID.getValue() == null || status.getValue() == null){
+      error.set("field cannot be null");
+      return false;
+    }
+    return true;
+  }
+
+
+  //checker om fields er under 35 tegn
+  public boolean validCharInputs() {
+    if(firstName.getValue().length() > 35) {
+      error.set("firstname must contain less than 35 characters");
+      return false;
+    }
+    if(lastName.getValue().length() > 35) {
+      error.set("lastName must contain less than 35 characters");
+      return false;
+    }
+    if(eMail.getValue().length() > 35) {
+      error.set("email must contain less than 35 characters");
+      return false;
+    }
+    if(renterID.getValue().length() > 35) {
+      error.set("email must contain less than 35 characters");
+      return false;
+    }
+    if(status.getValue().length() > 35) {
+      error.set("email must contain less than 35 characters");
+      return false;
+    }
+    else {
+
+      return true;
+    }
+  }
+
+  //clearfields
+  public void clearFields(){
+    firstName.setValue(null);
+    lastName.setValue(null);
+    eMail.setValue(null);
+    renterID.setValue(null);
+    status.setValue(null);
+  }
+
+*/
 
 
 

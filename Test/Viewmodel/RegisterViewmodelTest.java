@@ -47,7 +47,6 @@ public class RegisterViewmodelTest {
 
     }
 
-
     @Test
     public void testWhatHappensIfValueISNull(){
 
@@ -90,16 +89,9 @@ public class RegisterViewmodelTest {
         type.setValue("Test");
         registerViewmodel.validInputs();
 
-
         assertEquals(null,error.getValue());
 
     }
-
-
-
-
-
-
 
 
 //    //  1 before boundary
