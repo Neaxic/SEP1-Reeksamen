@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class ClientModel implements Client
 {
     public static ArrayList<product> allProducts = new ArrayList();
-    private ArrayList allProductsType = new ArrayList();
-    private ArrayList allClients = new ArrayList<>();
+    private ArrayList allProductsType = new ArrayList<>();
+    private ArrayList<renter> allClients = new ArrayList<>();
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class ClientModel implements Client
         return allProducts;
     }
 
-    public ArrayList getAllClients(){
+    public ArrayList<renter> getAllClients(){
         return allClients;
     }
 
