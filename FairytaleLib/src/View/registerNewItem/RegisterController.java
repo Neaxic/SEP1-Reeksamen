@@ -37,8 +37,10 @@ public class RegisterController {
     }
 
     public void submit(){
-        registerViewmodel.submit();
-        Back();
+        if (registerViewmodel.submit()) {
+            registerViewmodel.submit();
+        }
+
     }
 
     public void Back() {

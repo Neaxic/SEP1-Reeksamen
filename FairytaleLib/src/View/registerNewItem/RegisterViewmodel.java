@@ -39,7 +39,7 @@ public class RegisterViewmodel {
         productObservableList = FXCollections.observableArrayList(allProductsFromClient);
     }
 
-    public void submit(){
+    public boolean submit(){
         if(validInput() && validCharInputs()){
             this.type.getValue().equals(type);
             client.createProduct(title.getValue(), author.getValue(), isbn.getValue(), type.getValue(), releaseDate.getValue().toString());
@@ -48,6 +48,7 @@ public class RegisterViewmodel {
             error.set("unsucessfuld submit");
             //invalidInputPopup();
         }
+        return false;
     }
 
 
