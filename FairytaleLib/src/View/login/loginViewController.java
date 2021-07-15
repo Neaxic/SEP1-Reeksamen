@@ -16,6 +16,7 @@ public class loginViewController {
 
 
     public void OnSignIn(ActionEvent actionEvent) {
+        viewHandler.openBrowseItem();
     }
 
     public void onLogButton(ActionEvent actionEvent) {
