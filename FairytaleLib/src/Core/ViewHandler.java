@@ -1,23 +1,33 @@
 package Core;
 
+import Model.*;
+import Util.FileHandler;
 import View.browseItems.BrowseViewController;
 import View.login.loginViewController;
 import View.opretLogin.opretLoginViewController;
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class ViewHandler {
 
@@ -146,7 +156,12 @@ public class ViewHandler {
     stage.show();
   }
 
-    public void openListOfUsers() {
+    public void openListOfUsers(ClientModel clientModel, product product) throws IOException, ClassNotFoundException {
+        ArrayList test = FileHandler.loadProductList();
+
+        //get Slected product
+        System.out.println(product.getTitle());
+
 
         //Window setup
         final Stage dialog = new Stage();
@@ -157,13 +172,53 @@ public class ViewHandler {
         //FXML
         Text tekst = new Text("This is a Dialog");
         dialogVbox.getChildren().add(tekst);
-        ListView listOfUsers = new ListView();
-        listOfUsers.getItems().add("Tissemand");
-        listOfUsers.getItems().add("Fissemand");
-        dialogVbox.getChildren().add(listOfUsers);
+        //ListView listOfUsers = new ListView();
+       // TableView<renter> listOfUsers = new TableView();
+        TableView table = new TableView();
+
+        //TableColumn name = new TableColumn("Name");
+        //TableColumn job = new TableColumn("Work");
+       // TableColumn email = new TableColumn("Email");
+
+        TableColumn<renter, String> column1 = new TableColumn<>("Name");
+        column1.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<renter, String> column2 = new TableColumn<>("Job");
+        column2.setCellValueFactory(new PropertyValueFactory<>("jobPostion"));
+
+        TableColumn<renter, String> column3 = new TableColumn<>("Email");
+        column3.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        table.getColumns().addAll(column1, column2, column3);
+
+        for (int i = 0; i < clientModel.getAllClients().size(); i++) {
+            //RenterName.getColumns().add(clientModel.getAllClients().get(i).getName());
+           // RenterType.getColumns().add(clientModel.getAllClients().get(i).getJobPostion());
+           // RenterEmail.getColumns().add(clientModel.getAllClients().get(i).getEmail());
+
+            //table.getItems().add(clientModel.getAllClients().get(i).getName());
+
+            table.getItems().add(clientModel.getAllClients().get(i));
+        }
+        Button submitButton = new Button("Submit");
+        submitButton.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                //java.time.LocalDate.now().toString()
+                //System.out.println(listOfUsers.getSelectionModel().getSelectedItem());
+                product.setRenter((renter) table.getSelectionModel().getSelectedItem(), "10-0-2000");
+
+                openBrowseItem();
+            }
+
+        });
+
+        dialogVbox.getChildren().add(table);
+        dialogVbox.getChildren().add(submitButton);
 
         //Margins
-        VBox.setMargin(listOfUsers, new Insets(0, 16, 12, 16));
+        VBox.setMargin(submitButton, new Insets(0, 16, 12, 16));
+        VBox.setMargin(table, new Insets(0, 16, 12, 16));
         VBox.setMargin(tekst, new Insets(25, 16, 0, 16));
 
         //window execution

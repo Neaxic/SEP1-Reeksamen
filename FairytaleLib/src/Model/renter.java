@@ -2,11 +2,11 @@ package Model;
 
 //Kasper Falk Mikkelsen
 public interface renter {
-    String getName();
+    public String getName();
 
-    String getEmail();
+    public String getEmail();
 
-    String getJobPostion();
+    public String getJobPostion();
 
 
 }

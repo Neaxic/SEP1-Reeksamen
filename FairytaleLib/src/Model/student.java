@@ -6,10 +6,12 @@ import java.io.Serializable;
 public class student implements renter, Serializable {
 
     String name, email;
+    String jobPostion;
 
     public student(String name, String email) {
         this.name = name;
         this.email = email;
+        jobPostion = "student";
     }
 
     public String getName() {
@@ -22,6 +24,6 @@ public class student implements renter, Serializable {
 
 
     public String getJobPostion() {
-        return "student";
+        return jobPostion;
     }
 }

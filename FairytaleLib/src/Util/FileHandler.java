@@ -11,7 +11,7 @@ public class FileHandler {
 
     public static void saveProductList(ArrayList Plist) throws IOException {
 
-        String filename = "Product.bin";
+        String filename = "Product2.bin";
         File file = new File(filename);
 
         FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -26,7 +26,7 @@ public class FileHandler {
 
 
     public static ArrayList loadProductList() throws IOException, ClassNotFoundException {
-        String filename = "Product.bin";
+        String filename = "Product2.bin";
         File file = new File(filename);
 
         try {
