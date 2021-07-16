@@ -1,12 +1,16 @@
 package Model;
 
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class ClientModel implements Client
 {
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList();
     private ArrayList allClients = new ArrayList<>();
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
@@ -94,6 +98,14 @@ public class ClientModel implements Client
             allProductsType.add("BOG");
         }
         return allProductsType;
+    }
+
+    public Object clock(){
+        Date myDate=new Date();
+
+        support.firePropertyChange("time",null,myDate.getTime());
+
+        return myDate;
     }
 
 

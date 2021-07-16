@@ -3,13 +3,17 @@ package View.browseItems;
 import Model.Client;
 import Model.ClientModel;
 import Model.product;
+
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +26,7 @@ private Client client;
     private ObservableList renterObservableList;
 
     private StringProperty search;
+    private StringProperty clock;
 
     public BrowseViewModel(Client client) {
         this.client = client;
@@ -84,6 +89,22 @@ private Client client;
     public void setSearch(String search) {
         this.search.set(search);
     }
+
+    public void startClock(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                clock.setValue(String.valueOf(ClientModel.clock()));
+            }
+        });
+    }
+
+    private void clockProperty(PropertyChangeEvent event) {
+        startClock();
+    }
+
+    public StringProperty clockProperty(){return clock;}
 
 
 }
