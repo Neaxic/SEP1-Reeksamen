@@ -10,7 +10,7 @@ public class ClientModel implements Client
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList<>();
     private ArrayList<renter> allClients = new ArrayList<>();
-    private ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>();
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public ArrayList search(String searchString){
@@ -168,6 +168,12 @@ public class ClientModel implements Client
         }
         return allProductsType;
     }
+
+
+    public static void setUsers(ArrayList users) {
+        ClientModel.users = users;
+    }
+
 
 
 }

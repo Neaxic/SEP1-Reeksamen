@@ -25,6 +25,22 @@ public class FileHandler {
     }
 
 
+    public static void saveuser(ArrayList Ulist) throws IOException {
+
+        String filename = "User.bin";
+        File file = new File(filename);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+
+        outputStream.writeObject(Ulist);
+        outputStream.close();
+
+        System.out.println("Saved file to: " + file.getAbsolutePath());
+
+    }
+
+
     public static ArrayList loadProductList() throws IOException, ClassNotFoundException {
         String filename = "Product2.bin";
         File file = new File(filename);
@@ -46,6 +62,30 @@ public class FileHandler {
         ArrayList tom = new ArrayList();
         return tom;
     }
+
+
+    public static ArrayList loadUser() throws IOException, ClassNotFoundException {
+        String filename = "User.bin";
+        File file = new File(filename);
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            ArrayList userList = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
+
+            System.out.println("ProductList have been loaded");
+
+            return userList;
+        } catch (FileNotFoundException e) {
+            System.out.println("Intet gemt i systmet");
+        }
+
+        ArrayList tom = new ArrayList();
+        return tom;
+    }
+
 
 
 }

@@ -21,6 +21,11 @@ public class main extends Application {
         ArrayList test = FileHandler.loadProductList();
         ClientModel.setAllProducts(test);
 
+
+        ArrayList test1 = FileHandler.loadUser();
+        ClientModel.setUsers(test1);
+
+
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
 
@@ -31,6 +36,7 @@ public class main extends Application {
             System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {
                 FileHandler.saveProductList(ClientModel.allProducts);
+                FileHandler.saveuser(ClientModel.users);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
