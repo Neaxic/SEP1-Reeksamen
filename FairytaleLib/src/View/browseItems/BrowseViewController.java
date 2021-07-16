@@ -6,6 +6,7 @@ import Model.product;
 import Model.renter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -21,6 +22,7 @@ public class BrowseViewController {
     public TableColumn AuthorCoulmn;
     public TableColumn ISBNCoulmn;
     public TextField searchText;
+    public Label clock;
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
 
@@ -85,6 +87,8 @@ public class BrowseViewController {
         releaseDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
         searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
+        clock.textProperty().bind(viewmodel.clockProperty());
+        viewmodel.startClock();
     }
 
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items

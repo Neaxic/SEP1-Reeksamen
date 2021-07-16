@@ -3,6 +3,7 @@ package View.browseItems;
 import Model.Client;
 import Model.ClientModel;
 import Model.product;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +23,35 @@ private Client client;
     private ObservableList productObservableList;
     private ObservableList renterObservableList;
 
+
     private StringProperty search;
+    private StringProperty clock;
 
     public BrowseViewModel(Client client) {
         this.client = client;
         search = new SimpleStringProperty();
+        clock = new SimpleStringProperty();
+        client.addListener("time",this::clock);
     }
+
+    private void clock(PropertyChangeEvent propertyChangeEvent) {
+
+        startClock();
+
+    }
+
+
+    public void startClock(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                clock.setValue(String.valueOf(client.clock()));
+            }
+        });
+    }
+
+
 
 
     public void loadProducts() {
@@ -72,6 +97,18 @@ private Client client;
 
     }
 
+
+    public String getClock() {
+        return clock.get();
+    }
+
+    public StringProperty clockProperty() {
+        return clock;
+    }
+
+    public void setClock(String clock) {
+        this.clock.set(clock);
+    }
 
     public String getSearch() {
         return search.get();

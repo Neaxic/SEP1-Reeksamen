@@ -1,12 +1,17 @@
 package Model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ClientModel implements Client
 {
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList<>();
     private ArrayList<renter> allClients = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
@@ -23,6 +28,44 @@ public class ClientModel implements Client
         return productArrayList;
     }
 
+    public ArrayList populateUsers(){
+
+        users.add(new User("bob","123"));
+        users.add(new User("bb","123"));
+        users.add(new User("b","123"));
+
+        return users;
+
+    }
+
+
+
+
+
+    public boolean checkLogin(String username,String password){
+         populateUsers();
+
+        for (User user : users) {
+            if (user.getUserName().equals(username) && user.getPassword().equals(password)){
+                return true;
+            }
+
+        }
+        return false;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public int deleteProduct(product product){
 
         for (int i = 0; i <allProducts.size() ; i++) {
@@ -30,6 +73,16 @@ public class ClientModel implements Client
         }
 
         return 0;
+    }
+
+    @Override
+    public void addListener(String eventName, PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
+    }
+
+    @Override
+    public void removeListener(String eventName, PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
     }
 
     public void fillArrayDemoItems(){
@@ -82,8 +135,28 @@ public class ClientModel implements Client
         allProducts = gemteListe;
     }
 
+    @Override
+    public Object clock() {
+        Date myDate=new Date();
+        support.firePropertyChange("time",null,myDate.getTime());
+
+        return myDate;
+    }
+
     public void createProduct(String title, String author, String isbn, String type,String releaseDate){
         allProducts.add(new product(type, title, author, isbn, releaseDate));
+    }
+
+
+    public boolean createUser(String username,String Password){
+
+        if (users.add(new User(username,Password))){
+
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public ArrayList getAllProductsType(){

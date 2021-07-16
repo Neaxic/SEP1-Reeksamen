@@ -1,5 +1,6 @@
 package Model;
 
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public interface Client
@@ -18,6 +19,17 @@ public interface Client
     ArrayList getAllProductsType();
     ArrayList search(String searchString);
     int deleteProduct(product product);
+
+
+
+    void addListener(String eventName, PropertyChangeListener listener);
+    void removeListener(String eventName, PropertyChangeListener listener);
+
+   ArrayList populateUsers();
+
+    boolean checkLogin(String username,String password);
+
+    boolean createUser(String username,String Password);
 
 
 

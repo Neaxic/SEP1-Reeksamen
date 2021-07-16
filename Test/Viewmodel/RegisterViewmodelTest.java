@@ -89,10 +89,9 @@ public class RegisterViewmodelTest {
         type.setValue("Test");
         registerViewmodel.validInputs();
 
-        assertEquals(null,error.getValue());
+        assertEquals("Item has been Added",error.getValue());
 
     }
-
 
 //    //  1 before boundary
 //    @Test

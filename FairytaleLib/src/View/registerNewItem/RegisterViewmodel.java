@@ -69,7 +69,7 @@ public class RegisterViewmodel {
             return false;
         }
         else {
-
+            error.set("Item has been Added");
             return true;
         }
 
