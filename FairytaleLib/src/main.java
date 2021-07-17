@@ -26,6 +26,10 @@ public class main extends Application {
         ClientModel.setUsers(test1);
 
 
+        ArrayList test2 = FileHandler.loadRenter();
+        ClientModel.setAllClients(test2);
+
+
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
 
@@ -37,6 +41,7 @@ public class main extends Application {
             try {
                 FileHandler.saveProductList(ClientModel.allProducts);
                 FileHandler.saveuser(ClientModel.users);
+                FileHandler.saveRenter(ClientModel.allClients);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

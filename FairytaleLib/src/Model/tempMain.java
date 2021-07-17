@@ -29,7 +29,7 @@ public class tempMain {
 
         p.removeReserver();
         System.out.println(p.isReserved());*/
-
+/*
         productList p = new productList();
         p.addProduct("CD","En særlig bog", "Kim larsen","12345678", "2007-10-03");
         p.addProduct("DVD","En anden særlig bog", "Lort Klaus","12345679","2007-10-03");
@@ -39,6 +39,6 @@ public class tempMain {
         System.out.println( p.getProducts().get(0).isRented());
         System.out.println( p.getProducts().get(1).isRented());
         System.out.println(p.getProductFromIsbn("12345678").getAuthor());
-        System.out.println(p.getProductFromIsbn("12345679").getAuthor());
+        System.out.println(p.getProductFromIsbn("12345679").getAuthor());*/
     }
 }

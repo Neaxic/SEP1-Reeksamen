@@ -22,7 +22,7 @@ public class product implements Serializable {
 
     }
 
-    public void setRenter(String renterType, String renterName, String renterMail) {
+  /*  public void setRenter(String renterType, String renterName, String renterMail) {
         if (reserver.getJobPostion() == null || reserver.getEmail() == renterMail) {
             if (renterType == "student") {
                 Renter = new student(renterName, renterMail);
@@ -36,7 +36,7 @@ public class product implements Serializable {
             System.out.println("Object reserved to :" + reserver.getName());
         }
 
-    }
+    }*/
 
     public boolean isRented() {
         if (Renter.getJobPostion() == null) {
@@ -48,7 +48,7 @@ public class product implements Serializable {
         Renter = new notRented();
     }
 
-    public void setReserver(String renterType, String renterName, String renterMail) {
+   /* public void setReserver(String renterType, String renterName, String renterMail) {
         if (renterType == "student") {
             reserver = new student(renterName, renterMail);
         } else if (renterType == "lecture") {
@@ -58,7 +58,7 @@ public class product implements Serializable {
             System.out.println("reserver type not valid");
             reserver = new notRented();
         }
-    }
+    }*/
 
     //TODO: Den her virker ikke hvad er forskel på renter og reserved så? Vi burde have en status field der bliver sat på setRenter / setReserver
     public boolean isReserved() {

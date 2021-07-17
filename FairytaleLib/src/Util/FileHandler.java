@@ -41,6 +41,22 @@ public class FileHandler {
     }
 
 
+    public static void saveRenter(ArrayList Rlist) throws IOException {
+
+        String filename = "Renter.bin";
+        File file = new File(filename);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+
+        outputStream.writeObject(Rlist);
+        outputStream.close();
+
+        System.out.println("Saved file to: " + file.getAbsolutePath());
+
+    }
+
+
     public static ArrayList loadProductList() throws IOException, ClassNotFoundException {
         String filename = "Product2.bin";
         File file = new File(filename);
@@ -75,9 +91,32 @@ public class FileHandler {
             ArrayList userList = (ArrayList) objectInputStream.readObject();
             objectInputStream.close();
 
-            System.out.println("ProductList have been loaded");
+            System.out.println("UserList have been loaded");
 
             return userList;
+        } catch (FileNotFoundException e) {
+            System.out.println("Intet gemt i systmet");
+        }
+
+        ArrayList tom = new ArrayList();
+        return tom;
+    }
+
+
+    public static ArrayList loadRenter() throws IOException, ClassNotFoundException {
+        String filename = "Renter.bin";
+        File file = new File(filename);
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            ArrayList renterList = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
+
+            System.out.println("RenterList have been loaded");
+
+            return renterList;
         } catch (FileNotFoundException e) {
             System.out.println("Intet gemt i systmet");
         }

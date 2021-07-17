@@ -1,6 +1,7 @@
 package View.registerNewRenter;
 
 import Core.ViewHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -11,31 +12,23 @@ public class registerNewRenterViewController
 
   public Label error;
   private ViewHandler viewHandler;
-  private registerNewRenterViewModel registerViewmodel;
+  private registerNewRenterViewModel registerNewRenterViewModel;
 
   @FXML private TextField firstName;
-  @FXML private TextField lastName;
   @FXML private TextField eMail;
-  @FXML private TextField renterID;
   @FXML private ChoiceBox status;
 
 
-  public void init(registerNewRenterViewModel registerViewmodel,ViewHandler viewHandler) {
-    this.registerViewmodel = registerViewmodel;
+  public void init(registerNewRenterViewModel registerNewRenterViewModel,ViewHandler viewHandler) {
+    this.registerNewRenterViewModel = registerNewRenterViewModel;
     this.viewHandler = viewHandler;
-   // registerViewmodel.loadProductsType();
-   // status.setItems(registerViewmodel.getProductObservableList());
-    firstName.textProperty().bindBidirectional(registerViewmodel.firstNameProperty());
-    lastName.textProperty().bindBidirectional(registerViewmodel.lastNameProperty());
-    eMail.textProperty().bindBidirectional(registerViewmodel.eMailProperty());
-    renterID.textProperty().bindBidirectional(registerViewmodel.renterIDProperty());
-    status.valueProperty().bindBidirectional(registerViewmodel.statusProperty());
 
-    error.textProperty().bind(registerViewmodel.errorProperty());
-
-
-
-
+    registerNewRenterViewModel.loadRenterStatus();
+    status.setItems(registerNewRenterViewModel.getRenterObservableList());
+    firstName.textProperty().bindBidirectional(registerNewRenterViewModel.nameProperty());
+    eMail.textProperty().bindBidirectional(registerNewRenterViewModel.eMailProperty());
+    error.textProperty().bind(registerNewRenterViewModel.errorProperty());
+    status.valueProperty().bindBidirectional(registerNewRenterViewModel.statusProperty());
   }
 
 
@@ -44,6 +37,7 @@ public class registerNewRenterViewController
   }
 
 
-
-
+  public void Submit(ActionEvent actionEvent) {
+    registerNewRenterViewModel.submitRenter();
+  }
 }

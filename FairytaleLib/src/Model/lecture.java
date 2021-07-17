@@ -8,10 +8,10 @@ public class lecture implements renter, Serializable {
     String name, email;
     String jobPostion;
 
-    public lecture(String name, String email) {
+    public lecture(String name, String email,String jobPostion) {
         this.name = name;
         this.email = email;
-        jobPostion = "lecture";
+        this.jobPostion = jobPostion;
     }
     public String getName() {
         return name;

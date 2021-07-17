@@ -30,7 +30,9 @@ public interface Client
     boolean checkLogin(String username,String password);
 
     boolean createUser(String username,String Password);
+    ArrayList getAllRenterType();
 
+    void createRenter(String name,String email,String jobPosition);
 
 
 }

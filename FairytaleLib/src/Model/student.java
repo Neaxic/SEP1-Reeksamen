@@ -8,10 +8,10 @@ public class student implements renter, Serializable {
     String name, email;
     String jobPostion;
 
-    public student(String name, String email) {
+    public student(String name, String email,String jobPostion) {
         this.name = name;
         this.email = email;
-        jobPostion = "student";
+        this.jobPostion = jobPostion;
     }
 
     public String getName() {

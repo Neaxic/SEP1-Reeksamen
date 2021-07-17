@@ -9,7 +9,8 @@ public class ClientModel implements Client
 {
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList<>();
-    private ArrayList<renter> allClients = new ArrayList<>();
+    private ArrayList allRenterType = new ArrayList<>();
+    public static ArrayList<renter> allClients = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -56,16 +57,6 @@ public class ClientModel implements Client
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public int deleteProduct(product product){
 
         for (int i = 0; i <allProducts.size() ; i++) {
@@ -105,19 +96,22 @@ public class ClientModel implements Client
     }
 
     public ArrayList getAllRentedProducts(){
+        if (allClients.isEmpty()){
         //TEST TODO:FJERN NÅR LÅNER VIRKER
-        student andreas = new student("Andreas", "abc@gmail.com");
+        student andreas = new student("Andreas", "abc@gmail.com","student");
         //allProducts.get(0).setRenter(andreas, "10-02-2020");
         //System.out.println(allProducts.get(0).isRented());
         allClients.add(andreas);
-
+        }
         ArrayList allRentedProducts = new ArrayList();
         for(product i : allProducts){
             if(i.isRented()){
                 allRentedProducts.add(i);
             }
         }
+
         return allRentedProducts;
+
     }
 
     public ArrayList getAllAvaliableProducts(){
@@ -147,6 +141,10 @@ public class ClientModel implements Client
         allProducts.add(new product(type, title, author, isbn, releaseDate));
     }
 
+    public void createRenter(String name,String email,String jobPosition){
+        allClients.add(new lecture(name,email,jobPosition));
+    }
+
 
     public boolean createUser(String username,String Password){
 
@@ -170,10 +168,22 @@ public class ClientModel implements Client
     }
 
 
+    public ArrayList getAllRenterType(){
+        if (allRenterType.isEmpty()){
+            allRenterType.add("student");
+            allRenterType.add("lecture");
+
+        }
+        return allRenterType;
+    }
+
+
     public static void setUsers(ArrayList users) {
         ClientModel.users = users;
     }
 
 
-
+    public static void setAllClients(ArrayList allClients) {
+        ClientModel.allClients = allClients;
+    }
 }
