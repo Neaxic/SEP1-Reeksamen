@@ -20,21 +20,21 @@ public class LoginViewModel {
     }
 
 
-
-
     public boolean login(){
         if (client.checkLogin(navn.getValue(),kode.getValue())){
             clearFields();
             return true;
 
         }
-        else {
+        if (navn.getValue() == null && kode.getValue() == null || navn.getValue().equals("") && kode.getValue().equals("")) {
+            error.setValue("ERROR field is empty");
             clearFields();
             return false;
         }
+            error.setValue("ERROR, Either username or password is wrong");
+        return false;
 
     }
-
 
 
     //clearfields
@@ -43,25 +43,6 @@ public class LoginViewModel {
         kode.setValue("");
         error.setValue("");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public String getNavn() {
