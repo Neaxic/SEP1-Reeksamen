@@ -204,9 +204,26 @@ public class ViewHandler {
 
 
                     Calendar c= Calendar.getInstance();
+                    Calendar yearBefore = Calendar.getInstance();
+                    yearBefore.add(Calendar.YEAR,-1);
+                    System.out.println("BLADDER: " +c.getTime());
+                    System.out.println("BLADDER: " +yearBefore.getTime());
+
+
+
+                    System.out.println("adwad: "+yearBefore.getTime());
+                    System.out.println("adwad: "+c.getTime());
+
                     if (product.getProductKind() == "artikel") {
                         System.out.println("Artikel");
-                    } else {
+                        c.add(Calendar.DATE, 14);
+                        Date d=c.getTime();
+                        String time = formatter.format(d);
+                        product.setRenter((renter) table.getSelectionModel().getSelectedItem(),time);
+                    } else if (/*(Date) product.getReleaseDate()*/ true){
+
+                        //Her skal fixes noget ^^ Productets date, er bare en string, så man kan ikke sammenligne de 2 dates
+                        System.out.println("very old book");
                         if (allClient.getJobPostion().equals("student")){
                             c.add(Calendar.DATE, 30);
                             Date d=c.getTime();
@@ -225,9 +242,12 @@ public class ViewHandler {
                             product.setRenter((renter) table.getSelectionModel().getSelectedItem(),time);
 
                             openBrowseItem();
-
                         }
+
+                    } else {
+                        System.out.println("Not very old book");
                     }
+
 
 
 

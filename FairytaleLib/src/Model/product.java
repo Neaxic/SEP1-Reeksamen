@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 //Kasper Falk Mikkelsen
 public class product implements Serializable {
@@ -77,6 +78,11 @@ public class product implements Serializable {
 
     public String getReleaseDate() {
         return releaseDate;
+    }
+
+    public Date getRelaseDateAsDate() {
+        Date d = new Date(releaseDate);
+        return d;
     }
 
     public void setReleaseDate(String releaseDate) {
