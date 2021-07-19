@@ -90,8 +90,6 @@ private Client client;
         renterObservableList.remove(client.deleteProduct(product));
         productObservableList.add(client.addProduct(product));
 
-
-
     }
 
 
@@ -99,7 +97,6 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
-
     }
 
 

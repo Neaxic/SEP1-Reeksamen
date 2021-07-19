@@ -177,9 +177,10 @@ public class BrowseViewController {
     public void removeRenter(ActionEvent actionEvent) {
         viewmodel.deleteRenter((product) rentetMaterialView.getSelectionModel().getSelectedItem());
 
-
     }
 
-    public void reserveButton(ActionEvent actionEvent) {
+    public void reserveButton(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
+        viewHandler.reserve((ClientModel) viewmodel.getClient(), selectedProduct);
     }
 }

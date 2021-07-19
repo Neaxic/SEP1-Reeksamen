@@ -149,5 +149,9 @@ public class product implements Serializable {
         this.returnDate = returnDate;
     }
 
+    public void setReserver(renter renter) {
+        reserver = renter;
+    }
+
 
 }
