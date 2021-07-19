@@ -26,7 +26,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class ViewHandler {
@@ -200,15 +203,50 @@ public class ViewHandler {
 
             table.getItems().add(clientModel.getAllClients().get(i));
         }
+
+
+
+
+
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
                 //java.time.LocalDate.now().toString()
                 //System.out.println(listOfUsers.getSelectionModel().getSelectedItem());
-                product.setRenter((renter) table.getSelectionModel().getSelectedItem(), "10-0-2000");
 
-                openBrowseItem();
+                for (renter allClient : clientModel.getAllClients()) {
+
+                    String formatCode = "dd-MM-yyyy 'at' HH:mm:ss z"; // Example
+                    SimpleDateFormat formatter = new SimpleDateFormat(formatCode); // Time Formatter
+
+
+                    Calendar c= Calendar.getInstance();
+                    if (allClient.getJobPostion().equals("student")){
+
+                        c.add(Calendar.DATE, 30);
+                        Date d=c.getTime();
+                        String time = formatter.format(d);
+                        product.setRenter((renter) table.getSelectionModel().getSelectedItem(),time);
+
+                        openBrowseItem();
+                        System.out.println("1" + allClient.getJobPostion().equals("student"));
+
+                    } else if (allClient.getJobPostion().equals("lecture")){
+                        System.out.println("2" + allClient.getJobPostion().equals("lecture"));
+
+                        c.add(Calendar.DATE, 180);
+                        Date d=c.getTime();
+                        String time = formatter.format(d);
+                        product.setRenter((renter) table.getSelectionModel().getSelectedItem(),time);
+
+                        openBrowseItem();
+
+                    }
+
+
+            }
+
             }
 
         });
