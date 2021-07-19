@@ -141,6 +141,12 @@ public class ClientModel implements Client
         allProducts.add(new product(type, title, author, isbn, releaseDate));
     }
 
+    public product addProduct(product product){
+        allProducts.add(new product(product.getProductKind(), product.getTitle(), product.getAuthor(), product.getIsbn(),product.getReleaseDate()));
+
+        return product;
+    }
+
     public void createRenter(String name,String email,String jobPosition){
         allClients.add(new lecture(name,email,jobPosition));
     }

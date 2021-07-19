@@ -83,6 +83,17 @@ private Client client;
 
     }
 
+
+    public void deleteRenter(product product){
+        renterObservableList.remove(client.deleteProduct(product));
+        productObservableList.add(client.addProduct(product));
+
+
+    }
+
+
+
+
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
 

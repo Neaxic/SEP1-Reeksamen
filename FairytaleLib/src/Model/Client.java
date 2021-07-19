@@ -33,6 +33,7 @@ public interface Client
     ArrayList getAllRenterType();
 
     void createRenter(String name,String email,String jobPosition);
+    product addProduct(product product);
 
 
 }

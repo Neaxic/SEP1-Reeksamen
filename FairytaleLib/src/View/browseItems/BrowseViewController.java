@@ -97,18 +97,6 @@ public class BrowseViewController {
     }
 
 
-    public void removeAvaliable(){
-        //take from all lists - rerun populate
-    }
-
-    public void removeRented(){
-
-    }
-
-    public void removeReserved(){
-
-    }
-
     public void OpenRegisterItems(ActionEvent actionEvent) {
         viewHandler.openRegisterNewItems();
 
@@ -187,6 +175,9 @@ public class BrowseViewController {
     }
 
     public void removeRenter(ActionEvent actionEvent) {
+        viewmodel.deleteRenter((product) rentetMaterialView.getSelectionModel().getSelectedItem());
+
+
     }
 
     public void reserveButton(ActionEvent actionEvent) {
