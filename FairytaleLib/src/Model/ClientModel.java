@@ -96,13 +96,6 @@ public class ClientModel implements Client
     }
 
     public ArrayList getAllRentedProducts(){
-        if (allClients.isEmpty()){
-        //TEST TODO:FJERN NÅR LÅNER VIRKER
-        student andreas = new student("Andreas", "abc@gmail.com","student");
-        //allProducts.get(0).setRenter(andreas, "10-02-2020");
-        //System.out.println(allProducts.get(0).isRented());
-        allClients.add(andreas);
-        }
         ArrayList allRentedProducts = new ArrayList();
         for(product i : allProducts){
             if(i.isRented()){
@@ -111,18 +104,27 @@ public class ClientModel implements Client
         }
 
         return allRentedProducts;
-
     }
 
     public ArrayList getAllAvaliableProducts(){
         //Vi laver dem her for at kunne skilne mellem de 3 typer imens vi har en allproducts som rod
         ArrayList allAvaliableProducts = new ArrayList();
         for(product i : allProducts){
-            if(!i.isRented()){
+            if(!i.isRented() && !i.isReserved()){
                 allAvaliableProducts.add(i);
             }
         }
         return allAvaliableProducts;
+    }
+
+    public ArrayList getAllReservedProducts(){
+        ArrayList allReservedProducts = new ArrayList();
+        for(product i : allProducts){
+            if(i.isReserved()){
+                allReservedProducts.add(i);
+            }
+        }
+        return allReservedProducts;
     }
 
     public static void setAllProducts(ArrayList gemteListe){

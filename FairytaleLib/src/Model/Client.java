@@ -9,6 +9,7 @@ public interface Client
     public ArrayList getAllClients();
     public ArrayList getAllRentedProducts();
     public ArrayList getAllAvaliableProducts();
+    public ArrayList getAllReservedProducts();
 
 
     static void setAllProducts(ArrayList gemteListe) {}

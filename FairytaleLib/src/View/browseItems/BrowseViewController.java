@@ -74,7 +74,7 @@ public class BrowseViewController {
         returnDateCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterReturnDate"));
 
         //Reserved
-        reservedMaterialView.setItems(viewmodel.getProductObservableList());
+        reservedMaterialView.setItems(viewmodel.getReservedObservableList());
         tupeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
 
 

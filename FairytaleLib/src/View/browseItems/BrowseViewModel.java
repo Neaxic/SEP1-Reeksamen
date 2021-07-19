@@ -24,6 +24,7 @@ private Client client;
 
     private ObservableList productObservableList;
     private ObservableList renterObservableList;
+    private ObservableList reserverObservableList;
 
 
     private StringProperty search;
@@ -53,17 +54,16 @@ private Client client;
         });
     }
 
-
-
-
     public void loadProducts() {
         //Det er vigtigt vi starter fra mere specifikke og ned i test purpose da vi først laver en rented i get all rented
         ArrayList rentedProducts = client.getAllRentedProducts();
         ArrayList productList = client.getAllAvaliableProducts();
+        ArrayList reserverList = client.getAllReservedProducts();
 
         //List<product> productList = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList(productList);
         renterObservableList = FXCollections.observableArrayList(rentedProducts);
+        reserverObservableList = FXCollections.observableArrayList(reserverList);
     }
 
  // productKind,title,author,isbn
@@ -77,6 +77,10 @@ private Client client;
 
     public ObservableList<product> getRentedObservableList() {
         return renterObservableList;
+    }
+
+    public ObservableList<product> getReservedObservableList() {
+        return reserverObservableList;
     }
 
     public void delete(product product){
