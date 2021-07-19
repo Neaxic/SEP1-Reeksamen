@@ -84,9 +84,16 @@ private Client client;
     }
 
     public void delete(product product){
-        productObservableList.remove(client.deleteProduct(product));
-
-
+        if(product.isRented()){
+            System.out.println("rented");
+            renterObservableList.remove(client.deleteProduct(product));
+        } else if(product.isReserved()){
+            System.out.println("reserver");
+            reserverObservableList.remove(client.deleteProduct(product));
+        } else {
+            System.out.println("avaliable");
+            productObservableList.remove(client.deleteProduct(product));
+        }
     }
 
 

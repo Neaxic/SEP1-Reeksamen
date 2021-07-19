@@ -41,7 +41,11 @@ public class BrowseViewController {
     @FXML private TableColumn deadline;
 
     @FXML private TableView reservedMaterialView;
-    @FXML private TableColumn tupeCollum;
+    @FXML private TableColumn ReserverType;
+    @FXML private TableColumn ReserverTitle;
+    @FXML private TableColumn ReserverStatus;
+    @FXML private TableColumn ReserverName;
+    @FXML private TableColumn ReserverMail;
 
     public void init(BrowseViewModel viewmodel, ViewHandler viewHandler)
     {
@@ -75,8 +79,12 @@ public class BrowseViewController {
 
         //Reserved
         reservedMaterialView.setItems(viewmodel.getReservedObservableList());
-        tupeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        ReserverType.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
+        ReserverTitle.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
 
+        ReserverStatus.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverJobPostion"));
+        ReserverName.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverName"));
+        ReserverMail.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverEmail"));
 
 
         availableMaterialView.setEditable(true);
@@ -172,6 +180,7 @@ public class BrowseViewController {
     }
 
     public void removeReserver(ActionEvent actionEvent) {
+        viewmodel.delete((product) reservedMaterialView.getSelectionModel().getSelectedItem());
     }
 
     public void removeRenter(ActionEvent actionEvent) {

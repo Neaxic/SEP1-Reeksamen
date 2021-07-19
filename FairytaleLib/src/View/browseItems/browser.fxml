@@ -135,10 +135,11 @@
                   </HBox>
                   <TableView fx:id="reservedMaterialView" prefHeight="504.0" prefWidth="842.0">
                      <columns>
-                        <TableColumn fx:id="tupeCollum" prefWidth="73.0" text="Type" />
-                        <TableColumn fx:id="titelCollum" prefWidth="126.0" text="Title" />
-                        <TableColumn fx:id="statusCollum" prefWidth="120.0" text="Låner Status" />
-                        <TableColumn fx:id="rentetByCollum" prefWidth="423.0" text="Reserveret af" />
+                        <TableColumn fx:id="ReserverType" prefWidth="73.0" text="Type" />
+                        <TableColumn fx:id="ReserverTitle" prefWidth="115.0" text="Title" />
+                        <TableColumn fx:id="ReserverStatus" prefWidth="96.0" text="Låner Status" />
+                        <TableColumn fx:id="ReserverName" prefWidth="283.0" text="Reserveret af" />
+                        <TableColumn fx:id="ReserverMail" prefWidth="277.0" text="Email" />
                      </columns>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
