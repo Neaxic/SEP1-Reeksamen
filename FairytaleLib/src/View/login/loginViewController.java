@@ -26,9 +26,7 @@ public class loginViewController {
     }
 
 
-    public void OnSignIn(ActionEvent actionEvent) {
-        viewHandler.openOpretLogin();
-    }
+
 
     public void onLogButton(ActionEvent actionEvent) {
         if (  loginViewModel.login()){

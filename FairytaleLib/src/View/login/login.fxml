@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="717.0" prefWidth="941.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.login.loginViewController">
+<AnchorPane prefHeight="717.0" prefWidth="941.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.login.loginViewController">
     <children>
         <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="99.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #ffffff;">
             <image>
@@ -45,16 +45,6 @@
                         <Font name="System Bold" size="29.0" />
                     </font>
                 </Label>
-                <Label layoutX="142.0" layoutY="543.0" text="Ny Account?">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <Button layoutX="234.0" layoutY="538.0" mnemonicParsing="false" onAction="#OnSignIn" style="-fx-background-color: white;" text="Opret" textFill="LIGHTBLUE">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
                 <Label layoutX="76.0" layoutY="164.0" text="Login for at fortsætte" textFill="#8a8888" />
             </children>
         </AnchorPane>

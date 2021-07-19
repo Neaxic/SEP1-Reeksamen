@@ -94,9 +94,9 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="159.0" text="Fjern låner og genstand">
+                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="102.0" text="Fjern genstand">
                            <HBox.margin>
-                              <Insets left="25.0" />
+                              <Insets left="70.0" />
                            </HBox.margin></Button>
                      </children>
                      <padding>
@@ -124,7 +124,10 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="155.0" text="Fjern låner og genstand" />
+                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="101.0" text="Fjern genstand">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin></Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />

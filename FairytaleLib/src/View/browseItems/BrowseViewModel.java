@@ -3,6 +3,7 @@ package View.browseItems;
 import Model.Client;
 import Model.ClientModel;
 import Model.product;
+import Util.FileHandler;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -12,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.beans.PropertyChangeEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +89,7 @@ private Client client;
     public void deleteRenter(product product){
         renterObservableList.remove(client.deleteProduct(product));
         productObservableList.add(client.addProduct(product));
+
 
 
     }

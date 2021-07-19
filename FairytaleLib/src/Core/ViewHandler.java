@@ -4,7 +4,7 @@ import Model.*;
 import Util.FileHandler;
 import View.browseItems.BrowseViewController;
 import View.login.loginViewController;
-import View.opretLogin.opretLoginViewController;
+
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
 
@@ -74,25 +74,7 @@ public class ViewHandler {
    }
 
 
-    public void openOpretLogin() {
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/opretLogin/opretLogin.fxml"));
-            Parent root = loader.load();
-
-            opretLoginViewController ctrl = loader.getController();
-            ctrl.init(viewModelFactory.getOpretLoginViewModel(),this);
-
-            stage.setTitle("opretLogin");
-            opretloginScene = new Scene(root);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(opretloginScene);
-        stage.show();
-    }
 
 
   public void openBrowseItem() {
