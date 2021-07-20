@@ -180,7 +180,7 @@ public class BrowseViewController {
     }
 
     public void removeReserver(ActionEvent actionEvent) {
-        viewmodel.delete((product) reservedMaterialView.getSelectionModel().getSelectedItem());
+        viewmodel.deleteReserver((product) reservedMaterialView.getSelectionModel().getSelectedItem());
     }
 
     public void removeRenter(ActionEvent actionEvent) {

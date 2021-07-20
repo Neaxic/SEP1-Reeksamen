@@ -103,8 +103,10 @@ private Client client;
 
     }
 
-
-
+    public void deleteReserver(product product){
+        reserverObservableList.remove(client.deleteProduct(product));
+        productObservableList.add(client.addProduct(product));
+    }
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
