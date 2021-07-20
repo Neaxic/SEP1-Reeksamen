@@ -21,6 +21,7 @@ public interface Client
     ArrayList search(String searchString);
     int deleteProduct(product product);
 
+    
 
 
     void addListener(String eventName, PropertyChangeListener listener);
@@ -35,6 +36,7 @@ public interface Client
 
     void createRenter(String name,String email,String jobPosition);
     product addProduct(product product);
+
 
 
 }
