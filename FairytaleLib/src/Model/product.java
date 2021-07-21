@@ -40,7 +40,7 @@ public class product implements Serializable {
     }*/
 
     public boolean isRented() {
-        if (Renter.getJobPostion() == null) {
+        if (Renter.getStatus() == null) {
             return false;
         } else return true;
     }
@@ -63,7 +63,7 @@ public class product implements Serializable {
 
     //TODO: Den her virker ikke hvad er forskel på renter og reserved så? Vi burde have en status field der bliver sat på setRenter / setReserver
     public boolean isReserved() {
-        if (reserver.getJobPostion() == null) {
+        if (reserver.getStatus() == null) {
             return false;
         } else return true;
     }
@@ -126,7 +126,7 @@ public class product implements Serializable {
         return Renter.getEmail();
     }
     public String getRenterJobPostion() {
-        return Renter.getJobPostion();
+        return Renter.getStatus();
     }
     public String getRenterReturnDate() {
         return returnDate;
@@ -142,7 +142,7 @@ public class product implements Serializable {
     }
 
     public String getReserverJobPostion() {
-        return reserver.getJobPostion();
+        return reserver.getStatus();
     }
 
 

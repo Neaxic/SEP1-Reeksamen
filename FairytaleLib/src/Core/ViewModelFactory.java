@@ -6,6 +6,7 @@ import View.login.LoginViewModel;
 
 import View.registerNewItem.RegisterViewmodel;
 import View.registerNewRenter.registerNewRenterViewModel;
+import View.renterList.RenterListViewModel;
 
 public class ViewModelFactory {
 
@@ -14,6 +15,7 @@ public class ViewModelFactory {
   private RegisterViewmodel registerViewmodel;
   private registerNewRenterViewModel registerNewRenterViewModel;
   private LoginViewModel loginViewModel;
+  private RenterListViewModel renterListViewModel;
 
 
   public ViewModelFactory(ModelFactory mf) {
@@ -44,6 +46,13 @@ public class ViewModelFactory {
     if (loginViewModel == null)
       loginViewModel = new LoginViewModel(mf.getModel());
     return loginViewModel;
+
+  }
+
+  public RenterListViewModel getRenterListViewModel(){
+    if (renterListViewModel == null)
+      renterListViewModel = new RenterListViewModel(mf.getModel());
+    return renterListViewModel;
 
   }
 

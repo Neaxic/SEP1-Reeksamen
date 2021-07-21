@@ -4,7 +4,6 @@ import Core.ViewHandler;
 import Model.ClientModel;
 import Model.product;
 import Model.renter;
-import Util.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,6 +23,7 @@ public class BrowseViewController {
     public TableColumn ISBNCoulmn;
     public TextField searchText;
     public Label clock;
+
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
 
@@ -87,7 +87,6 @@ public class BrowseViewController {
         ReserverName.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverName"));
         ReserverMail.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverEmail"));
 
-
         availableMaterialView.setEditable(true);
         avaliableTypeCollum.setCellFactory(TextFieldTableCell.forTableColumn());
         avaliableTitelCollum.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -114,6 +113,8 @@ public class BrowseViewController {
     public void OpenregisterNewRenter(ActionEvent actionEvent){
         viewHandler.openregisterNewRenter();
     }
+
+
 
     public void remove(ActionEvent actionEvent) {
 
@@ -174,13 +175,19 @@ public class BrowseViewController {
     }
 
     //RESERVE TODO:MAYBE RENAME en msule forvirrende
-    public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+ /*   public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
         //Åbner i viewhandler eftersom vi laver et nyt vindue popup
-        viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
-        FileHandler.saveProductList(ClientModel.allProducts);
-        FileHandler.saveProductList(ClientModel.allClients);
-    }
+
+
+        //popup
+        //viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
+    }*/
+
+
+  /*  public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        viewHandler.openRenterList();
+    }*/
 
     public void removeReserver(ActionEvent actionEvent) {
         viewmodel.deleteReserver((product) reservedMaterialView.getSelectionModel().getSelectedItem());
@@ -193,6 +200,12 @@ public class BrowseViewController {
 
     public void reserveButton(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
-        viewHandler.reserve((ClientModel) viewmodel.getClient(), selectedProduct);
+
+        //popup
+        //viewHandler.reserve((ClientModel) viewmodel.getClient(), selectedProduct);
+    }
+
+    public void open2(ActionEvent actionEvent) {
+        viewHandler.openRenterList();
     }
 }

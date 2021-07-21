@@ -42,7 +42,6 @@ public class registerNewRenterViewModel
     client.createRenter(Name.getValue(),eMail.getValue(),status.getValue());
     clearFields();
 
-
   }
 
 

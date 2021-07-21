@@ -33,13 +33,15 @@ public class registerNewRenterViewController
 
 
   public void Back() {
+
     viewHandler.openBrowseItem();
     registerNewRenterViewModel.clearErrorLabel();
   }
 
 
   public void Submit(ActionEvent actionEvent) {
-    if (registerNewRenterViewModel.validInputs()){
+
+    if (registerNewRenterViewModel.validInputs()) {
 
       registerNewRenterViewModel.submitRenter();
     }

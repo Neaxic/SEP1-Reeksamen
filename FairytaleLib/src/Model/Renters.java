@@ -6,12 +6,12 @@ import java.io.Serializable;
 public class Renters implements renter, Serializable {
 
     String name, email;
-    String jobPostion;
+    String status;
 
-    public Renters(String name, String email, String jobPostion) {
+    public Renters(String name, String email, String status) {
         this.name = name;
         this.email = email;
-        this.jobPostion = jobPostion;
+        this.status = status;
     }
     public String getName() {
         return name;
@@ -21,9 +21,8 @@ public class Renters implements renter, Serializable {
         return email;
     }
 
-
-    public String getJobPostion() {
-        return jobPostion;
+    @Override
+    public String getStatus() {
+        return status;
     }
-
 }

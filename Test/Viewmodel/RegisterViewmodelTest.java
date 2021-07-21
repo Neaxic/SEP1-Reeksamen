@@ -27,7 +27,6 @@ public class RegisterViewmodelTest {
     private ModelFactory modelFactory;
     private RegisterViewmodel registerViewmodel;
 
-
     @BeforeEach
     public void setUp(){
         Client client = new ClientModel();
@@ -61,7 +60,6 @@ public class RegisterViewmodelTest {
 
     }
 
-
     @Test
     public void TestWhatHappensIfValueIsMoreThen35Characters(){
 
@@ -72,13 +70,9 @@ public class RegisterViewmodelTest {
         type.setValue("Test");
         registerViewmodel.validInputs();
 
-
         assertEquals("title must contain less than 35 characters",error.getValue());
 
-
     }
-
-
 
     @Test
     public void testIfYouCanAddAnElementSuccessfully(){
@@ -104,12 +98,5 @@ public class RegisterViewmodelTest {
 //
 //        assertEquals("Username must contain more than 3 characters",label.get());
 //    }*/
-
-
-
-
-
-
-
-
+    
 }

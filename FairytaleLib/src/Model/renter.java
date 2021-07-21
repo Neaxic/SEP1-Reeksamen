@@ -6,7 +6,7 @@ public interface renter {
 
     public String getEmail();
 
-    public String getJobPostion();
+    public String getStatus();
 
 
 }

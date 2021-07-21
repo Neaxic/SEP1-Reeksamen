@@ -14,7 +14,7 @@ public class notRented implements renter, Serializable {
     }
 
 
-    public String getJobPostion() {
+    public String getStatus() {
         return null;
     }
 

@@ -26,6 +26,7 @@ private Client client;
     private ObservableList renterObservableList;
     private ObservableList reserverObservableList;
 
+    private ObservableList lånerObservableList;
 
     private StringProperty search;
     private StringProperty clock;
@@ -64,11 +65,10 @@ private Client client;
         productObservableList = FXCollections.observableArrayList(productList);
         renterObservableList = FXCollections.observableArrayList(rentedProducts);
         reserverObservableList = FXCollections.observableArrayList(reserverList);
+
     }
 
  // productKind,title,author,isbn
-
-
 
 
     public ObservableList<product> getProductObservableList() {
@@ -82,6 +82,7 @@ private Client client;
     public ObservableList<product> getReservedObservableList() {
         return reserverObservableList;
     }
+
 
     public void delete(product product){
         if(product.isRented()){
@@ -149,4 +150,6 @@ private Client client;
     public Client getClient() {
         return client;
     }
+
+
 }

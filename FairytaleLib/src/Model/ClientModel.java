@@ -10,6 +10,7 @@ public class ClientModel implements Client
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList<>();
     private ArrayList allRenterType = new ArrayList<>();
+
     public static ArrayList<renter> allClients = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -95,6 +96,7 @@ public class ClientModel implements Client
         return allClients;
     }
 
+
     public ArrayList getAllRentedProducts(){
         ArrayList allRentedProducts = new ArrayList();
         for(product i : allProducts){
@@ -116,6 +118,8 @@ public class ClientModel implements Client
         }
         return allAvaliableProducts;
     }
+
+
 
     public ArrayList getAllReservedProducts(){
         ArrayList allReservedProducts = new ArrayList();
@@ -152,6 +156,8 @@ public class ClientModel implements Client
     public void createRenter(String name,String email,String jobPosition){
         allClients.add(new Renters(name,email,jobPosition));
     }
+
+
 
 
     public boolean createUser(String username,String Password){

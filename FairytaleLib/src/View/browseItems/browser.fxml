@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="978.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
    <children>
-      <HBox fx:id="forside" alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="862.0" style="-fx-background-color: lightblue;">
+      <HBox fx:id="forside" alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="1079.0" style="-fx-background-color: lightblue;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bibliotek" wrappingWidth="145.6759490966797">
                <font>
@@ -48,9 +48,9 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="682.0" prefWidth="865.0">
+      <HBox prefHeight="871.0" prefWidth="992.0">
          <children>
-            <VBox prefHeight="682.0" prefWidth="918.0">
+            <VBox prefHeight="871.0" prefWidth="951.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -59,11 +59,8 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="ListOfUser" mnemonicParsing="false" onAction="#OpenListOfUser" prefHeight="25.0" prefWidth="96.0" text="Udlån">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
+                        <Button mnemonicParsing="false" onAction="#open2" text="UDlånd2" />
+
                         <Button fx:id="reserveButton" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="96.0" text="Reserver">
                            <opaqueInsets>
                               <Insets />
@@ -75,7 +72,7 @@
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <TableView fx:id="availableMaterialView" prefHeight="552.0" prefWidth="845.0">
+                  <TableView fx:id="availableMaterialView" prefHeight="207.0" prefWidth="917.0">
                      <columns>
                         <TableColumn fx:id="avaliableTypeCollum" onEditCommit="#changeProductKindCellEdit" prefWidth="78.0" text="Type" />
                         <TableColumn fx:id="avaliableTitelCollum" onEditCommit="#changeTitleCellEdit" prefWidth="125.0" text="Title" />
@@ -87,23 +84,23 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TableView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="69.0" prefWidth="858.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Udlånte genstande" wrappingWidth="674.08203125">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="102.0" text="Fjern genstand">
+                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="27.0" prefWidth="113.0" text="Fjern genstand">
                            <HBox.margin>
-                              <Insets left="70.0" />
+                              <Insets />
                            </HBox.margin></Button>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <TableView fx:id="rentetMaterialView" prefHeight="504.0" prefWidth="842.0">
+                  <TableView fx:id="rentetMaterialView" prefHeight="232.0" prefWidth="809.0">
                     <columns>
                       <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
                         <TableColumn fx:id="rentedTitelCollum" prefWidth="108.79999542236328" text="Title" />
@@ -124,16 +121,16 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="101.0" text="Fjern genstand">
+                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="27.0" prefWidth="123.0" text="Fjern genstand">
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets />
                            </HBox.margin></Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <TableView fx:id="reservedMaterialView" prefHeight="504.0" prefWidth="842.0">
+                  <TableView fx:id="reservedMaterialView" prefHeight="270.0" prefWidth="809.0">
                      <columns>
                         <TableColumn fx:id="ReserverType" prefWidth="73.0" text="Type" />
                         <TableColumn fx:id="ReserverTitle" prefWidth="115.0" text="Title" />
