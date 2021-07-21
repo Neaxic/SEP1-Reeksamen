@@ -76,6 +76,12 @@ public class RegisterViewmodel {
     }
 
 
+    public void clearErrorLabel(){
+        error.setValue("");
+    }
+
+
+
     //TODO: Tænker at give client et popup med hvad der mangler af inputs
     public void invalidInputPopup(){
 

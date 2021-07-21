@@ -3,12 +3,12 @@ package Model;
 import java.io.Serializable;
 
 //Kasper Falk Mikkelsen
-public class lecture implements renter, Serializable {
+public class Renters implements renter, Serializable {
 
     String name, email;
     String jobPostion;
 
-    public lecture(String name, String email,String jobPostion) {
+    public Renters(String name, String email, String jobPostion) {
         this.name = name;
         this.email = email;
         this.jobPostion = jobPostion;

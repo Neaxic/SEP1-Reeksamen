@@ -44,5 +44,6 @@ public class RegisterController {
 
     public void Back() {
         viewHandler.openBrowseItem();
+        registerViewmodel.clearErrorLabel();
     }
 }

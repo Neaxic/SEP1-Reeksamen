@@ -34,10 +34,16 @@ public class registerNewRenterViewController
 
   public void Back() {
     viewHandler.openBrowseItem();
+    registerNewRenterViewModel.clearErrorLabel();
   }
 
 
   public void Submit(ActionEvent actionEvent) {
-    registerNewRenterViewModel.submitRenter();
+    if (registerNewRenterViewModel.validInputs()){
+
+      registerNewRenterViewModel.submitRenter();
+    }
+
+
   }
 }

@@ -52,8 +52,28 @@ public class registerNewRenterViewModel
     Name.setValue("");
     eMail.setValue("");
     status.setValue("");
+
+  }
+
+  public void clearErrorLabel(){
     error.setValue("");
   }
+
+
+  public boolean validInputs() {
+
+    if(Name.getValue() == null ||Name.getValue().equals("") ||eMail.getValue() == null|| eMail.getValue().equals("")|| status.getValue() == null || status.getValue().equals("") || renterObservableList.isEmpty() ){
+      error.set("fields cannot be null");
+      return false;
+    }
+
+    else {
+      error.set("Renter has been Added");
+      return true;
+    }
+
+  }
+
 
 
 

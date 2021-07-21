@@ -4,6 +4,7 @@ import Core.ViewHandler;
 import Model.ClientModel;
 import Model.product;
 import Model.renter;
+import Util.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -177,6 +178,8 @@ public class BrowseViewController {
         product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
         //Åbner i viewhandler eftersom vi laver et nyt vindue popup
         viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
+        FileHandler.saveProductList(ClientModel.allProducts);
+        FileHandler.saveProductList(ClientModel.allClients);
     }
 
     public void removeReserver(ActionEvent actionEvent) {

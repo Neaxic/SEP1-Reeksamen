@@ -150,7 +150,7 @@ public class ClientModel implements Client
     }
 
     public void createRenter(String name,String email,String jobPosition){
-        allClients.add(new lecture(name,email,jobPosition));
+        allClients.add(new Renters(name,email,jobPosition));
     }
 
 
