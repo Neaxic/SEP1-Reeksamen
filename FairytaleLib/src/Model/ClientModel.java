@@ -3,6 +3,7 @@ package Model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ClientModel implements Client
@@ -13,7 +14,13 @@ public class ClientModel implements Client
 
     public static ArrayList<renter> allClients = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
+
+    public ArrayList<RentedList> sss = new ArrayList<>();
+
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+
+
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
@@ -41,9 +48,6 @@ public class ClientModel implements Client
     }
 
 
-
-
-
     public boolean checkLogin(String username,String password){
          populateUsers();
 
@@ -51,10 +55,8 @@ public class ClientModel implements Client
             if (user.getUserName().equals(username) && user.getPassword().equals(password)){
                 return true;
             }
-
         }
         return false;
-
     }
 
 
@@ -65,6 +67,39 @@ public class ClientModel implements Client
         }
 
         return 0;
+    }
+
+    @Override
+    public void createUdlåntGenstand(RentedList rentedList) {
+
+        Renters rt = SaveInfo.getInstance().getRenters();
+
+        if(rt.getStatus().equals("student")) {
+
+            Calendar c= Calendar.getInstance();
+
+            c.add(Calendar.DATE, 180);
+
+            Date d=c.getTime();
+
+            Date st = new Date();
+
+            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+
+
+        } if  (rt.getStatus().equals("lecture")){
+
+            Calendar c= Calendar.getInstance();
+
+            c.add(Calendar.DATE, 30);
+
+            Date d=c.getTime();
+
+            Date sd = new Date();
+
+            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
+        }
+
     }
 
     @Override
@@ -107,6 +142,7 @@ public class ClientModel implements Client
 
         return allRentedProducts;
     }
+
 
     public ArrayList getAllAvaliableProducts(){
         //Vi laver dem her for at kunne skilne mellem de 3 typer imens vi har en allproducts som rod
@@ -199,5 +235,9 @@ public class ClientModel implements Client
 
     public static void setAllClients(ArrayList allClients) {
         ClientModel.allClients = allClients;
+    }
+
+    public ArrayList<RentedList> getSss() {
+        return sss;
     }
 }

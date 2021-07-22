@@ -1,6 +1,7 @@
 package View.renterList;
 
 import Core.ViewHandler;
+import Model.Renters;
 import Model.renter;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
@@ -9,8 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class renterListController {
 
-
-    public TableView Lånere;
+    public TableView<Renters> Lånere;
     public TableColumn Name;
     public TableColumn Email;
     public TableColumn Status;
@@ -32,6 +32,11 @@ public class renterListController {
     }
 
     public void next(ActionEvent actionEvent) {
-        viewHandler.openBrowseItem();
+
+        if ( renterListViewModel.getRenterInformation(Lånere.getSelectionModel().getSelectedItem())) {
+            renterListViewModel.CreateUdlåntGenstand();
+            viewHandler.openBrowseItem();
+        }
+
     }
 }

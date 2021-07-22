@@ -1,8 +1,6 @@
 package View.browseItems;
 
-import Model.Client;
-import Model.ClientModel;
-import Model.product;
+import Model.*;
 import Util.FileHandler;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -57,25 +55,39 @@ private Client client;
 
     public void loadProducts() {
         //Det er vigtigt vi starter fra mere specifikke og ned i test purpose da vi først laver en rented i get all rented
-        ArrayList rentedProducts = client.getAllRentedProducts();
+
         ArrayList productList = client.getAllAvaliableProducts();
         ArrayList reserverList = client.getAllReservedProducts();
 
         //List<product> productList = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList(productList);
-        renterObservableList = FXCollections.observableArrayList(rentedProducts);
+
         reserverObservableList = FXCollections.observableArrayList(reserverList);
 
     }
 
- // productKind,title,author,isbn
+
+    public void loadRentedList() {
+
+        List<RentedList> rentedLists = client.getSss();
+
+        /*InputUser id = SaveInfo.getInstance().getUser();
+
+        List<myFlightTicket> flight = clientModel.getflightlist(id.getId());
+        System.out.println("Loadmyflights " + SaveInfo.getInstance().getUser());*/
+
+        renterObservableList = FXCollections.observableArrayList(rentedLists);
+
+    }
+
+    // productKind,title,author,isbn
 
 
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
     }
 
-    public ObservableList<product> getRentedObservableList() {
+    public ObservableList<RentedList> getRentedObservableList() {
         return renterObservableList;
     }
 
@@ -121,6 +133,22 @@ private Client client;
         search.setValue("");
 
     }
+
+
+    public boolean getProductInformation(product products) {
+        if (products != null) {
+            SaveInfo.getInstance().setProduct(products);
+            System.out.println("Save ProductInformation  = " + SaveInfo.getInstance());
+            return true;
+        }else {
+            System.out.println("Please choose a product for continue");
+            // errorlabel her måske
+            return false;
+        }
+    }
+
+
+
 
 
     public String getClock() {

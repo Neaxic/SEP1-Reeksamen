@@ -60,8 +60,6 @@ public class LoginViewModelTest {
     }
 
 
-
-
     @Test
     public void TestLoginWithvalidValues(){
         name.setValue("bob");
@@ -73,10 +71,5 @@ public class LoginViewModelTest {
 
 
     }
-
-
-
-
-
 
 }

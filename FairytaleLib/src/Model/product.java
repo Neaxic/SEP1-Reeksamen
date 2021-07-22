@@ -23,7 +23,12 @@ public class product implements Serializable {
 
     }
 
-  /*  public void setRenter(String renterType, String renterName, String renterMail) {
+    public product(String productKind, String title) {
+        this.productKind = productKind;
+        this.title = title;
+    }
+
+    /*  public void setRenter(String renterType, String renterName, String renterMail) {
         if (reserver.getJobPostion() == null || reserver.getEmail() == renterMail) {
             if (renterType == "student") {
                 Renter = new student(renterName, renterMail);
@@ -160,4 +165,17 @@ public class product implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "product{" +
+                "Renter=" + Renter +
+                ", reserver=" + reserver +
+                ", productKind='" + productKind + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", returnDate='" + returnDate + '\'' +
+                '}';
+    }
 }

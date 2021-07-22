@@ -13,6 +13,8 @@ public class Renters implements renter, Serializable {
         this.email = email;
         this.status = status;
     }
+
+
     public String getName() {
         return name;
     }
@@ -24,5 +26,15 @@ public class Renters implements renter, Serializable {
     @Override
     public String getStatus() {
         return status;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Renters{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
 public class BrowseViewController {
 
     public TableColumn AuthorCoulmn;
@@ -27,17 +26,21 @@ public class BrowseViewController {
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
 
-    @FXML private TableView availableMaterialView;
+    @FXML private TableView<product> availableMaterialView;
     @FXML private TableColumn avaliableTypeCollum;
     @FXML private TableColumn avaliableTitelCollum;
     @FXML private TableColumn releaseDate;
 
+
+    //lennart
     @FXML private TableView rentetMaterialView;
     @FXML private TableColumn typeCollum;
     @FXML private TableColumn rentedTitelCollum;
     @FXML private TableColumn rentedStatusCollum;
     @FXML private TableColumn renterCollum;
     @FXML private TableColumn emailCollum;
+
+
     @FXML private TableColumn returnDateCollum;
     @FXML private TableColumn deadline;
 
@@ -53,7 +56,9 @@ public class BrowseViewController {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
 
+
         populate();
+        viewmodel.loadRentedList();
 
         //Avaliable
         availableMaterialView.setItems(viewmodel.getProductObservableList());
@@ -64,19 +69,24 @@ public class BrowseViewController {
         ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("isbn"));
         releaseDate.setCellValueFactory(new PropertyValueFactory<product, String>("ReleaseDate"));
 
+
+        //----
         //Rented table
         rentetMaterialView.setItems(viewmodel.getRentedObservableList());
 
-        typeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
-        rentedTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        typeCollum.setCellValueFactory(new PropertyValueFactory<>("productKind"));
+        rentedTitelCollum.setCellValueFactory(new PropertyValueFactory<>("Title"));
 
-        rentedStatusCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterJobPostion"));
-        renterCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterName"));
-        emailCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterEmail"));
+        rentedStatusCollum.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        renterCollum.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        emailCollum.setCellValueFactory(new PropertyValueFactory<>("Email"));
 
         //SidsteFrist
-        deadline.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
-        returnDateCollum.setCellValueFactory(new PropertyValueFactory<product, String>("RenterReturnDate"));
+        deadline.setCellValueFactory(new PropertyValueFactory<>("LåneDato"));
+        returnDateCollum.setCellValueFactory(new PropertyValueFactory<>("returDato"));
+        //herr ------
+
+
 
         //Reserved
         reservedMaterialView.setItems(viewmodel.getReservedObservableList());
@@ -206,6 +216,10 @@ public class BrowseViewController {
     }
 
     public void open2(ActionEvent actionEvent) {
-        viewHandler.openRenterList();
+
+        if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewHandler.openRenterList();
+        }
+
     }
 }

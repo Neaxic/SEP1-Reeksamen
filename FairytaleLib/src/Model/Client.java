@@ -22,6 +22,10 @@ public interface Client
     int deleteProduct(product product);
 
     
+    void createUdlåntGenstand(RentedList rentedList);
+
+    ArrayList<RentedList> getSss();
+
 
 
     void addListener(String eventName, PropertyChangeListener listener);
@@ -36,7 +40,5 @@ public interface Client
 
     void createRenter(String name,String email,String jobPosition);
     product addProduct(product product);
-
-
 
 }
