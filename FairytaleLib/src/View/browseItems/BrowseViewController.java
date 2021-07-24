@@ -22,6 +22,7 @@ public class BrowseViewController {
     public TableColumn ISBNCoulmn;
     public TextField searchText;
     public Label clock;
+    public Label error;
 
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
@@ -107,6 +108,10 @@ public class BrowseViewController {
         searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
         clock.textProperty().bind(viewmodel.clockProperty());
         viewmodel.startClock();
+
+
+        //error
+        error.textProperty().bind(viewmodel.errorProperty());
     }
 
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items

@@ -7,22 +7,19 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 import java.beans.PropertyChangeEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BrowseViewModel {
-
 
 private Client client;
 
     private ObservableList productObservableList;
     private ObservableList renterObservableList;
     private ObservableList reserverObservableList;
+    private StringProperty error;
 
     private ObservableList lånerObservableList;
 
@@ -33,6 +30,7 @@ private Client client;
         this.client = client;
         search = new SimpleStringProperty();
         clock = new SimpleStringProperty();
+        error = new SimpleStringProperty();
         client.addListener("time",this::clock);
     }
 
@@ -66,22 +64,13 @@ private Client client;
 
     }
 
-
     public void loadRentedList() {
 
         List<RentedList> rentedLists = client.getSss();
 
-        /*InputUser id = SaveInfo.getInstance().getUser();
-
-        List<myFlightTicket> flight = clientModel.getflightlist(id.getId());
-        System.out.println("Loadmyflights " + SaveInfo.getInstance().getUser());*/
-
         renterObservableList = FXCollections.observableArrayList(rentedLists);
 
     }
-
-    // productKind,title,author,isbn
-
 
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
@@ -94,7 +83,6 @@ private Client client;
     public ObservableList<product> getReservedObservableList() {
         return reserverObservableList;
     }
-
 
     public void delete(product product){
         if(product.isRented()){
@@ -141,14 +129,10 @@ private Client client;
             System.out.println("Save ProductInformation  = " + SaveInfo.getInstance());
             return true;
         }else {
-            System.out.println("Please choose a product for continue");
-            // errorlabel her måske
+            error.setValue("Please choose a product for continue");
             return false;
         }
     }
-
-
-
 
 
     public String getClock() {
@@ -179,5 +163,11 @@ private Client client;
         return client;
     }
 
+    public String getError() {
+        return error.get();
+    }
 
+    public StringProperty errorProperty() {
+        return error;
+    }
 }
