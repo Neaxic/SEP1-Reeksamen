@@ -72,6 +72,14 @@ private Client client;
 
     }
 
+    public void loadReservedList() {
+        List<RentedList> reservedlist = client.getSss();
+
+        reserverObservableList = FXCollections.observableArrayList(reservedlist);
+
+
+    }
+
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
     }
@@ -122,7 +130,6 @@ private Client client;
 
     }
 
-
     public boolean getProductInformation(product products) {
         if (products != null) {
             SaveInfo.getInstance().setProduct(products);
@@ -133,7 +140,6 @@ private Client client;
             return false;
         }
     }
-
 
     public String getClock() {
         return clock.get();

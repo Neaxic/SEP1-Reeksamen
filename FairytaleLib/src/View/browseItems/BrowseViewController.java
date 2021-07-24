@@ -1,18 +1,12 @@
 package View.browseItems;
 
 import Core.ViewHandler;
-import Model.ClientModel;
 import Model.product;
-import Model.renter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -23,6 +17,12 @@ public class BrowseViewController {
     public TextField searchText;
     public Label clock;
     public Label error;
+    public Button reserveButton;
+    public Button removeAvailable;
+    public Button removeRenter;
+    public Button removeReserver;
+    public Button addNewRenter;
+    public Button addNewElement;
 
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
@@ -60,6 +60,7 @@ public class BrowseViewController {
 
         populate();
         viewmodel.loadRentedList();
+        viewmodel.loadReservedList();
 
         //Avaliable
         availableMaterialView.setItems(viewmodel.getProductObservableList());
@@ -92,11 +93,11 @@ public class BrowseViewController {
         //Reserved
         reservedMaterialView.setItems(viewmodel.getReservedObservableList());
         ReserverType.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
-        ReserverTitle.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        ReserverTitle.setCellValueFactory(new PropertyValueFactory<product, String>("Title"));
 
-        ReserverStatus.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverJobPostion"));
-        ReserverName.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverName"));
-        ReserverMail.setCellValueFactory(new PropertyValueFactory<product, String>("ReserverEmail"));
+        ReserverStatus.setCellValueFactory(new PropertyValueFactory<product, String>("Status"));
+        ReserverName.setCellValueFactory(new PropertyValueFactory<product, String>("Name"));
+        ReserverMail.setCellValueFactory(new PropertyValueFactory<product, String>("Email"));
 
         availableMaterialView.setEditable(true);
         avaliableTypeCollum.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -213,18 +214,20 @@ public class BrowseViewController {
 
     }
 
-    public void reserveButton(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
-
-        //popup
-        //viewHandler.reserve((ClientModel) viewmodel.getClient(), selectedProduct);
+    public void reserveButton(ActionEvent actionEvent)  {
+        if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewHandler.openReserveItem();
+        }
     }
 
     public void open2(ActionEvent actionEvent) {
 
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
-            viewHandler.openRenterList();
+            viewHandler.openRentItem();
         }
+
+
+
 
     }
 }

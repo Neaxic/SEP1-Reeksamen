@@ -17,6 +17,7 @@ public class ClientModel implements Client
 
     public ArrayList<RentedList> sss = new ArrayList<>();
 
+
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
 
@@ -68,6 +69,15 @@ public class ClientModel implements Client
 
         return 0;
     }
+
+    public void createReservedItem(RentedList rentedList) {
+
+        Renters rt = SaveInfo.getInstance().getRenters();
+
+        sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
+
+    }
+
 
     @Override
     public void createUdlåntGenstand(RentedList rentedList) {
@@ -156,7 +166,6 @@ public class ClientModel implements Client
     }
 
 
-
     public ArrayList getAllReservedProducts(){
         ArrayList allReservedProducts = new ArrayList();
         for(product i : allProducts){
@@ -226,7 +235,6 @@ public class ClientModel implements Client
         }
         return allRenterType;
     }
-
 
     public static void setUsers(ArrayList users) {
         ClientModel.users = users;

@@ -1,4 +1,4 @@
-package View.renterList;
+package View.rentItem;
 
 import Model.*;
 import javafx.beans.property.SimpleStringProperty;
@@ -6,19 +6,17 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
-public class RenterListViewModel {
+public class rentItemViewModel {
 
     private Client client;
     private ObservableList lånerObservableList;
     private StringProperty error;
 
 
-    public RenterListViewModel(Client client) {
+    public rentItemViewModel(Client client) {
         this.client = client;
         error = new SimpleStringProperty();
     }

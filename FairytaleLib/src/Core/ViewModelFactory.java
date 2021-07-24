@@ -3,10 +3,10 @@ package Core;
 
 import View.browseItems.BrowseViewModel;
 import View.login.LoginViewModel;
-
 import View.registerNewItem.RegisterViewmodel;
 import View.registerNewRenter.registerNewRenterViewModel;
-import View.renterList.RenterListViewModel;
+import View.rentItem.rentItemViewModel;
+import View.reserveItem.reserveItemViewModel;
 
 public class ViewModelFactory {
 
@@ -15,7 +15,8 @@ public class ViewModelFactory {
   private RegisterViewmodel registerViewmodel;
   private registerNewRenterViewModel registerNewRenterViewModel;
   private LoginViewModel loginViewModel;
-  private RenterListViewModel renterListViewModel;
+  private rentItemViewModel rentItemViewModel;
+  private reserveItemViewModel reserveItemViewModel;
 
 
   public ViewModelFactory(ModelFactory mf) {
@@ -49,10 +50,16 @@ public class ViewModelFactory {
 
   }
 
-  public RenterListViewModel getRenterListViewModel(){
-    if (renterListViewModel == null)
-      renterListViewModel = new RenterListViewModel(mf.getModel());
-    return renterListViewModel;
+  public rentItemViewModel getRentItemViewModel(){
+    if (rentItemViewModel == null)
+      rentItemViewModel = new rentItemViewModel(mf.getModel());
+    return rentItemViewModel;
+  }
+
+  public reserveItemViewModel getReserveItemViewModel(){
+    if (reserveItemViewModel == null)
+      reserveItemViewModel = new reserveItemViewModel(mf.getModel());
+    return reserveItemViewModel;
 
   }
 
