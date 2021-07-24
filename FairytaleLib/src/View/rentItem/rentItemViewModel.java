@@ -13,12 +13,12 @@ public class rentItemViewModel {
 
     private Client client;
     private ObservableList lånerObservableList;
-    private StringProperty error;
+    private StringProperty navn;
 
 
     public rentItemViewModel(Client client) {
         this.client = client;
-        error = new SimpleStringProperty();
+        navn = new SimpleStringProperty();
     }
 
     public void loadRenter() {
@@ -40,7 +40,8 @@ public class rentItemViewModel {
             System.out.println("Save RenterInformation  = " + SaveInfo.getInstance());
             return true;
         }else {
-            error.setValue("Please choose a renter for continue");
+             System.out.println("Please choose a renter for continue");
+            // errorlabel her måske
             return false;
         }
     }
@@ -59,11 +60,9 @@ public class rentItemViewModel {
          client.createUdlåntGenstand(rentedList);
     }
 
-    public String getError() {
-        return error.get();
-    }
 
-    public StringProperty errorProperty() {
-        return error;
-    }
+
+    //
+
+
 }

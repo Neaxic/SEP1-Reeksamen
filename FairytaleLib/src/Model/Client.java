@@ -32,6 +32,8 @@ public interface Client
 
    ArrayList populateUsers();
 
+    int deleteRenter(RentedList rentedList);
+
     boolean checkLogin(String username,String password);
 
     boolean createUser(String username,String Password);
@@ -40,4 +42,5 @@ public interface Client
     void createRenter(String name,String email,String jobPosition);
     product addProduct(product product);
 
+    ArrayList searchRenters(String searchString);
 }
