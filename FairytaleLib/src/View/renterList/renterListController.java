@@ -4,6 +4,7 @@ import Core.ViewHandler;
 import Model.Renters;
 import Model.renter;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,6 +15,7 @@ public class renterListController {
     public TableColumn Name;
     public TableColumn Email;
     public TableColumn Status;
+    public Label error;
 
 
     private ViewHandler viewHandler;
@@ -28,6 +30,9 @@ public class renterListController {
         Name.setCellValueFactory(new PropertyValueFactory<renter, String>("Name"));
         Email.setCellValueFactory(new PropertyValueFactory<renter, String>("Email"));
         Status.setCellValueFactory(new PropertyValueFactory<renter, String>("Status"));
+
+        //error
+        error.textProperty().bind(renterListViewModel.errorProperty());
 
     }
 
