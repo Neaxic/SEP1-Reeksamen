@@ -52,14 +52,10 @@ private Client client;
     }
 
     public void loadProducts() {
-        //Det er vigtigt vi starter fra mere specifikke og ned i test purpose da vi først laver en rented i get all rented
 
         ArrayList productList = client.getAllAvaliableProducts();
-        ArrayList reserverList = client.getAllReservedProducts();
-
-        //List<product> productList = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList(productList);
-        reserverObservableList = FXCollections.observableArrayList(reserverList);
+
     }
 
     public void loadRentedList() {
@@ -82,7 +78,7 @@ private Client client;
         return renterObservableList;
     }
 
-    public ObservableList<product> getReservedObservableList() {
+    public ObservableList<RentedList> getReservedObservableList() {
         return reserverObservableList;
     }
 
@@ -100,15 +96,17 @@ private Client client;
     }
 
 
-    public void deleteRenter(product product){
-        renterObservableList.remove(client.deleteProduct(product));
-        productObservableList.add(client.addProduct(product));
+    public void deleteRenter(RentedList rentedList){
+        product product1 = SaveInfo.getInstance().getProduct();
+        renterObservableList.remove(client.deleteRenter(rentedList));
+        productObservableList.add(client.addProduct(product1));
 
     }
 
-    public void deleteReserver(product product){
-        reserverObservableList.remove(client.deleteProduct(product));
-        productObservableList.add(client.addProduct(product));
+    public void deleteReserver(RentedList rentedList){
+        product product1 = SaveInfo.getInstance().getProduct();
+        reserverObservableList.remove(client.deleteRenter(rentedList));
+       // productObservableList.add(client.addProduct(product1));
     }
 
     public void Search(){
@@ -129,6 +127,7 @@ private Client client;
         if (products != null) {
             SaveInfo.getInstance().setProduct(products);
             System.out.println("Save ProductInformation  = " + SaveInfo.getInstance());
+            error.setValue("");
             return true;
         }else {
             error.setValue("Please choose a product for continue");
@@ -170,5 +169,17 @@ private Client client;
 
     public StringProperty errorProperty() {
         return error;
+    }
+
+    public ObservableList getRenterObservableList() {
+        return renterObservableList;
+    }
+
+    public ObservableList getReserverObservableList() {
+        return reserverObservableList;
+    }
+
+    public ObservableList getLånerObservableList() {
+        return lånerObservableList;
     }
 }

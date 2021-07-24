@@ -15,8 +15,8 @@ public class ClientModel implements Client
     public static ArrayList<renter> allClients = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
 
-    public ArrayList<RentedList> sss = new ArrayList<>();
-    public ArrayList<RentedList> ggg = new ArrayList<>();
+    public static ArrayList<RentedList> sss = new ArrayList<>();
+    public static ArrayList<RentedList> ggg = new ArrayList<>();
 
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -91,6 +91,23 @@ public class ClientModel implements Client
         return 0;
     }
 
+
+
+
+    public int deleteRenter(RentedList rentedList){
+
+        for (int i = 0; i <sss.size() ; i++) {
+            ggg.remove(rentedList);
+        }
+
+        return 0;
+    }
+
+
+
+
+
+
     public void createReservedItem(RentedList rentedList) {
 
         Renters rt = SaveInfo.getInstance().getRenters();
@@ -109,7 +126,7 @@ public class ClientModel implements Client
 
             Calendar c= Calendar.getInstance();
 
-            c.add(Calendar.DATE, 180);
+            c.add(Calendar.DATE, 30);
 
             Date d=c.getTime();
 
@@ -122,7 +139,7 @@ public class ClientModel implements Client
 
             Calendar c= Calendar.getInstance();
 
-            c.add(Calendar.DATE, 30);
+            c.add(Calendar.DATE, 180);
 
             Date d=c.getTime();
 
@@ -130,6 +147,20 @@ public class ClientModel implements Client
 
             sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
         }
+
+//        if(pt.getProductKind().equals("dvd") || pt.getProductKind().equals("cd")) {
+//
+//            if(pt.getReleaseDate() >= 2000)  {
+//
+//                c.add(Calendar.DATE, 14);
+//                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+//            }
+//
+//            if(pt.getReleaseDate() <= 2000) {
+//
+//                c.add(Calendar.DATE, 180);
+//                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+//            }
 
     }
 
@@ -273,4 +304,16 @@ public class ClientModel implements Client
     public ArrayList<RentedList> getGgg() {
         return ggg;
     }
+
+    public static void setSss(ArrayList<RentedList> sss) {
+        ClientModel.sss = sss;
+    }
+
+
+    public static void setGgg(ArrayList<RentedList> ggg) {
+        ClientModel.ggg = ggg;
+    }
+
+
+
 }

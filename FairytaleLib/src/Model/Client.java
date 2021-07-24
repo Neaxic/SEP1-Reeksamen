@@ -43,4 +43,9 @@ public interface Client
     void createRenter(String name,String email,String jobPosition);
     product addProduct(product product);
 
+
+    int deleteRenter(RentedList rentedList);
+
+
+
 }

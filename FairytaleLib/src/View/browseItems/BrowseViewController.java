@@ -1,6 +1,7 @@
 package View.browseItems;
 
 import Core.ViewHandler;
+import Model.RentedList;
 import Model.product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -92,12 +93,12 @@ public class BrowseViewController {
 
         //Reserved
         reservedMaterialView.setItems(viewmodel.getReservedObservableList());
-        ReserverType.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
-        ReserverTitle.setCellValueFactory(new PropertyValueFactory<product, String>("Title"));
+        ReserverType.setCellValueFactory(new PropertyValueFactory("productKind"));
+        ReserverTitle.setCellValueFactory(new PropertyValueFactory("Title"));
 
-        ReserverStatus.setCellValueFactory(new PropertyValueFactory<product, String>("Status"));
-        ReserverName.setCellValueFactory(new PropertyValueFactory<product, String>("Name"));
-        ReserverMail.setCellValueFactory(new PropertyValueFactory<product, String>("Email"));
+        ReserverStatus.setCellValueFactory(new PropertyValueFactory("Status"));
+        ReserverName.setCellValueFactory(new PropertyValueFactory("Name"));
+        ReserverMail.setCellValueFactory(new PropertyValueFactory("Email"));
 
         availableMaterialView.setEditable(true);
         avaliableTypeCollum.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -206,23 +207,25 @@ public class BrowseViewController {
     }*/
 
     public void removeReserver(ActionEvent actionEvent) {
-        viewmodel.deleteReserver((product) reservedMaterialView.getSelectionModel().getSelectedItem());
+        viewmodel.deleteReserver((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem());
     }
 
     public void removeRenter(ActionEvent actionEvent) {
-        viewmodel.deleteRenter((product) rentetMaterialView.getSelectionModel().getSelectedItem());
+        viewmodel.deleteRenter((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem());
 
     }
 
     public void reserveButton(ActionEvent actionEvent)  {
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openReserveItem();
         }
     }
 
     public void open2(ActionEvent actionEvent) {
 
-        if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+        if (viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openRentItem();
         }
 

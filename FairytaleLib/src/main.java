@@ -21,13 +21,17 @@ public class main extends Application {
         ArrayList test = FileHandler.loadProductList();
         ClientModel.setAllProducts(test);
 
-
-        ArrayList test1 = FileHandler.loadUser();
-        ClientModel.setUsers(test1);
-
-
         ArrayList test2 = FileHandler.loadRenter();
         ClientModel.setAllClients(test2);
+
+        ArrayList test3 = FileHandler.loadRenterList();
+        ClientModel.setSss(test3);
+
+
+        ArrayList test4 = FileHandler.loadReservedList();
+        ClientModel.setGgg(test4);
+
+
 
 
         ModelFactory modelFactory = new ModelFactory();
@@ -40,8 +44,9 @@ public class main extends Application {
             System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {
                 FileHandler.saveProductList(ClientModel.allProducts);
-                FileHandler.saveuser(ClientModel.users);
                 FileHandler.saveRenter(ClientModel.allClients);
+                FileHandler.saveRentedList(ClientModel.sss);
+                FileHandler.saveReservedList(ClientModel.ggg);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
