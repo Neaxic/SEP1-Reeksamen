@@ -15,8 +15,7 @@ public class ClientModel implements Client
     public static ArrayList<renter> allClients = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
 
-    public ArrayList<RentedList> sss = new ArrayList<>();
-
+    public static ArrayList<RentedList> sss = new ArrayList<>();
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -25,7 +24,6 @@ public class ClientModel implements Client
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
-        //TODO: maybe contains + søge over brugere
         for (product allProduct : allProducts) {
             if (allProduct.getProductKind().toLowerCase().contains(searchString.toLowerCase()) ||allProduct.getProductKind().toUpperCase().contains(searchString.toUpperCase())
                     || allProduct.getTitle().toLowerCase().contains(searchString.toLowerCase()) || allProduct.getTitle().toUpperCase().contains(searchString.toUpperCase())
@@ -37,6 +35,30 @@ public class ClientModel implements Client
         }
         return productArrayList;
     }
+
+   public ArrayList searchRenters(String searchString){
+
+        ArrayList<RentedList> rentedLists = new ArrayList<>();
+        for (RentedList list : sss) {
+            if (list.getProductKind().toLowerCase().contains(searchString.toLowerCase()) || list.getProductKind().toUpperCase().contains(searchString.toUpperCase()) ||
+                list.getTitle().toLowerCase().contains(searchString.toLowerCase()) ||  list.getTitle().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getStatus().toLowerCase().contains(searchString.toLowerCase()) ||  list.getStatus().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getName().toLowerCase().contains(searchString.toLowerCase()) ||   list.getName().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getEmail().toLowerCase().contains(searchString.toLowerCase()) ||    list.getEmail().toUpperCase().contains(searchString.toUpperCase()) ||
+                    String.valueOf(list.getLåneDato()).toLowerCase().contains(searchString.toUpperCase())  ||  String.valueOf(list.getLåneDato()).toUpperCase().contains(searchString.toUpperCase()) ||
+                    String.valueOf(list.getReturDato()).toLowerCase().contains(searchString.toUpperCase()) || String.valueOf(list.getReturDato()).toUpperCase().contains(searchString.toUpperCase()))
+                    rentedLists.add(list);
+        }
+
+        return rentedLists;
+
+    }
+
+
+
+
+
+
 
     public ArrayList populateUsers(){
 
@@ -70,14 +92,15 @@ public class ClientModel implements Client
         return 0;
     }
 
-    public void createReservedItem(RentedList rentedList) {
 
-        Renters rt = SaveInfo.getInstance().getRenters();
+    public int deleteRenter(RentedList rentedList){
 
-        sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
+        for (int i = 0; i <sss.size() ; i++) {
+            sss.remove(rentedList);
+        }
 
+        return 0;
     }
-
 
     @Override
     public void createUdlåntGenstand(RentedList rentedList) {
@@ -88,7 +111,7 @@ public class ClientModel implements Client
 
             Calendar c= Calendar.getInstance();
 
-            c.add(Calendar.DATE, 180);
+            c.add(Calendar.DATE, 30);
 
             Date d=c.getTime();
 
@@ -101,7 +124,7 @@ public class ClientModel implements Client
 
             Calendar c= Calendar.getInstance();
 
-            c.add(Calendar.DATE, 30);
+            c.add(Calendar.DATE, 180);
 
             Date d=c.getTime();
 
@@ -164,6 +187,7 @@ public class ClientModel implements Client
         }
         return allAvaliableProducts;
     }
+
 
 
     public ArrayList getAllReservedProducts(){
@@ -236,6 +260,7 @@ public class ClientModel implements Client
         return allRenterType;
     }
 
+
     public static void setUsers(ArrayList users) {
         ClientModel.users = users;
     }
@@ -247,5 +272,10 @@ public class ClientModel implements Client
 
     public ArrayList<RentedList> getSss() {
         return sss;
+    }
+
+
+    public static void setSss(ArrayList<RentedList> sss) {
+        ClientModel.sss = sss;
     }
 }

@@ -7,19 +7,22 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.beans.PropertyChangeEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BrowseViewModel {
+
 
 private Client client;
 
     private ObservableList productObservableList;
     private ObservableList renterObservableList;
     private ObservableList reserverObservableList;
-    private StringProperty error;
 
     private ObservableList lånerObservableList;
 
@@ -30,7 +33,6 @@ private Client client;
         this.client = client;
         search = new SimpleStringProperty();
         clock = new SimpleStringProperty();
-        error = new SimpleStringProperty();
         client.addListener("time",this::clock);
     }
 
@@ -64,21 +66,22 @@ private Client client;
 
     }
 
+
     public void loadRentedList() {
 
         List<RentedList> rentedLists = client.getSss();
+
+        /*InputUser id = SaveInfo.getInstance().getUser();
+
+        List<myFlightTicket> flight = clientModel.getflightlist(id.getId());
+        System.out.println("Loadmyflights " + SaveInfo.getInstance().getUser());*/
 
         renterObservableList = FXCollections.observableArrayList(rentedLists);
 
     }
 
-    public void loadReservedList() {
-        List<RentedList> reservedlist = client.getSss();
+    // productKind,title,author,isbn
 
-        reserverObservableList = FXCollections.observableArrayList(reservedlist);
-
-
-    }
 
     public ObservableList<product> getProductObservableList() {
         return productObservableList;
@@ -92,23 +95,18 @@ private Client client;
         return reserverObservableList;
     }
 
+
     public void delete(product product){
-        if(product.isRented()){
-            System.out.println("rented");
-            renterObservableList.remove(client.deleteProduct(product));
-        } else if(product.isReserved()){
-            System.out.println("reserver");
-            reserverObservableList.remove(client.deleteProduct(product));
-        } else {
-            System.out.println("avaliable");
-            productObservableList.remove(client.deleteProduct(product));
-        }
+        productObservableList.remove(client.deleteProduct(product));
+
     }
 
 
-    public void deleteRenter(product product){
-        renterObservableList.remove(client.deleteProduct(product));
-        productObservableList.add(client.addProduct(product));
+    public void deleteRenter(RentedList rentedList){
+
+        product product = SaveInfo.getInstance().getProduct();
+        renterObservableList.remove(client.deleteRenter(rentedList));
+      productObservableList.add(client.addProduct(product));
 
     }
 
@@ -119,6 +117,7 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
+        renterObservableList.setAll(client.searchRenters(search.getValue()));
     }
 
 
@@ -130,16 +129,22 @@ private Client client;
 
     }
 
+
     public boolean getProductInformation(product products) {
         if (products != null) {
             SaveInfo.getInstance().setProduct(products);
             System.out.println("Save ProductInformation  = " + SaveInfo.getInstance());
             return true;
         }else {
-            error.setValue("Please choose a product for continue");
+            System.out.println("Please choose a product for continue");
+            // errorlabel her måske
             return false;
         }
     }
+
+
+
+
 
     public String getClock() {
         return clock.get();
@@ -169,11 +174,5 @@ private Client client;
         return client;
     }
 
-    public String getError() {
-        return error.get();
-    }
 
-    public StringProperty errorProperty() {
-        return error;
-    }
 }

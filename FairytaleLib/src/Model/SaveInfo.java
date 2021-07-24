@@ -39,7 +39,6 @@ public class SaveInfo {
     public void setProduct(Model.product product) {
         this.product = product;
     }
-
     @Override
     public String toString() {
         return "SaveInfo{" +

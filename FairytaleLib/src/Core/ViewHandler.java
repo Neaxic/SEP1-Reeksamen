@@ -1,24 +1,41 @@
 package Core;
 
+import Model.*;
+import Util.FileHandler;
 import View.browseItems.BrowseViewController;
 import View.login.loginViewController;
 
 import View.registerNewItem.RegisterController;
 import View.registerNewRenter.registerNewRenterViewController;
 
-import View.rentItem.rentItemController;
-import View.reserveItem.reserveItemController;
+import View.renterList.renterListController;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class ViewHandler {
 
-  private Scene browserScene,registerScene,registerNewRenterScene, loginScene, rentItemScene, reserveItemScene;
+  private Scene browserScene,registerScene,registerNewRenterScene, loginScene, renterListScene;
   private Stage stage;
   private ViewModelFactory viewModelFactory;
 
@@ -30,6 +47,7 @@ public class ViewHandler {
 
    public void start(){
     //stage = new Stage();
+   // openBrowseItem();
        openLogin();
 
    }
@@ -55,45 +73,28 @@ public class ViewHandler {
        stage.show();
    }
 
-    public void openRentItem() {
+    public void openRenterList() {
 
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/rentItem/rentItem.fxml"));
+            loader.setLocation(getClass().getResource("../view/renterList/renterList.fxml"));
             Parent root = loader.load();
 
-            rentItemController ctrl = loader.getController();
-            ctrl.init(viewModelFactory.getRentItemViewModel(),this);
+            renterListController ctrl = loader.getController();
+            ctrl.init(viewModelFactory.getRenterListViewModel(),this);
 
-            stage.setTitle("rentItem");
-            rentItemScene = new Scene(root);
+            stage.setTitle("renterList");
+            renterListScene = new Scene(root);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.setScene(rentItemScene);
+        stage.setScene(renterListScene);
         stage.show();
     }
 
-    public void openReserveItem() {
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/reserveItem/reserveItem.fxml"));
-            Parent root = loader.load();
 
-            reserveItemController ctrl = loader.getController();
-            ctrl.init(viewModelFactory.getReserveItemViewModel(),this);
-
-            stage.setTitle("reserveItem");
-            reserveItemScene = new Scene(root);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(reserveItemScene);
-        stage.show();
-    }
 
 
   public void openBrowseItem() {

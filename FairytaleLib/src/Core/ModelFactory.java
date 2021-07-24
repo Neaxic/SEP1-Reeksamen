@@ -7,6 +7,8 @@ public class ModelFactory {
 
   private Client model;
 
+
+
   public Client getModel() {
     if(model == null)
       model = new ClientModel();

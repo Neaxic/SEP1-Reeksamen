@@ -18,11 +18,6 @@ public class RentedList implements Serializable {
         this.returDato = returDato;
     }
 
-    public RentedList(Model.product product, Renters renters) {
-        this.product = product;
-        this.renters = renters;
-    }
-
     //product
     public Model.product getProduct() {
         return product;
