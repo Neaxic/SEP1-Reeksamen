@@ -38,6 +38,26 @@ public class ClientModel implements Client
         return productArrayList;
     }
 
+
+    public ArrayList searchRenters(String searchString){
+
+        ArrayList<RentedList> rentedLists = new ArrayList<>();
+        for (RentedList list : sss) {
+            if (list.getProductKind().toLowerCase().contains(searchString.toLowerCase()) || list.getProductKind().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getTitle().toLowerCase().contains(searchString.toLowerCase()) ||  list.getTitle().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getStatus().toLowerCase().contains(searchString.toLowerCase()) ||  list.getStatus().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getName().toLowerCase().contains(searchString.toLowerCase()) ||   list.getName().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getEmail().toLowerCase().contains(searchString.toLowerCase()) ||    list.getEmail().toUpperCase().contains(searchString.toUpperCase()) ||
+                    String.valueOf(list.getLåneDato()).toLowerCase().contains(searchString.toUpperCase())  ||  String.valueOf(list.getLåneDato()).toUpperCase().contains(searchString.toUpperCase()) ||
+                    String.valueOf(list.getReturDato()).toLowerCase().contains(searchString.toUpperCase()) || String.valueOf(list.getReturDato()).toUpperCase().contains(searchString.toUpperCase()))
+                rentedLists.add(list);
+        }
+
+        return rentedLists;
+
+    }
+
+
     public ArrayList populateUsers(){
 
         users.add(new User("bob","123"));

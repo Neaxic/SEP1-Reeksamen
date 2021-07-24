@@ -119,6 +119,7 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
+        renterObservableList.setAll(client.searchRenters(search.getValue()));
     }
 
 

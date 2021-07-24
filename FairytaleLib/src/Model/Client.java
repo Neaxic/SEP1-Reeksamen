@@ -16,6 +16,8 @@ public interface Client
 
     Object clock();
 
+    ArrayList searchRenters(String searchString);
+
     void createProduct(String title, String author, String isbn, String type,String releaseDate);
 
     ArrayList getAllProductsType();
