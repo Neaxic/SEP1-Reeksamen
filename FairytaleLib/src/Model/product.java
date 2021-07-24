@@ -85,7 +85,10 @@ public class product implements Serializable {
         return releaseDate;
     }
 
-
+    public Date getRelaseDateAsDate() {
+        Date d = new Date(releaseDate);
+        return d;
+    }
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;

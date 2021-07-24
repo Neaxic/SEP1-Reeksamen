@@ -30,10 +30,6 @@ public class main extends Application {
         ClientModel.setAllClients(test2);
 
 
-        ArrayList test3 = FileHandler.loadRenterList();
-        ClientModel.setSss(test3);
-
-
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
 
@@ -46,7 +42,6 @@ public class main extends Application {
                 FileHandler.saveProductList(ClientModel.allProducts);
                 FileHandler.saveuser(ClientModel.users);
                 FileHandler.saveRenter(ClientModel.allClients);
-                FileHandler.saveRentedList(ClientModel.sss);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
