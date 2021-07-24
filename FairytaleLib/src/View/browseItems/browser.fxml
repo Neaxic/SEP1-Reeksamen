@@ -59,14 +59,6 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="119.0" text="Error" textFill="RED">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
                         <Button mnemonicParsing="false" onAction="#open2" text="UDlånd2" />
 
                         <Button fx:id="reserveButton" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="96.0" text="Reserver">

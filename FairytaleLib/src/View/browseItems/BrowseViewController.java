@@ -1,9 +1,7 @@
 package View.browseItems;
 
 import Core.ViewHandler;
-import Model.ClientModel;
-import Model.product;
-import Model.renter;
+import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -22,7 +20,6 @@ public class BrowseViewController {
     public TableColumn ISBNCoulmn;
     public TextField searchText;
     public Label clock;
-    public Label error;
 
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
@@ -63,12 +60,12 @@ public class BrowseViewController {
 
         //Avaliable
         availableMaterialView.setItems(viewmodel.getProductObservableList());
-        avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
-        avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
+        avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<>("productKind"));
+        avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<>("title"));
 
-        AuthorCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("author"));
-        ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("isbn"));
-        releaseDate.setCellValueFactory(new PropertyValueFactory<product, String>("ReleaseDate"));
+        AuthorCoulmn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        releaseDate.setCellValueFactory(new PropertyValueFactory<>("ReleaseDate"));
 
 
         //----
@@ -109,9 +106,6 @@ public class BrowseViewController {
         clock.textProperty().bind(viewmodel.clockProperty());
         viewmodel.startClock();
 
-
-        //error
-        error.textProperty().bind(viewmodel.errorProperty());
     }
 
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items
@@ -189,41 +183,28 @@ public class BrowseViewController {
         product.setReleaseDate(editEvent.getNewValue().toString());
     }
 
-    //RESERVE TODO:MAYBE RENAME en msule forvirrende
- /*   public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
-        //Åbner i viewhandler eftersom vi laver et nyt vindue popup
 
-
-        //popup
-        //viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
-    }*/
-
-
-  /*  public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        viewHandler.openRenterList();
-    }*/
 
     public void removeReserver(ActionEvent actionEvent) {
         viewmodel.deleteReserver((product) reservedMaterialView.getSelectionModel().getSelectedItem());
     }
 
     public void removeRenter(ActionEvent actionEvent) {
-        viewmodel.deleteRenter((product) rentetMaterialView.getSelectionModel().getSelectedItem());
+        viewmodel.deleteRenter((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem());
 
     }
 
     public void reserveButton(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
 
-        //popup
-        //viewHandler.reserve((ClientModel) viewmodel.getClient(), selectedProduct);
+
     }
 
     public void open2(ActionEvent actionEvent) {
-
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewmodel.delete( availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openRenterList();
+
         }
 
     }
