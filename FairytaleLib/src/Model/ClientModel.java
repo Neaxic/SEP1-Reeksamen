@@ -16,6 +16,7 @@ public class ClientModel implements Client
     public static ArrayList<User> users = new ArrayList<>();
 
     public ArrayList<RentedList> sss = new ArrayList<>();
+    public ArrayList<RentedList> ggg = new ArrayList<>();
 
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -94,7 +95,7 @@ public class ClientModel implements Client
 
         Renters rt = SaveInfo.getInstance().getRenters();
 
-        sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
+        ggg.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
 
     }
 
@@ -267,5 +268,9 @@ public class ClientModel implements Client
 
     public ArrayList<RentedList> getSss() {
         return sss;
+    }
+
+    public ArrayList<RentedList> getGgg() {
+        return ggg;
     }
 }

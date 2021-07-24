@@ -59,24 +59,18 @@ private Client client;
 
         //List<product> productList = client.getAllProducts();
         productObservableList = FXCollections.observableArrayList(productList);
-
         reserverObservableList = FXCollections.observableArrayList(reserverList);
-
     }
 
     public void loadRentedList() {
 
         List<RentedList> rentedLists = client.getSss();
-
         renterObservableList = FXCollections.observableArrayList(rentedLists);
-
     }
 
     public void loadReservedList() {
-        List<RentedList> reservedlist = client.getSss();
-
+        List<RentedList> reservedlist = client.getGgg();
         reserverObservableList = FXCollections.observableArrayList(reservedlist);
-
 
     }
 

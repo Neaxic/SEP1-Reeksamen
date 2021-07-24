@@ -28,6 +28,7 @@ public interface Client
     void createReservedItem(RentedList rentedList);
 
     ArrayList<RentedList> getSss();
+    ArrayList<RentedList> getGgg();
 
     void addListener(String eventName, PropertyChangeListener listener);
     void removeListener(String eventName, PropertyChangeListener listener);
