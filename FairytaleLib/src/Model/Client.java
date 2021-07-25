@@ -50,5 +50,8 @@ public interface Client
     RentedList deleteReserved(RentedList rentedList);
 
 
+    ArrayList searchReserve(String searchString);
+
+
 
 }

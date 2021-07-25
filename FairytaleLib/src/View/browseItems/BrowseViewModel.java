@@ -115,8 +115,18 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
-        renterObservableList.setAll(client.searchRenters(search.getValue()));
     }
+
+    public void searchRenter(){
+        renterObservableList.setAll(client.searchRenters(search.getValue()));
+
+    }
+
+    public void searchReserve(){
+        reserverObservableList.setAll(client.searchReserve(search.getValue()));
+
+    }
+
 
 
     public void clearSearch(){

@@ -142,15 +142,19 @@ public class BrowseViewController {
     }
 
     public void search(ActionEvent actionEvent) {
-
-
         if (availableMaterialView.getItems().isEmpty()){
 
             viewHandler.openBrowseItem();
+        } else{
+
+
+            viewmodel.Search();
+            viewmodel.searchRenter();
+            viewmodel.searchReserve();
+            viewmodel.clearSearch();
         }
 
-        viewmodel.Search();
-        viewmodel.clearSearch();
+
 
     }
 
@@ -228,6 +232,7 @@ public class BrowseViewController {
 
     public void reserveButton(ActionEvent actionEvent)  {
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
+            viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openReserveItem();
         }
     }

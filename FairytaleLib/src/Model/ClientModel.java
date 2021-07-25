@@ -4,7 +4,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,6 +61,24 @@ public class ClientModel implements Client
     }
 
 
+    public ArrayList searchReserve(String searchString){
+
+        ArrayList<RentedList> rentedListArrayList = new ArrayList<>();
+        for (RentedList list : ggg) {
+            if (list.getProductKind().toLowerCase().contains(searchString.toLowerCase()) || list.getProductKind().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getTitle().toLowerCase().contains(searchString.toLowerCase()) ||  list.getTitle().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getStatus().toLowerCase().contains(searchString.toLowerCase()) ||  list.getStatus().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getName().toLowerCase().contains(searchString.toLowerCase()) ||   list.getName().toUpperCase().contains(searchString.toUpperCase()) ||
+                    list.getEmail().toLowerCase().contains(searchString.toLowerCase()) ||    list.getEmail().toUpperCase().contains(searchString.toUpperCase()))
+
+                rentedListArrayList.add(list);
+        }
+
+        return rentedListArrayList;
+
+    }
+
+
     public ArrayList populateUsers(){
 
         users.add(new User("bob","123"));
@@ -90,7 +107,7 @@ public class ClientModel implements Client
         for (int i = 0; i <allProducts.size() ; i++) {
             allProducts.remove(product);
         }
-        support.firePropertyChange("product",null,product);
+
         return product;
     }
 
@@ -275,7 +292,7 @@ public class ClientModel implements Client
         product product;
         product = new product(type, title, author, isbn, releaseDate);
         allProducts.add(product);
-        //support.firePropertyChange("product",null,product);
+        support.firePropertyChange("product",null,product);
 
     }
 
@@ -283,7 +300,6 @@ public class ClientModel implements Client
         product product1;
         product1 = new product(product.getProductKind(), product.getTitle(), product.getAuthor(), product.getIsbn(),product.getReleaseDate());
         allProducts.add(product1);
-       // support.firePropertyChange("product",null,product1);
         return product1;
     }
 
