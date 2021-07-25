@@ -134,6 +134,7 @@ public class BrowseViewController {
 
 
     public void remove(ActionEvent actionEvent) {
+        if (viewmodel.deleteProductValidation(availableMaterialView.getSelectionModel().getSelectedItem()))
 
         viewmodel.delete((product) availableMaterialView.getSelectionModel().getSelectedItem());
 
@@ -207,17 +208,26 @@ public class BrowseViewController {
     }*/
 
     public void removeReserver(ActionEvent actionEvent) {
-        viewmodel.deleteReserver((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem());
+        if (viewmodel.deleteRentedValidation((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem())){
+
+            viewmodel.deleteReserver((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem());
+
+        }
+
     }
 
     public void removeRenter(ActionEvent actionEvent) {
-        viewmodel.deleteRenter((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem());
+        if (viewmodel.deleteRentedValidation((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem())){
+
+            viewmodel.deleteRenter((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem());
+
+        }
+
 
     }
 
     public void reserveButton(ActionEvent actionEvent)  {
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
-            viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openReserveItem();
         }
     }

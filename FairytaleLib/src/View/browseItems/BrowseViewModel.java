@@ -83,16 +83,8 @@ private Client client;
     }
 
     public void delete(product product){
-        if(product.isRented()){
-            System.out.println("rented");
-            renterObservableList.remove(client.deleteProduct(product));
-        } else if(product.isReserved()){
-            System.out.println("reserver");
-            reserverObservableList.remove(client.deleteProduct(product));
-        } else {
-            System.out.println("avaliable");
-            productObservableList.remove(client.deleteProduct(product));
-        }
+        productObservableList.remove(client.deleteProduct(product));
+
     }
 
 
@@ -104,9 +96,7 @@ private Client client;
     }
 
     public void deleteReserver(RentedList rentedList){
-        product product1 = SaveInfo.getInstance().getProduct();
-        reserverObservableList.remove(client.deleteRenter(rentedList));
-       // productObservableList.add(client.addProduct(product1));
+        reserverObservableList.remove(client.deleteReserved(rentedList));
     }
 
     public void Search(){
@@ -115,11 +105,34 @@ private Client client;
     }
 
 
-
-
-
     public void clearSearch(){
         search.setValue("");
+
+    }
+
+    public boolean deleteProductValidation(product product){
+        if (product != null){
+            return true;
+        } else{
+
+            error.setValue("Please choose a product to delete");
+            return false;
+
+        }
+
+
+    }
+
+    public boolean deleteRentedValidation(RentedList rentedList){
+        if (rentedList != null){
+            return true;
+        } else{
+
+            error.setValue("Please choose a rented item to delete");
+            return false;
+
+        }
+
 
     }
 
