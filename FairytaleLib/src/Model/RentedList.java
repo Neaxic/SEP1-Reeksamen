@@ -31,6 +31,22 @@ public class RentedList implements Serializable {
     public String getProductKind() { return product.getProductKind();}
     public String getTitle() { return product.getTitle(); }
 
+    public String getIsbn() {
+        return product.getIsbn();
+    }
+
+    public String getAuthor() {
+        return product.getAuthor();
+    }
+
+
+    public String getReleaseDate() {
+        return product.getReleaseDate();
+    }
+
+
+
+
     //renter
 
     public Renters getRenters() {

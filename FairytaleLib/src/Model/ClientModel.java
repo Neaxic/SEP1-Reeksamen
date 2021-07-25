@@ -2,6 +2,9 @@ package Model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -82,26 +85,36 @@ public class ClientModel implements Client
     }
 
 
-    public int deleteProduct(product product){
+    public product deleteProduct(product product){
 
         for (int i = 0; i <allProducts.size() ; i++) {
             allProducts.remove(product);
         }
-
-        return 0;
+        support.firePropertyChange("product",null,product);
+        return product;
     }
 
 
 
 
-    public int deleteRenter(RentedList rentedList){
+    public RentedList deleteRenter(RentedList rentedList){
 
         for (int i = 0; i <sss.size() ; i++) {
+            sss.remove(rentedList);
+        }
+
+        return rentedList;
+    }
+
+    public RentedList deleteReserved(RentedList rentedList){
+
+        for (int i = 0; i <ggg.size() ; i++) {
             ggg.remove(rentedList);
         }
 
-        return 0;
+        return rentedList;
     }
+
 
 
 
@@ -118,11 +131,12 @@ public class ClientModel implements Client
 
 
     @Override
-    public void createUdlåntGenstand(RentedList rentedList) {
+    public void createUdlåntGenstand(RentedList rentedList) throws ParseException {
 
         Renters rt = SaveInfo.getInstance().getRenters();
+        product pt = SaveInfo.getInstance().getProduct();
 
-        if(rt.getStatus().equals("student")) {
+        if(rt.getStatus().equals("student") && pt.getProductKind().equals("BOG") || pt.getProductKind().equals("artikel")) {
 
             Calendar c= Calendar.getInstance();
 
@@ -132,10 +146,10 @@ public class ClientModel implements Client
 
             Date st = new Date();
 
-            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
 
 
-        } if  (rt.getStatus().equals("lecture")){
+        } if  (rt.getStatus().equals("lecture") && pt.getProductKind().equals("BOG")){
 
             Calendar c= Calendar.getInstance();
 
@@ -145,23 +159,40 @@ public class ClientModel implements Client
 
             Date sd = new Date();
 
-            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
+            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
         }
 
-//        if(pt.getProductKind().equals("dvd") || pt.getProductKind().equals("cd")) {
-//
-//            if(pt.getReleaseDate() >= 2000)  {
-//
-//                c.add(Calendar.DATE, 14);
-//                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
-//            }
-//
-//            if(pt.getReleaseDate() <= 2000) {
-//
-//                c.add(Calendar.DATE, 180);
-//                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
-//            }
+        if(pt.getProductKind().equals("dvd") || pt.getProductKind().equals("cd")) {
 
+            SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+            Date d1 = sdformat.parse("2000-04-15");
+            Date d2 = sdformat.parse(pt.getReleaseDate());
+
+
+
+            if(d1.compareTo(d2) < 0) {
+
+                Calendar c= Calendar.getInstance();
+
+                c.add(Calendar.DATE, 14);
+
+                Date d=c.getTime();
+
+                Date st = new Date();
+               sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+            }
+
+            if(d1.compareTo(d2) > 0) {
+                Calendar c= Calendar.getInstance();
+
+                c.add(Calendar.DATE, 180);
+
+                Date d=c.getTime();
+
+                Date st = new Date();
+                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+           }
+        }
     }
 
     @Override
@@ -241,17 +272,26 @@ public class ClientModel implements Client
     }
 
     public void createProduct(String title, String author, String isbn, String type,String releaseDate){
-        allProducts.add(new product(type, title, author, isbn, releaseDate));
+        product product;
+        product = new product(type, title, author, isbn, releaseDate);
+        allProducts.add(product);
+        //support.firePropertyChange("product",null,product);
+
     }
 
     public product addProduct(product product){
-        allProducts.add(new product(product.getProductKind(), product.getTitle(), product.getAuthor(), product.getIsbn(),product.getReleaseDate()));
-
-        return product;
+        product product1;
+        product1 = new product(product.getProductKind(), product.getTitle(), product.getAuthor(), product.getIsbn(),product.getReleaseDate());
+        allProducts.add(product1);
+       // support.firePropertyChange("product",null,product1);
+        return product1;
     }
 
     public void createRenter(String name,String email,String jobPosition){
-        allClients.add(new Renters(name,email,jobPosition));
+        renter renter;
+        renter = new Renters(name,email,jobPosition);
+        allClients.add(renter);
+        support.firePropertyChange("renter",null,renter);
     }
 
 

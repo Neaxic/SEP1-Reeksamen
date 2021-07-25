@@ -9,6 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.text.ParseException;
+
 public class rentItemController {
 
     public TableView<Renters> Lånere;
@@ -35,7 +37,7 @@ public class rentItemController {
 
     }
 
-    public void next(ActionEvent actionEvent) {
+    public void next(ActionEvent actionEvent) throws ParseException {
 
         if ( rentItemViewModel.getRenterInformation(Lånere.getSelectionModel().getSelectedItem())) {
             rentItemViewModel.CreateUdlåntGenstand();

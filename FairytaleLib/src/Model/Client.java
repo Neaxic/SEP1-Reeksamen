@@ -1,6 +1,7 @@
 package Model;
 
 import java.beans.PropertyChangeListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public interface Client
@@ -22,9 +23,9 @@ public interface Client
 
     ArrayList getAllProductsType();
     ArrayList search(String searchString);
-    int deleteProduct(product product);
+    product deleteProduct(product product);
 
-    void createUdlåntGenstand(RentedList rentedList);
+    void createUdlåntGenstand(RentedList rentedList) throws ParseException;
     void createReservedItem(RentedList rentedList);
 
     ArrayList<RentedList> getSss();
@@ -44,7 +45,9 @@ public interface Client
     product addProduct(product product);
 
 
-    int deleteRenter(RentedList rentedList);
+    RentedList deleteRenter(RentedList rentedList);
+
+    RentedList deleteReserved(RentedList rentedList);
 
 
 

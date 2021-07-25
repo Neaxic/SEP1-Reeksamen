@@ -163,8 +163,6 @@ public class product implements Serializable {
     public void setReserver(renter renter) {
         reserver = renter;
     }
-
-
     @Override
     public String toString() {
         return "product{" +

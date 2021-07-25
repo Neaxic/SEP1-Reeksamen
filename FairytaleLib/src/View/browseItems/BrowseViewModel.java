@@ -32,6 +32,18 @@ private Client client;
         clock = new SimpleStringProperty();
         error = new SimpleStringProperty();
         client.addListener("time",this::clock);
+        client.addListener("product",this::product);
+        client.addListener("renter",this::renter);
+    }
+
+    private void renter(PropertyChangeEvent propertyChangeEvent) {
+       loadRentedList();
+
+    }
+
+    private void product(PropertyChangeEvent propertyChangeEvent) {
+      loadProducts();
+
     }
 
     private void clock(PropertyChangeEvent propertyChangeEvent) {
@@ -85,13 +97,15 @@ private Client client;
     public void delete(product product){
         productObservableList.remove(client.deleteProduct(product));
 
+
     }
 
 
     public void deleteRenter(RentedList rentedList){
-        product product1 = SaveInfo.getInstance().getProduct();
-        renterObservableList.remove(client.deleteRenter(rentedList));
-        productObservableList.add(client.addProduct(product1));
+       // product product1 = SaveInfo.getInstance().getProduct();
+        RentedList deleteRenter = client.deleteRenter(rentedList);
+        renterObservableList.remove(deleteRenter);
+        productObservableList.add(client.addProduct(new product(deleteRenter.getProductKind(),deleteRenter.getTitle(),deleteRenter.getIsbn(), deleteRenter.getAuthor(), deleteRenter.getReleaseDate())));
 
     }
 

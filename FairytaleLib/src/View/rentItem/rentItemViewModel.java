@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -45,7 +46,7 @@ public class rentItemViewModel {
         }
     }
 
-    public void CreateUdlåntGenstand() {
+    public void CreateUdlåntGenstand() throws ParseException {
 
         product pt = SaveInfo.getInstance().getProduct();
         System.out.println("Gets SavedInfo from product= " + SaveInfo.getInstance().getProduct());
