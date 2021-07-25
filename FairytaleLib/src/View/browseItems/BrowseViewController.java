@@ -24,6 +24,7 @@ public class BrowseViewController {
     public Button removeReserver;
     public Button addNewRenter;
     public Button addNewElement;
+    public Button search;
 
     private ViewHandler viewHandler;
     private BrowseViewModel viewmodel;
@@ -110,10 +111,13 @@ public class BrowseViewController {
         searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
         clock.textProperty().bind(viewmodel.clockProperty());
         viewmodel.startClock();
-
-
         //error
         error.textProperty().bind(viewmodel.errorProperty());
+
+        search.setDisable(true);
+
+
+
     }
 
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items
@@ -141,18 +145,33 @@ public class BrowseViewController {
 
     }
 
-    public void search(ActionEvent actionEvent) {
-        if (availableMaterialView.getItems().isEmpty()){
 
-            viewHandler.openBrowseItem();
-        } else{
+    public void onKeyReleasedSearch(){
+       search.setDisable(false);
+
+    }
+
+    public void search(ActionEvent actionEvent) {
+
+        if (viewmodel.SearchValidation()) {
 
 
             viewmodel.Search();
-            viewmodel.searchRenter();
-            viewmodel.searchReserve();
             viewmodel.clearSearch();
+
         }
+
+
+        else{
+            viewHandler.openBrowseItem();
+
+
+
+
+        }
+
+
+
 
 
 

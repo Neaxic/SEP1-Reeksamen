@@ -115,22 +115,33 @@ private Client client;
 
     public void Search(){
         productObservableList.setAll(client.search(search.getValue()));
-    }
-
-    public void searchRenter(){
         renterObservableList.setAll(client.searchRenters(search.getValue()));
-
-    }
-
-    public void searchReserve(){
         reserverObservableList.setAll(client.searchReserve(search.getValue()));
-
     }
 
 
 
     public void clearSearch(){
         search.setValue("");
+
+    }
+
+
+
+    public boolean SearchValidation(){
+        Search();
+        if (productObservableList.isEmpty() && renterObservableList.isEmpty() && reserverObservableList.isEmpty()){
+
+            error.setValue("Could not find the search given");
+            Search();
+            return false;
+
+
+        }
+        else {
+            error.setValue("");
+            return true;
+        }
 
     }
 
