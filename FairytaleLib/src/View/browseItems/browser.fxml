@@ -6,160 +6,95 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="978.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
    <children>
-      <HBox fx:id="forside" alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="1079.0" style="-fx-background-color: lightblue;">
+      <AnchorPane prefHeight="97.0" prefWidth="862.0" style="-fx-background-color: lightblue;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bibliotek" wrappingWidth="145.6759490966797">
+            <Label layoutX="20.0" layoutY="18.0" text="Fariytale Bib">
                <font>
-                  <Font name="System Bold" size="33.0" />
+                  <Font name="System Bold" size="37.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="97.0" prefWidth="225.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="97.0" prefWidth="589.0">
-                     <children>
-                        <TextField fx:id="searchText" onKeyPressed="#onKeyReleasedSearch" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: white;" />
-                        <Button fx:id="search" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="131.0" text="Søg">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </HBox>
-               </children></HBox>
-            <Label fx:id="clock" prefHeight="18.0" prefWidth="278.0" text="Label" />
-            <Button fx:id="addNewRenter" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="157.0" text="Tilføj ny låner" />
-            <Button fx:id="addNewElement" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="26.0" prefWidth="182.0" text="Tilføj nyt element">
+            </Label>
+            <Label fx:id="clock" layoutX="23.0" layoutY="63.0" prefHeight="18.0" prefWidth="278.0" text="Label" />
+            <Button fx:id="addNewRenter" layoutX="717.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="117.0" text="Tilføj ny låner" />
+            <Button fx:id="addNewElement" layoutX="589.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="26.0" prefWidth="117.0" text="Tilføj nyt element">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <TextField fx:id="searchText" layoutX="294.0" layoutY="37.0" onKeyPressed="#onKeyReleasedSearch" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: white;" />
+            <Button fx:id="search" layoutX="521.0" layoutY="36.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="54.0" text="Søg">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
          </children>
-      </HBox>
-      <HBox prefHeight="1117.0" prefWidth="1134.0">
-         <children>
-            <VBox prefHeight="871.0" prefWidth="951.0">
-               <children>
-                  <HBox prefHeight="41.0" prefWidth="931.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige genstande" wrappingWidth="568.08203125">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Button mnemonicParsing="false" onAction="#open2" prefHeight="23.0" prefWidth="76.0" text="Udlån" />
-
-                        <Button fx:id="reserveButton" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="96.0" text="Reserver">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
-                        <Button fx:id="removeAvailable" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#remove" prefHeight="27.0" prefWidth="90.0" text="Fjern valgte" />
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="41.0" prefWidth="951.0">
-                     <children>
-                        <Label fx:id="error" alignment="CENTER" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="440.0" text="Error" textFill="RED">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="400.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <TableView fx:id="availableMaterialView" prefHeight="207.0" prefWidth="917.0">
-                     <columns>
-                        <TableColumn fx:id="avaliableTypeCollum" onEditCommit="#changeProductKindCellEdit" prefWidth="78.0" text="Type" />
-                        <TableColumn fx:id="avaliableTitelCollum" onEditCommit="#changeTitleCellEdit" prefWidth="125.0" text="Title" />
-                        <TableColumn fx:id="AuthorCoulmn" onEditCommit="#changeAuthorCellEdit" prefWidth="75.0" text="Author" />
-                        <TableColumn fx:id="ISBNCoulmn" onEditCommit="#changeIsbnCellEdit" prefWidth="75.0" text="ISBN" />
-                        <TableColumn fx:id="releaseDate" onEditCommit="#changeReleaseDateCellEdit" prefWidth="137.0" text="Udgivet" />
-                     </columns>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </TableView>
-                  <HBox prefHeight="69.0" prefWidth="858.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Udlånte genstande" wrappingWidth="674.08203125">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Button fx:id="removeRenter" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeRenter" prefHeight="27.0" prefWidth="113.0" text="Fjern genstand">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Button>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
-                     </padding>
-                  </HBox>
-                  <TableView fx:id="rentetMaterialView" prefHeight="204.0" prefWidth="640.0">
-                    <columns>
-                      <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
-                        <TableColumn fx:id="rentedTitelCollum" prefWidth="108.79999542236328" text="Title" />
-                        <TableColumn fx:id="rentedStatusCollum" prefWidth="96.80003356933594" text="Låner Status" />
-                      <TableColumn fx:id="renterCollum" prefWidth="63.20001220703125" text="Låner" />
-                        <TableColumn fx:id="emailCollum" prefWidth="156.00006103515625" text="Email" />
-                        <TableColumn fx:id="deadline" prefWidth="198.40008544921875" text="LåneDato" />
-                        <TableColumn fx:id="returnDateCollum" prefWidth="226.0" text="Retuneringsdato" />
-                    </columns>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </TableView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserveret genstande" wrappingWidth="689.08203125">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <Button fx:id="removeReserver" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeReserver" prefHeight="27.0" prefWidth="123.0" text="Fjern genstand">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <TableView fx:id="reservedMaterialView" prefHeight="270.0" prefWidth="809.0">
-                     <columns>
-                        <TableColumn fx:id="ReserverType" prefWidth="73.0" text="Type" />
-                        <TableColumn fx:id="ReserverTitle" prefWidth="115.0" text="Title" />
-                        <TableColumn fx:id="ReserverStatus" prefWidth="96.0" text="Låner Status" />
-                        <TableColumn fx:id="ReserverName" prefWidth="283.0" text="Reserveret af" />
-                        <TableColumn fx:id="ReserverMail" prefWidth="277.0" text="Email" />
-                     </columns>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </TableView>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+      </AnchorPane>
+      <Text layoutX="22.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige genstande" wrappingWidth="211.08203125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TableView fx:id="availableMaterialView" layoutX="23.0" layoutY="153.0" prefHeight="173.0" prefWidth="816.0">
+         <columns>
+            <TableColumn fx:id="avaliableTypeCollum" onEditCommit="#changeProductKindCellEdit" prefWidth="78.0" text="Type" />
+            <TableColumn fx:id="avaliableTitelCollum" onEditCommit="#changeTitleCellEdit" prefWidth="251.0" text="Titel" />
+            <TableColumn fx:id="AuthorCoulmn" minWidth="4.0" onEditCommit="#changeAuthorCellEdit" prefWidth="185.0" text="Forfatter" />
+            <TableColumn fx:id="ISBNCoulmn" onEditCommit="#changeIsbnCellEdit" prefWidth="94.0" text="ISBN" />
+            <TableColumn fx:id="releaseDate" onEditCommit="#changeReleaseDateCellEdit" prefWidth="207.0" text="Udgivet" />
+         </columns>
+      </TableView>
+      <Text layoutX="23.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udlånte genstande" wrappingWidth="674.08203125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TableView fx:id="rentetMaterialView" layoutX="23.0" layoutY="364.0" prefHeight="173.0" prefWidth="816.0">
+         <columns>
+            <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
+            <TableColumn fx:id="rentedTitelCollum" prefWidth="108.79999542236328" text="Titel" />
+            <TableColumn fx:id="rentedStatusCollum" prefWidth="82.0" text="Låner Stilling" />
+            <TableColumn fx:id="renterCollum" prefWidth="119.0" text="Låner" />
+            <TableColumn fx:id="emailCollum" prefWidth="125.0" text="Email" />
+            <TableColumn fx:id="deadline" prefWidth="136.0" text="Dato lånt" />
+            <TableColumn fx:id="returnDateCollum" prefWidth="166.0" text="Retuneringsdato" />
+         </columns>
+      </TableView>
+      <Label fx:id="error" alignment="CENTER" contentDisplay="RIGHT" layoutX="173.0" layoutY="117.0" prefHeight="28.0" prefWidth="377.0" text="Error" textFill="RED">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="removeAvailable" alignment="CENTER" layoutX="749.0" layoutY="119.0" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="90.0" text="Fjern valgte" />
+      <Button alignment="CENTER" layoutX="585.0" layoutY="118.0" mnemonicParsing="false" onAction="#open2" prefHeight="23.0" prefWidth="76.0" text="Udlån" />
+      <Button fx:id="reserveButton" alignment="CENTER" layoutX="667.0" layoutY="119.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="76.0" text="Reserver">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Text layoutX="23.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserveret genstande" wrappingWidth="689.08203125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TableView fx:id="reservedMaterialView" layoutX="23.0" layoutY="578.0" prefHeight="173.0" prefWidth="816.0">
+         <columns>
+            <TableColumn fx:id="ReserverType" prefWidth="73.0" text="Type" />
+            <TableColumn fx:id="ReserverTitle" prefWidth="115.0" text="Titel" />
+            <TableColumn fx:id="ReserverStatus" prefWidth="96.0" text="Låner Stilling" />
+            <TableColumn fx:id="ReserverName" prefWidth="283.0" text="Reserveret af" />
+            <TableColumn fx:id="ReserverMail" prefWidth="277.0" text="Email" />
+         </columns>
+      </TableView>
+      <Button fx:id="removeRenter" alignment="CENTER" layoutX="726.0" layoutY="336.0" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="113.0" text="Fjern låner" />
+      <Button fx:id="removeReserver" alignment="CENTER" layoutX="722.0" layoutY="548.0" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="113.0" text="Fjern reservation" />
    </children>
-</VBox>
+</AnchorPane>

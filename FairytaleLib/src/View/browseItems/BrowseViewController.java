@@ -154,27 +154,13 @@ public class BrowseViewController {
     public void search(ActionEvent actionEvent) {
 
         if (viewmodel.SearchValidation()) {
-
-
             viewmodel.Search();
             viewmodel.clearSearch();
-
         }
-
 
         else{
             viewHandler.openBrowseItem();
-
-
-
-
         }
-
-
-
-
-
-
     }
 
 

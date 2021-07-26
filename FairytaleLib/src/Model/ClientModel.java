@@ -301,10 +301,10 @@ public class ClientModel implements Client
 
     public ArrayList getAllProductsType(){
         if (allProductsType.isEmpty()){
-            allProductsType.add("dvd");
-            allProductsType.add("artikel");
-            allProductsType.add("cd");
-            allProductsType.add("BOG");
+            allProductsType.add("DVD");
+            allProductsType.add("Artikel");
+            allProductsType.add("CD");
+            allProductsType.add("Bog");
         }
         return allProductsType;
     }
@@ -312,8 +312,8 @@ public class ClientModel implements Client
 
     public ArrayList getAllRenterType(){
         if (allRenterType.isEmpty()){
-            allRenterType.add("student");
-            allRenterType.add("lecture");
+            allRenterType.add("Student");
+            allRenterType.add("Lektor");
 
         }
         return allRenterType;
