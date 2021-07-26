@@ -1,10 +1,7 @@
 import Core.ModelFactory;
 import Core.ViewHandler;
 import Core.ViewModelFactory;
-import Model.Client;
-import Model.ClientModel;
-import Model.product;
-import Model.productList;
+import Model.*;
 import Util.FileHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -18,21 +15,39 @@ public class main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ArrayList test = FileHandler.loadProductList();
-        ClientModel.setAllProducts(test);
+        ArrayList Database = FileHandler.loadEverything();
+        ArrayList Produkter = new ArrayList();
+        ArrayList Renters = new ArrayList();
 
-        ArrayList test2 = FileHandler.loadRenter();
-        ClientModel.setAllClients(test2);
+        //Diskutabele lister
+        ArrayList rentedProducts = new ArrayList();
+        ArrayList reservedProducts = new ArrayList();
 
-        ArrayList test3 = FileHandler.loadRenterList();
-        ClientModel.setSss(test3);
+        System.out.println(Database.size());
+        for(Object i : Database){
+            for(Object j : (ArrayList) i){
+                if(j instanceof product){
+                    Produkter.add(j);
+                } else if(j instanceof RentedList){
+                    if(((RentedList) j).getLåneDato() != null){
+                        rentedProducts.add(j);
+                    } else {
+                        reservedProducts.add(j);
+                    }
+                } else if(j instanceof renter){
+                    Renters.add(j);
+                } else {
+                    System.out.println("Invalid objekt");
+                }
+            }
+        }
 
+        ClientModel.setAllProducts(Produkter);
+        ClientModel.setAllClients(Renters);
 
-        ArrayList test4 = FileHandler.loadReservedList();
-        ClientModel.setGgg(test4);
-
-
-
+        //Burde diskuteres / bestemmes senere hvad vi gør med det
+        ClientModel.setSss(rentedProducts);
+        ClientModel.setGgg(reservedProducts);
 
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
@@ -40,13 +55,12 @@ public class main extends Application {
         ViewHandler view = new ViewHandler(viewModelFactory, stage);
         view.start();
 
+        stage.setResizable(false);
+
         stage.setOnCloseRequest(e -> {
             System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {
-                FileHandler.saveProductList(ClientModel.allProducts);
-                FileHandler.saveRenter(ClientModel.allClients);
-                FileHandler.saveRentedList(ClientModel.sss);
-                FileHandler.saveReservedList(ClientModel.ggg);
+                FileHandler.saveEverything(ClientModel.allProducts, ClientModel.ggg, ClientModel.sss, ClientModel.allClients);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

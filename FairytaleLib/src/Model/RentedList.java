@@ -39,7 +39,6 @@ public class RentedList implements Serializable {
         return product.getAuthor();
     }
 
-
     public String getReleaseDate() {
         return product.getReleaseDate();
     }
@@ -59,11 +58,9 @@ public class RentedList implements Serializable {
 
 
     //date
-
     public Date getLåneDato() {
         return låneDato;
     }
-
     public Date getReturDato() {
         return returDato;
     }

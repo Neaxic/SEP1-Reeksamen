@@ -128,7 +128,7 @@ public class ClientModel implements Client
         Renters rt = SaveInfo.getInstance().getRenters();
         product pt = SaveInfo.getInstance().getProduct();
 
-        if(rt.getStatus().equals("student") && pt.getProductKind().equals("BOG") || pt.getProductKind().equals("artikel")) {
+        if(rt.getStatus().equals("Student") && pt.getProductKind().equals("Bog") || pt.getProductKind().equals("Artikel")) {
 
             Calendar c= Calendar.getInstance();
 
@@ -141,7 +141,7 @@ public class ClientModel implements Client
             sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
 
 
-        } if  (rt.getStatus().equals("lecture") && pt.getProductKind().equals("BOG")){
+        } if  (rt.getStatus().equals("Lektor") && pt.getProductKind().equals("Bog")){
 
             Calendar c= Calendar.getInstance();
 
@@ -154,7 +154,7 @@ public class ClientModel implements Client
             sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
         }
 
-        if(pt.getProductKind().equals("dvd") || pt.getProductKind().equals("cd")) {
+        if(pt.getProductKind().equals("DVD") || pt.getProductKind().equals("CD")) {
 
             SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
             Date d1 = sdformat.parse("2000-04-15");
@@ -197,18 +197,7 @@ public class ClientModel implements Client
         support.addPropertyChangeListener(eventName, listener);
     }
 
-    public void fillArrayDemoItems(){
-        if (allProducts.isEmpty()){
-            allProducts.add(new product("DVD", "Ronja Røvedatter", "Ester Erikson", "513BC", "02-03-1990"));
-            allProducts.add(new product("BOG", "Bøjrne brødre", "Bente bent", "A231D", "13-06-2008"));
-            allProducts.add(new product("BOG", "En klog bog", "Aristoteles", "BER31", "16-02-1940"));
-            allProducts.add(new product("CD", "Takwondo banden", "Kent knudsen", "E9182", "21-11-2010"));
-            allProducts.add(new product("ARTIKEL", "Noget reality show", "Tank top thomas", "BDE32", "5-07-1990"));
-        }
-    }
-
     public ArrayList getAllProducts(){
-        //fillArrayDemoItems();
         return allProducts;
     }
 
@@ -285,13 +274,9 @@ public class ClientModel implements Client
         support.firePropertyChange("renter",null,renter);
     }
 
-
-
-
     public boolean createUser(String username,String Password){
 
         if (users.add(new User(username,Password))){
-
             return true;
         } else {
             return false;

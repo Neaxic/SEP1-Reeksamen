@@ -66,7 +66,6 @@ public class product implements Serializable {
         }
     }*/
 
-    //TODO: Den her virker ikke hvad er forskel på renter og reserved så? Vi burde have en status field der bliver sat på setRenter / setReserver
     public boolean isReserved() {
         if (reserver.getStatus() == null) {
             return false;
@@ -141,11 +140,9 @@ public class product implements Serializable {
     public String getReserverName() {
         return reserver.getName();
     }
-
     public String getReserverEmail() {
         return reserver.getEmail();
     }
-
     public String getReserverJobPostion() {
         return reserver.getStatus();
     }

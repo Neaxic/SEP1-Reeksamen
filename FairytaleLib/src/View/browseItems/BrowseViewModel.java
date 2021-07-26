@@ -64,14 +64,12 @@ private Client client;
     }
 
     public void loadProducts() {
-
         ArrayList productList = client.getAllAvaliableProducts();
         productObservableList = FXCollections.observableArrayList(productList);
 
     }
 
     public void loadRentedList() {
-
         List<RentedList> rentedLists = client.getSss();
         renterObservableList = FXCollections.observableArrayList(rentedLists);
     }
@@ -79,7 +77,6 @@ private Client client;
     public void loadReservedList() {
         List<RentedList> reservedlist = client.getGgg();
         reserverObservableList = FXCollections.observableArrayList(reservedlist);
-
     }
 
     public ObservableList<product> getProductObservableList() {
@@ -132,7 +129,7 @@ private Client client;
         Search();
         if (productObservableList.isEmpty() && renterObservableList.isEmpty() && reserverObservableList.isEmpty()){
 
-            error.setValue("Could not find the search given");
+            error.setValue("Kunne ikke finde noget tilsvarende");
             Search();
             return false;
 
@@ -150,7 +147,7 @@ private Client client;
             return true;
         } else{
 
-            error.setValue("Please choose a product to delete");
+            error.setValue("Vælg venligst et produkt at fjerne");
             return false;
 
         }
@@ -163,7 +160,7 @@ private Client client;
             return true;
         } else{
 
-            error.setValue("Please choose a rented item to delete");
+            error.setValue("Vælg venligst en lånt genstand at fjerne");
             return false;
 
         }
@@ -178,7 +175,7 @@ private Client client;
             error.setValue("");
             return true;
         }else {
-            error.setValue("Please choose a product for continue");
+            error.setValue("Vælg venligst et produkt for at fortsætte");
             return false;
         }
     }
