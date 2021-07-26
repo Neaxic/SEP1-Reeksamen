@@ -9,44 +9,37 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
-import java.io.IOException;
-
 public class BrowseViewController {
 
-    public TableColumn AuthorCoulmn;
-    public TableColumn ISBNCoulmn;
-    public TextField searchText;
-    public Label clock;
-    public Label error;
-    public Button reserveButton;
-    public Button removeAvailable;
-    public Button removeRenter;
-    public Button removeReserver;
-    public Button addNewRenter;
-    public Button addNewElement;
-    public Button search;
+    //clock
+    @FXML public Label clock;
 
-    private ViewHandler viewHandler;
-    private BrowseViewModel viewmodel;
+    //search
+    @FXML public Button search;
+    @FXML public TextField searchText;
 
+    //errorLabel
+    @FXML public Label error;
+
+    //productList
     @FXML private TableView<product> availableMaterialView;
     @FXML private TableColumn avaliableTypeCollum;
     @FXML private TableColumn avaliableTitelCollum;
+    @FXML public TableColumn AuthorCoulmn;
+    @FXML public TableColumn ISBNCoulmn;
     @FXML private TableColumn releaseDate;
 
-
-    //lennart
-    @FXML private TableView rentetMaterialView;
+    //rentedList
+    @FXML private TableView rentedMaterialView;
     @FXML private TableColumn typeCollum;
     @FXML private TableColumn rentedTitelCollum;
     @FXML private TableColumn rentedStatusCollum;
     @FXML private TableColumn renterCollum;
     @FXML private TableColumn emailCollum;
-
-
     @FXML private TableColumn returnDateCollum;
     @FXML private TableColumn deadline;
 
+    //reservedList
     @FXML private TableView reservedMaterialView;
     @FXML private TableColumn ReserverType;
     @FXML private TableColumn ReserverTitle;
@@ -54,52 +47,25 @@ public class BrowseViewController {
     @FXML private TableColumn ReserverName;
     @FXML private TableColumn ReserverMail;
 
+    private ViewHandler viewHandler;
+    private BrowseViewModel viewmodel;
+
     public void init(BrowseViewModel viewmodel, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
         this.viewmodel = viewmodel;
 
-
         populate();
         viewmodel.loadRentedList();
         viewmodel.loadReservedList();
 
-        //Avaliable
+        //productList
         availableMaterialView.setItems(viewmodel.getProductObservableList());
         avaliableTypeCollum.setCellValueFactory(new PropertyValueFactory<product, String>("productKind"));
         avaliableTitelCollum.setCellValueFactory(new PropertyValueFactory<product, String>("title"));
-
         AuthorCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("author"));
         ISBNCoulmn.setCellValueFactory(new PropertyValueFactory<product, String>("isbn"));
         releaseDate.setCellValueFactory(new PropertyValueFactory<product, String>("ReleaseDate"));
-
-
-        //----
-        //Rented table
-        rentetMaterialView.setItems(viewmodel.getRentedObservableList());
-
-        typeCollum.setCellValueFactory(new PropertyValueFactory<>("productKind"));
-        rentedTitelCollum.setCellValueFactory(new PropertyValueFactory<>("Title"));
-
-        rentedStatusCollum.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        renterCollum.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        emailCollum.setCellValueFactory(new PropertyValueFactory<>("Email"));
-
-        //SidsteFrist
-        deadline.setCellValueFactory(new PropertyValueFactory<>("LåneDato"));
-        returnDateCollum.setCellValueFactory(new PropertyValueFactory<>("returDato"));
-        //herr ------
-
-
-
-        //Reserved
-        reservedMaterialView.setItems(viewmodel.getReservedObservableList());
-        ReserverType.setCellValueFactory(new PropertyValueFactory("productKind"));
-        ReserverTitle.setCellValueFactory(new PropertyValueFactory("Title"));
-
-        ReserverStatus.setCellValueFactory(new PropertyValueFactory("Status"));
-        ReserverName.setCellValueFactory(new PropertyValueFactory("Name"));
-        ReserverMail.setCellValueFactory(new PropertyValueFactory("Email"));
 
         availableMaterialView.setEditable(true);
         avaliableTypeCollum.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -108,49 +74,75 @@ public class BrowseViewController {
         ISBNCoulmn.setCellFactory(TextFieldTableCell.forTableColumn());
         releaseDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        //rentedList
+        rentedMaterialView.setItems(viewmodel.getRentedObservableList());
+        typeCollum.setCellValueFactory(new PropertyValueFactory<>("productKind"));
+        rentedTitelCollum.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        rentedStatusCollum.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        renterCollum.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        emailCollum.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        deadline.setCellValueFactory(new PropertyValueFactory<>("LåneDato"));
+        returnDateCollum.setCellValueFactory(new PropertyValueFactory<>("returDato"));
+
+        //Reserved
+        reservedMaterialView.setItems(viewmodel.getReservedObservableList());
+        ReserverType.setCellValueFactory(new PropertyValueFactory("productKind"));
+        ReserverTitle.setCellValueFactory(new PropertyValueFactory("Title"));
+        ReserverStatus.setCellValueFactory(new PropertyValueFactory("Status"));
+        ReserverName.setCellValueFactory(new PropertyValueFactory("Name"));
+        ReserverMail.setCellValueFactory(new PropertyValueFactory("Email"));
+
+        //search
         searchText.textProperty().bindBidirectional(viewmodel.searchProperty());
+        search.setDisable(true);
+
+        //clock
         clock.textProperty().bind(viewmodel.clockProperty());
         viewmodel.startClock();
+
         //error
         error.textProperty().bind(viewmodel.errorProperty());
 
-        search.setDisable(true);
-
-
-
     }
-
     //lavede en populate for at adskille logik + et call fra viewhandler til at refresh items
+
+
+    //henter vores products
     public void populate(){
         viewmodel.loadProducts();
     }
 
 
-    public void OpenRegisterItems(ActionEvent actionEvent) {
-        viewHandler.openRegisterNewItems();
-
-    }
-
-    public void OpenregisterNewRenter(ActionEvent actionEvent){
-        viewHandler.openregisterNewRenter();
-    }
-
-
-
+    //delete
     public void remove(ActionEvent actionEvent) {
         if (viewmodel.deleteProductValidation(availableMaterialView.getSelectionModel().getSelectedItem()))
 
         viewmodel.delete((product) availableMaterialView.getSelectionModel().getSelectedItem());
+    }
 
+    public void removeReserver(ActionEvent actionEvent) {
+        if (viewmodel.deleteRentedValidation((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem())){
+
+            viewmodel.deleteReserver((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem());
+
+        }
+    }
+
+    public void removeRenter(ActionEvent actionEvent) {
+        if (viewmodel.deleteRentedValidation((RentedList) rentedMaterialView.getSelectionModel().getSelectedItem())){
+
+            viewmodel.deleteRenter((RentedList) rentedMaterialView.getSelectionModel().getSelectedItem());
+
+        }
 
     }
 
 
+    //search
     public void onKeyReleasedSearch(){
        search.setDisable(false);
 
     }
-
     public void search(ActionEvent actionEvent) {
 
         if (viewmodel.SearchValidation()) {
@@ -164,6 +156,7 @@ public class BrowseViewController {
     }
 
 
+    //edit
     public void changeProductKindCellEdit(TableColumn.CellEditEvent editEvent){
 
         product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
@@ -177,15 +170,11 @@ public class BrowseViewController {
         product.setTitle(editEvent.getNewValue().toString());
     }
 
-
-
-
     public void changeAuthorCellEdit(TableColumn.CellEditEvent editEvent){
 
         product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
         product.setAuthor(editEvent.getNewValue().toString());
     }
-
 
     public void changeIsbnCellEdit(TableColumn.CellEditEvent editEvent){
 
@@ -193,47 +182,22 @@ public class BrowseViewController {
         product.setIsbn(editEvent.getNewValue().toString());
     }
 
-
-
     public void changeReleaseDateCellEdit(TableColumn.CellEditEvent editEvent){
 
         product product = (Model.product) availableMaterialView.getSelectionModel().getSelectedItem();
-        product.setReleaseDate(editEvent.getNewValue().toString());
-    }
-
-    //RESERVE TODO:MAYBE RENAME en msule forvirrende
- /*   public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        product selectedProduct = (product) availableMaterialView.getSelectionModel().getSelectedItem();
-        //Åbner i viewhandler eftersom vi laver et nyt vindue popup
-
-
-        //popup
-        //viewHandler.openListOfUsers((ClientModel) viewmodel.getClient(), selectedProduct);
-    }*/
-
-
-  /*  public void OpenListOfUser(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        viewHandler.openRenterList();
-    }*/
-
-    public void removeReserver(ActionEvent actionEvent) {
-        if (viewmodel.deleteRentedValidation((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem())){
-
-            viewmodel.deleteReserver((RentedList) reservedMaterialView.getSelectionModel().getSelectedItem());
-
-        }
 
     }
 
-    public void removeRenter(ActionEvent actionEvent) {
-        if (viewmodel.deleteRentedValidation((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem())){
-
-            viewmodel.deleteRenter((RentedList) rentetMaterialView.getSelectionModel().getSelectedItem());
-
-        }
-
+    //bruges til at skifte view
+    public void OpenRegisterItems(ActionEvent actionEvent) {
+        viewHandler.openRegisterNewItems();
 
     }
+
+    public void OpenregisterNewRenter(ActionEvent actionEvent){
+        viewHandler.openregisterNewRenter();
+    }
+
 
     public void reserveButton(ActionEvent actionEvent)  {
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
@@ -241,15 +205,12 @@ public class BrowseViewController {
         }
     }
 
-    public void open2(ActionEvent actionEvent) {
+    public void udlånButton(ActionEvent actionEvent) {
 
         if (viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
             viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openRentItem();
         }
-
-
-
 
     }
 }

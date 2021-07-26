@@ -3,8 +3,6 @@ import Core.ViewHandler;
 import Core.ViewModelFactory;
 import Model.*;
 import Util.FileHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -46,8 +44,8 @@ public class main extends Application {
         ClientModel.setAllClients(Renters);
 
         //Burde diskuteres / bestemmes senere hvad vi gør med det
-        ClientModel.setSss(rentedProducts);
-        ClientModel.setGgg(reservedProducts);
+        ClientModel.setRentedLists(rentedProducts);
+        ClientModel.setReservedList(reservedProducts);
 
         ModelFactory modelFactory = new ModelFactory();
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
@@ -60,7 +58,7 @@ public class main extends Application {
         stage.setOnCloseRequest(e -> {
             System.out.println("GEMMER ELEMENTER I SYSTEMET");
             try {
-                FileHandler.saveEverything(ClientModel.allProducts, ClientModel.ggg, ClientModel.sss, ClientModel.allClients);
+                FileHandler.saveEverything(ClientModel.allProducts, ClientModel.reservedList, ClientModel.rentedLists, ClientModel.allClients);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

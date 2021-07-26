@@ -10,19 +10,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.browseItems.BrowseViewController">
    <children>
       <AnchorPane prefHeight="97.0" prefWidth="862.0" style="-fx-background-color: lightblue;">
          <children>
-            <Label layoutX="20.0" layoutY="18.0" text="Fariytale Bib">
+            <Label layoutX="20.0" layoutY="18.0" text="Fairytale Bib">
                <font>
                   <Font name="System Bold" size="37.0" />
                </font>
             </Label>
             <Label fx:id="clock" layoutX="23.0" layoutY="63.0" prefHeight="18.0" prefWidth="278.0" text="Label" />
-            <Button fx:id="addNewRenter" layoutX="717.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="117.0" text="Tilføj ny låner" />
-            <Button fx:id="addNewElement" layoutX="589.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="26.0" prefWidth="117.0" text="Tilføj nyt element">
+            <Button layoutX="717.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenregisterNewRenter" prefHeight="26.0" prefWidth="117.0" text="Tilføj ny låner" />
+            <Button layoutX="589.0" layoutY="36.0" mnemonicParsing="false" onAction="#OpenRegisterItems" prefHeight="26.0" prefWidth="117.0" text="Tilføj nyt element">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -54,7 +53,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TableView fx:id="rentetMaterialView" layoutX="23.0" layoutY="364.0" prefHeight="173.0" prefWidth="816.0">
+      <TableView fx:id="rentedMaterialView" layoutX="23.0" layoutY="364.0" prefHeight="173.0" prefWidth="816.0">
          <columns>
             <TableColumn fx:id="typeCollum" prefWidth="78.0" text="Type" />
             <TableColumn fx:id="rentedTitelCollum" prefWidth="108.79999542236328" text="Titel" />
@@ -73,9 +72,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="removeAvailable" alignment="CENTER" layoutX="749.0" layoutY="119.0" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="90.0" text="Fjern valgte" />
-      <Button alignment="CENTER" layoutX="585.0" layoutY="118.0" mnemonicParsing="false" onAction="#open2" prefHeight="23.0" prefWidth="76.0" text="Udlån" />
-      <Button fx:id="reserveButton" alignment="CENTER" layoutX="667.0" layoutY="119.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="76.0" text="Reserver">
+      <Button alignment="CENTER" layoutX="749.0" layoutY="119.0" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="90.0" text="Fjern valgte" />
+      <Button alignment="CENTER" layoutX="585.0" layoutY="118.0" mnemonicParsing="false" onAction="#udlånButton" prefHeight="23.0" prefWidth="76.0" text="Udlån" />
+      <Button alignment="CENTER" layoutX="667.0" layoutY="119.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="25.0" prefWidth="76.0" text="Reserver">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -94,7 +93,7 @@
             <TableColumn fx:id="ReserverMail" prefWidth="277.0" text="Email" />
          </columns>
       </TableView>
-      <Button fx:id="removeRenter" alignment="CENTER" layoutX="726.0" layoutY="336.0" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="113.0" text="Fjern låner" />
-      <Button fx:id="removeReserver" alignment="CENTER" layoutX="722.0" layoutY="548.0" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="113.0" text="Fjern reservation" />
+      <Button alignment="CENTER" layoutX="726.0" layoutY="336.0" mnemonicParsing="false" onAction="#removeRenter" prefHeight="25.0" prefWidth="113.0" text="Fjern låner" />
+      <Button alignment="CENTER" layoutX="722.0" layoutY="548.0" mnemonicParsing="false" onAction="#removeReserver" prefHeight="25.0" prefWidth="113.0" text="Fjern reservation" />
    </children>
 </AnchorPane>

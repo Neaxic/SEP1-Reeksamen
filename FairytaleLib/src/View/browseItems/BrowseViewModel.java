@@ -1,7 +1,6 @@
 package View.browseItems;
 
 import Model.*;
-import Util.FileHandler;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -19,12 +18,10 @@ private Client client;
     private ObservableList productObservableList;
     private ObservableList renterObservableList;
     private ObservableList reserverObservableList;
-    private StringProperty error;
 
-    private ObservableList lånerObservableList;
-
-    private StringProperty search;
     private StringProperty clock;
+    private StringProperty search;
+    private StringProperty error;
 
     public BrowseViewModel(Client client) {
         this.client = client;
@@ -38,7 +35,6 @@ private Client client;
 
     private void renter(PropertyChangeEvent propertyChangeEvent) {
        loadRentedList();
-
     }
 
     private void product(PropertyChangeEvent propertyChangeEvent) {
@@ -47,9 +43,7 @@ private Client client;
     }
 
     private void clock(PropertyChangeEvent propertyChangeEvent) {
-
         startClock();
-
     }
 
 
@@ -70,12 +64,12 @@ private Client client;
     }
 
     public void loadRentedList() {
-        List<RentedList> rentedLists = client.getSss();
+        List<RentedList> rentedLists = client.getRentedList();
         renterObservableList = FXCollections.observableArrayList(rentedLists);
     }
 
     public void loadReservedList() {
-        List<RentedList> reservedlist = client.getGgg();
+        List<RentedList> reservedlist = client.getReservedList();
         reserverObservableList = FXCollections.observableArrayList(reservedlist);
     }
 
@@ -97,9 +91,7 @@ private Client client;
 
     }
 
-
     public void deleteRenter(RentedList rentedList){
-       // product product1 = SaveInfo.getInstance().getProduct();
         RentedList deleteRenter = client.deleteRenter(rentedList);
         renterObservableList.remove(deleteRenter);
         productObservableList.add(client.addProduct(new product(deleteRenter.getProductKind(),deleteRenter.getTitle(),deleteRenter.getIsbn(), deleteRenter.getAuthor(), deleteRenter.getReleaseDate())));
@@ -117,13 +109,10 @@ private Client client;
     }
 
 
-
     public void clearSearch(){
         search.setValue("");
 
     }
-
-
 
     public boolean SearchValidation(){
         Search();
@@ -180,32 +169,12 @@ private Client client;
         }
     }
 
-    public String getClock() {
-        return clock.get();
-    }
-
     public StringProperty clockProperty() {
         return clock;
     }
 
-    public void setClock(String clock) {
-        this.clock.set(clock);
-    }
-
-    public String getSearch() {
-        return search.get();
-    }
-
     public StringProperty searchProperty() {
         return search;
-    }
-
-    public void setSearch(String search) {
-        this.search.set(search);
-    }
-
-    public Client getClient() {
-        return client;
     }
 
     public String getError() {
@@ -216,15 +185,5 @@ private Client client;
         return error;
     }
 
-    public ObservableList getRenterObservableList() {
-        return renterObservableList;
-    }
 
-    public ObservableList getReserverObservableList() {
-        return reserverObservableList;
-    }
-
-    public ObservableList getLånerObservableList() {
-        return lånerObservableList;
-    }
 }

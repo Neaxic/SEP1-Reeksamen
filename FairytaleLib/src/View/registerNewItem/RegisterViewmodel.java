@@ -45,10 +45,7 @@ public class RegisterViewmodel {
     }
 
 
-    //checker om fields er null
-
-
-    //checker om fields er mindre end 35 characters
+    //checker om fields er mindre end 35 characters eller null
     public boolean validInputs() {
 
         if(title.getValue() == null || author.getValue() == null || type.getValue() == null || releaseDate.getValue().toString() == null ){
@@ -81,25 +78,12 @@ public class RegisterViewmodel {
     }
 
 
-
-    //TODO: Tænker at give client et popup med hvad der mangler af inputs
-    public void invalidInputPopup(){
-
-    }
-
-
-
     public void clearFields(){
         title.setValue(null);
         author.setValue(null);
         isbn.setValue(null);
         type.setValue(null);
         releaseDate.setValue(null);
-    }
-
-
-    public String getType() {
-        return type.get();
     }
 
     public StringProperty typeProperty() {
@@ -110,52 +94,20 @@ public class RegisterViewmodel {
         return productObservableList;
     }
 
-    public String getTitle() {
-        return title.get();
-    }
-
     public StringProperty titleProperty() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public String getAuthor() {
-        return author.get();
     }
 
     public StringProperty authorProperty() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author.set(author);
-    }
-
-    public String getIsbn() {
-        return isbn.get();
-    }
-
     public StringProperty isbnProperty() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn.set(isbn);
-    }
-
-    public String getReleaseDate() {
-        return releaseDate.getValue().toString();
-    }
-
     public Property releaseDateProperty() {
         return releaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate.setValue(releaseDate);
     }
 
     public StringProperty errorProperty() {

@@ -35,16 +35,12 @@ public class registerNewRenterViewModel
 
   }
 
-
-
   public void submitRenter(){
 
     client.createRenter(Name.getValue(),eMail.getValue(),status.getValue());
     clearFields();
 
   }
-
-
 
   //clearfields
   public void clearFields() {
@@ -59,6 +55,7 @@ public class registerNewRenterViewModel
   }
 
 
+  //checker om inputs er null
   public boolean validInputs() {
 
     if(Name.getValue() == null ||Name.getValue().equals("") ||eMail.getValue() == null|| eMail.getValue().equals("")|| status.getValue() == null || status.getValue().equals("") || renterObservableList.isEmpty() ){
@@ -72,11 +69,6 @@ public class registerNewRenterViewModel
     }
 
   }
-
-
-
-
-
 
   public String getName() {
     return Name.get();
@@ -92,10 +84,6 @@ public class registerNewRenterViewModel
 
   public StringProperty eMailProperty() {
     return eMail;
-  }
-
-  public String getStatus() {
-    return status.get();
   }
 
   public StringProperty statusProperty() {

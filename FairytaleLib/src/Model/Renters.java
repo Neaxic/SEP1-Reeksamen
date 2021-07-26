@@ -14,7 +14,6 @@ public class Renters implements renter, Serializable {
         this.status = status;
     }
 
-
     public String getName() {
         return name;
     }

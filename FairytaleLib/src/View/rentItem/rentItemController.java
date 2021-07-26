@@ -4,6 +4,7 @@ import Core.ViewHandler;
 import Model.Renters;
 import Model.renter;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,11 +14,14 @@ import java.text.ParseException;
 
 public class rentItemController {
 
-    public TableView<Renters> Lånere;
-    public TableColumn Name;
-    public TableColumn Email;
-    public TableColumn Status;
-    public Label error;
+    //Renters
+    @FXML public TableView<Renters> Lånere;
+    @FXML public TableColumn Name;
+    @FXML public TableColumn Email;
+    @FXML public TableColumn Status;
+
+    //errorLabel
+    @FXML public Label error;
 
     private ViewHandler viewHandler;
     private rentItemViewModel rentItemViewModel;
@@ -27,6 +31,8 @@ public class rentItemController {
         this.rentItemViewModel = rentItemViewModel;
 
         rentItemViewModel.loadRenter();
+
+        //renters
         Lånere.setItems(rentItemViewModel.getLånerObservableList());
         Name.setCellValueFactory(new PropertyValueFactory<renter, String>("Name"));
         Email.setCellValueFactory(new PropertyValueFactory<renter, String>("Email"));

@@ -10,20 +10,22 @@ import java.util.Date;
 
 public class ClientModel implements Client
 {
+
+    //product
     public static ArrayList<product> allProducts = new ArrayList();
     private ArrayList allProductsType = new ArrayList<>();
+
+    //renter
+    public static ArrayList<renter> allClients = new ArrayList<>();
     private ArrayList allRenterType = new ArrayList<>();
 
-    public static ArrayList<renter> allClients = new ArrayList<>();
-    public static ArrayList<User> users = new ArrayList<>();
+    //rentedList
+    public static ArrayList<RentedList> rentedLists = new ArrayList<>();
 
-    public static ArrayList<RentedList> sss = new ArrayList<>();
-    public static ArrayList<RentedList> ggg = new ArrayList<>();
-
+    //reservedList
+    public static ArrayList<RentedList> reservedList = new ArrayList<>();
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
-
-
 
 
     public ArrayList search(String searchString){
@@ -36,16 +38,14 @@ public class ClientModel implements Client
                     || allProduct.getIsbn().toLowerCase().contains(searchString.toLowerCase())  || allProduct.getIsbn().toUpperCase().contains(searchString.toUpperCase())
                     ||allProduct.getReleaseDate().toUpperCase().contains(searchString.toUpperCase()) ||  allProduct.getReleaseDate().toLowerCase().contains(searchString.toLowerCase()))
                     productArrayList.add(allProduct);
-
         }
         return productArrayList;
     }
 
-
     public ArrayList searchRenters(String searchString){
 
         ArrayList<RentedList> rentedLists = new ArrayList<>();
-        for (RentedList list : sss) {
+        for (RentedList list : ClientModel.rentedLists) {
             if (list.getProductKind().toLowerCase().contains(searchString.toLowerCase()) || list.getProductKind().toUpperCase().contains(searchString.toUpperCase()) ||
                     list.getTitle().toLowerCase().contains(searchString.toLowerCase()) ||  list.getTitle().toUpperCase().contains(searchString.toUpperCase()) ||
                     list.getStatus().toLowerCase().contains(searchString.toLowerCase()) ||  list.getStatus().toUpperCase().contains(searchString.toUpperCase()) ||
@@ -60,11 +60,10 @@ public class ClientModel implements Client
 
     }
 
-
     public ArrayList searchReserve(String searchString){
 
         ArrayList<RentedList> rentedListArrayList = new ArrayList<>();
-        for (RentedList list : ggg) {
+        for (RentedList list : reservedList) {
             if (list.getProductKind().toLowerCase().contains(searchString.toLowerCase()) || list.getProductKind().toUpperCase().contains(searchString.toUpperCase()) ||
                     list.getTitle().toLowerCase().contains(searchString.toLowerCase()) ||  list.getTitle().toUpperCase().contains(searchString.toUpperCase()) ||
                     list.getStatus().toLowerCase().contains(searchString.toLowerCase()) ||  list.getStatus().toUpperCase().contains(searchString.toUpperCase()) ||
@@ -78,9 +77,6 @@ public class ClientModel implements Client
 
     }
 
-
-
-
     public product deleteProduct(product product){
 
         for (int i = 0; i <allProducts.size() ; i++) {
@@ -91,12 +87,10 @@ public class ClientModel implements Client
     }
 
 
-
-
     public RentedList deleteRenter(RentedList rentedList){
 
-        for (int i = 0; i <sss.size() ; i++) {
-            sss.remove(rentedList);
+        for (int i = 0; i < rentedLists.size() ; i++) {
+            rentedLists.remove(rentedList);
         }
 
         return rentedList;
@@ -104,23 +98,19 @@ public class ClientModel implements Client
 
     public RentedList deleteReserved(RentedList rentedList){
 
-        for (int i = 0; i <ggg.size() ; i++) {
-            ggg.remove(rentedList);
+        for (int i = 0; i < reservedList.size() ; i++) {
+            reservedList.remove(rentedList);
         }
 
         return rentedList;
     }
 
 
-
     public void createReservedItem(RentedList rentedList) {
 
-        Renters rt = SaveInfo.getInstance().getRenters();
-
-        ggg.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
+        reservedList.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus())));
 
     }
-
 
     @Override
     public void createUdlåntGenstand(RentedList rentedList) throws ParseException {
@@ -138,7 +128,7 @@ public class ClientModel implements Client
 
             Date st = new Date();
 
-            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+            rentedLists.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
 
 
         } if  (rt.getStatus().equals("Lektor") && pt.getProductKind().equals("Bog")){
@@ -151,7 +141,7 @@ public class ClientModel implements Client
 
             Date sd = new Date();
 
-            sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
+            rentedLists.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),sd, d));
         }
 
         if(pt.getProductKind().equals("DVD") || pt.getProductKind().equals("CD")) {
@@ -159,7 +149,6 @@ public class ClientModel implements Client
             SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
             Date d1 = sdformat.parse("2000-04-15");
             Date d2 = sdformat.parse(pt.getReleaseDate());
-
 
 
             if(d1.before(d2)) {
@@ -171,7 +160,7 @@ public class ClientModel implements Client
                 Date d=c.getTime();
 
                 Date st = new Date();
-               sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+               rentedLists.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
             }
 
             if(d1.after(d2)) {
@@ -182,7 +171,7 @@ public class ClientModel implements Client
                 Date d=c.getTime();
 
                 Date st = new Date();
-                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
+                rentedLists.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
            }
         }
     }
@@ -197,24 +186,8 @@ public class ClientModel implements Client
         support.addPropertyChangeListener(eventName, listener);
     }
 
-    public ArrayList getAllProducts(){
-        return allProducts;
-    }
-
     public ArrayList<renter> getAllClients(){
         return allClients;
-    }
-
-
-    public ArrayList getAllRentedProducts(){
-        ArrayList allRentedProducts = new ArrayList();
-        for(product i : allProducts){
-            if(i.isRented()){
-                allRentedProducts.add(i);
-            }
-        }
-
-        return allRentedProducts;
     }
 
 
@@ -227,17 +200,6 @@ public class ClientModel implements Client
             }
         }
         return allAvaliableProducts;
-    }
-
-
-    public ArrayList getAllReservedProducts(){
-        ArrayList allReservedProducts = new ArrayList();
-        for(product i : allProducts){
-            if(i.isReserved()){
-                allReservedProducts.add(i);
-            }
-        }
-        return allReservedProducts;
     }
 
     public static void setAllProducts(ArrayList gemteListe){
@@ -274,16 +236,6 @@ public class ClientModel implements Client
         support.firePropertyChange("renter",null,renter);
     }
 
-    public boolean createUser(String username,String Password){
-
-        if (users.add(new User(username,Password))){
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
     public ArrayList getAllProductsType(){
         if (allProductsType.isEmpty()){
             allProductsType.add("DVD");
@@ -294,7 +246,6 @@ public class ClientModel implements Client
         return allProductsType;
     }
 
-
     public ArrayList getAllRenterType(){
         if (allRenterType.isEmpty()){
             allRenterType.add("Student");
@@ -304,30 +255,26 @@ public class ClientModel implements Client
         return allRenterType;
     }
 
-    public static void setUsers(ArrayList users) {
-        ClientModel.users = users;
-    }
-
 
     public static void setAllClients(ArrayList allClients) {
         ClientModel.allClients = allClients;
     }
 
-    public ArrayList<RentedList> getSss() {
-        return sss;
+    public ArrayList<RentedList> getRentedList() {
+        return rentedLists;
     }
 
-    public ArrayList<RentedList> getGgg() {
-        return ggg;
+    public ArrayList<RentedList> getReservedList() {
+        return reservedList;
     }
 
-    public static void setSss(ArrayList<RentedList> sss) {
-        ClientModel.sss = sss;
+    public static void setRentedLists(ArrayList<RentedList> rentedLists) {
+        ClientModel.rentedLists = rentedLists;
     }
 
 
-    public static void setGgg(ArrayList<RentedList> ggg) {
-        ClientModel.ggg = ggg;
+    public static void setReservedList(ArrayList<RentedList> reservedList) {
+        ClientModel.reservedList = reservedList;
     }
 
 

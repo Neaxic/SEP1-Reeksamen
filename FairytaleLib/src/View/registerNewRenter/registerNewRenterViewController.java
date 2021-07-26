@@ -10,34 +10,36 @@ import javafx.scene.control.TextField;
 public class registerNewRenterViewController
 {
 
-  public Label error;
   private ViewHandler viewHandler;
   private registerNewRenterViewModel registerNewRenterViewModel;
 
+  //renter
   @FXML private TextField firstName;
   @FXML private TextField eMail;
   @FXML private ChoiceBox status;
-
+  @FXML private Label error;
 
   public void init(registerNewRenterViewModel registerNewRenterViewModel,ViewHandler viewHandler) {
     this.registerNewRenterViewModel = registerNewRenterViewModel;
     this.viewHandler = viewHandler;
 
     registerNewRenterViewModel.loadRenterStatus();
-    status.setItems(registerNewRenterViewModel.getRenterObservableList());
+
+    //renter
     firstName.textProperty().bindBidirectional(registerNewRenterViewModel.nameProperty());
     eMail.textProperty().bindBidirectional(registerNewRenterViewModel.eMailProperty());
-    error.textProperty().bind(registerNewRenterViewModel.errorProperty());
+    status.setItems(registerNewRenterViewModel.getRenterObservableList());
     status.valueProperty().bindBidirectional(registerNewRenterViewModel.statusProperty());
-  }
 
+    //error
+    error.textProperty().bind(registerNewRenterViewModel.errorProperty());
+  }
 
   public void Back() {
 
     viewHandler.openBrowseItem();
     registerNewRenterViewModel.clearErrorLabel();
   }
-
 
   public void Submit(ActionEvent actionEvent) {
 
@@ -46,6 +48,6 @@ public class registerNewRenterViewController
       registerNewRenterViewModel.submitRenter();
     }
 
-
   }
+
 }

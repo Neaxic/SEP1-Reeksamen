@@ -4,6 +4,7 @@ import Core.ViewHandler;
 import Model.Renters;
 import Model.renter;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -11,11 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class reserveItemController {
 
-    public TableView<Renters> Lånere;
-    public TableColumn Name;
-    public TableColumn Email;
-    public TableColumn Status;
+    //reservedItem
+    @FXML public TableView<Renters> Lånere;
+    @FXML public TableColumn Name;
+    @FXML public TableColumn Email;
+    @FXML public TableColumn Status;
 
+    //errorLabel
     public Label error;
 
     private ViewHandler viewHandler;

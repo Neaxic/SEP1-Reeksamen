@@ -24,7 +24,6 @@ public class reserveItemViewModel {
     public void loadRenter() {
 
         ArrayList renterList = client.getAllClients();
-
         lånerObservableList = FXCollections.observableArrayList(renterList);
 
     }

@@ -25,7 +25,6 @@ public class rentItemViewModel {
     public void loadRenter() {
 
         ArrayList renterList = client.getAllClients();
-
         lånerObservableList = FXCollections.observableArrayList(renterList);
 
     }
@@ -57,7 +56,11 @@ public class rentItemViewModel {
         Date d = new Date();
         RentedList rentedList = new RentedList(pt,rt, d, d);
 
-         client.createUdlåntGenstand(rentedList);
+        try {
+            client.createUdlåntGenstand(rentedList);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getError() {

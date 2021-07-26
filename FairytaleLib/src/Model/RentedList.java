@@ -7,7 +7,6 @@ public class RentedList implements Serializable {
 
     private product product;
     private Renters renters;
-    //private Model.Date date;
     private Date låneDato;
     private Date returDato;
 
@@ -29,6 +28,7 @@ public class RentedList implements Serializable {
     }
 
     public String getProductKind() { return product.getProductKind();}
+
     public String getTitle() { return product.getTitle(); }
 
     public String getIsbn() {
@@ -44,10 +44,7 @@ public class RentedList implements Serializable {
     }
 
 
-
-
     //renter
-
     public Renters getRenters() {
         return renters;
     }
@@ -70,7 +67,9 @@ public class RentedList implements Serializable {
         return "RentedList{" +
                 "product=" + product +
                 ", renters=" + renters +
-                ", date=" + låneDato +
+                ", låneDato=" + låneDato +
+                ", returDato=" + returDato +
                 '}';
     }
+
 }
