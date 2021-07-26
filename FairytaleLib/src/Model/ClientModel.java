@@ -162,7 +162,7 @@ public class ClientModel implements Client
 
 
 
-            if(d1.compareTo(d2) < 0) {
+            if(d1.before(d2)) {
 
                 Calendar c= Calendar.getInstance();
 
@@ -174,7 +174,7 @@ public class ClientModel implements Client
                sss.add(new RentedList(new product(rentedList.getProductKind(), rentedList.getTitle(),rentedList.getIsbn(), rentedList.getAuthor(), rentedList.getReleaseDate()), new Renters(rentedList.getName(),rentedList.getEmail(), rentedList.getStatus()),st, d));
             }
 
-            if(d1.compareTo(d2) > 0) {
+            if(d1.after(d2)) {
                 Calendar c= Calendar.getInstance();
 
                 c.add(Calendar.DATE, 180);

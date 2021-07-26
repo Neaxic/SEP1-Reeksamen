@@ -1,9 +1,8 @@
 package Util;
 
-import Model.productList;
 
 import java.io.*;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class FileHandler {
