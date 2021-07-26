@@ -251,7 +251,6 @@ public class BrowseViewController {
 
     public void reserveButton(ActionEvent actionEvent)  {
         if ( viewmodel.getProductInformation(availableMaterialView.getSelectionModel().getSelectedItem())) {
-            viewmodel.delete(availableMaterialView.getSelectionModel().getSelectedItem());
             viewHandler.openReserveItem();
         }
     }

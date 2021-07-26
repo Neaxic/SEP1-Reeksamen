@@ -34,11 +34,9 @@ public interface Client
     void addListener(String eventName, PropertyChangeListener listener);
     void removeListener(String eventName, PropertyChangeListener listener);
 
-   ArrayList populateUsers();
 
-    boolean checkLogin(String username,String password);
 
-    boolean createUser(String username,String Password);
+
     ArrayList getAllRenterType();
 
     void createRenter(String name,String email,String jobPosition);

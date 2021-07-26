@@ -79,27 +79,6 @@ public class ClientModel implements Client
     }
 
 
-    public ArrayList populateUsers(){
-
-        users.add(new User("bob","123"));
-        users.add(new User("bb","123"));
-        users.add(new User("b","123"));
-
-        return users;
-
-    }
-
-
-    public boolean checkLogin(String username,String password){
-         populateUsers();
-
-        for (User user : users) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(password)){
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     public product deleteProduct(product product){
@@ -131,10 +110,6 @@ public class ClientModel implements Client
 
         return rentedList;
     }
-
-
-
-
 
 
 
