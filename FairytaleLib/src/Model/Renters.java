@@ -5,8 +5,8 @@ import java.io.Serializable;
 //Kasper Falk Mikkelsen
 public class Renters implements renter, Serializable {
 
-    String name, email;
-    String status;
+    private String name, email;
+    private String status;
 
     public Renters(String name, String email, String status) {
         this.name = name;
