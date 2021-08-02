@@ -1,10 +1,12 @@
 package Model;
 
+import Util.Subject;
+
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public interface Client
+public interface Client extends Subject
 {
     ArrayList getAllClients();
     ArrayList getAllAvaliableProducts();
@@ -26,8 +28,6 @@ public interface Client
     ArrayList<RentedList> getRentedList();
     ArrayList<RentedList> getReservedList();
 
-    void addListener(String eventName, PropertyChangeListener listener);
-    void removeListener(String eventName, PropertyChangeListener listener);
 
     ArrayList getAllRenterType();
 

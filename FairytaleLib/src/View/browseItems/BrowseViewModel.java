@@ -33,14 +33,19 @@ private Client client;
         client.addListener("renter",this::renter);
     }
 
-    private void renter(PropertyChangeEvent propertyChangeEvent) {
-       loadRentedList();
-    }
+
 
     private void product(PropertyChangeEvent propertyChangeEvent) {
       loadProducts();
 
     }
+
+
+    private void renter(PropertyChangeEvent propertyChangeEvent) {
+        loadRentedList();
+    }
+
+
 
     private void clock(PropertyChangeEvent propertyChangeEvent) {
         startClock();
