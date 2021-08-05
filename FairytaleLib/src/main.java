@@ -21,7 +21,6 @@ public class main extends Application {
         ArrayList rentedProducts = new ArrayList();
         ArrayList reservedProducts = new ArrayList();
 
-        System.out.println(Database.size());
         for(Object i : Database){
             for(Object j : (ArrayList) i){
                 if(j instanceof product){

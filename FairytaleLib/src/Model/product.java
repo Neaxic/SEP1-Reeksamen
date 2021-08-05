@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class product implements Serializable {
 
-    private renter Renter = null;
-    private renter reserver = null;
+    private renter Renter;
+    private renter reserver;
     private String productKind;
     private String title, author, isbn;
     private String releaseDate;

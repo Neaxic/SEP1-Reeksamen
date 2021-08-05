@@ -30,7 +30,6 @@ public class ClientModel implements Client
 
     public ArrayList search(String searchString){
         ArrayList<product> productArrayList = new ArrayList<>();
-        //TODO: maybe contains + søge over brugere
         for (product allProduct : allProducts) {
             if (allProduct.getProductKind().toLowerCase().contains(searchString.toLowerCase()) ||allProduct.getProductKind().toUpperCase().contains(searchString.toUpperCase())
                     || allProduct.getTitle().toLowerCase().contains(searchString.toLowerCase()) || allProduct.getTitle().toUpperCase().contains(searchString.toUpperCase())
@@ -256,7 +255,7 @@ public class ClientModel implements Client
         return allRenterType;
     }
 
-
+    //Set ledige renters hvis forvirret
     public static void setAllClients(ArrayList allClients) {
         ClientModel.allClients = allClients;
     }

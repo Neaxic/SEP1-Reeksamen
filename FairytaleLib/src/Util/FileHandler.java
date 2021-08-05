@@ -37,8 +37,6 @@ public class FileHandler {
             ArrayList productList = (ArrayList) objectInputStream.readObject();
             objectInputStream.close();
 
-            System.out.println("Alt er blevet indlæst");
-
             return productList;
         } catch (FileNotFoundException e) {
             System.out.println("Intet gemt i systmet");
