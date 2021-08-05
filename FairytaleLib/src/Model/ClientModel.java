@@ -193,13 +193,14 @@ public class ClientModel implements Client
 
     public ArrayList getAllAvaliableProducts(){
         //Vi laver dem her for at kunne skilne mellem de 3 typer imens vi har en allproducts som rod
-        ArrayList allAvaliableProducts = new ArrayList();
+        /*ArrayList allAvaliableProducts = new ArrayList();
         for(product i : allProducts){
             if(!i.isRented() && !i.isReserved()){
                 allAvaliableProducts.add(i);
             }
-        }
-        return allAvaliableProducts;
+        }*/
+        //return allAvaliableProducts;
+        return allProducts;
     }
 
     public static void setAllProducts(ArrayList gemteListe){

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class product implements Serializable {
 
-    private  renter Renter = new notRented();
-    private  renter reserver = new notRented();
+    private renter Renter = null;
+    private renter reserver = null;
     private String productKind;
     private String title, author, isbn;
     private String releaseDate;
@@ -25,8 +25,12 @@ public class product implements Serializable {
     }
 
     public boolean isRented() {
-        if (Renter.getStatus() == null) {
-            return false;
+        if(Renter == null){
+            if (Renter.getStatus() == null) {
+                return false;
+            } else {
+                return true;
+            }
         } else return true;
     }
 

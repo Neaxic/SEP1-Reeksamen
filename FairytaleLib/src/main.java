@@ -42,8 +42,6 @@ public class main extends Application {
 
         ClientModel.setAllProducts(Produkter);
         ClientModel.setAllClients(Renters);
-
-        //Burde diskuteres / bestemmes senere hvad vi gør med det
         ClientModel.setRentedLists(rentedProducts);
         ClientModel.setReservedList(reservedProducts);
 
