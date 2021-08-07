@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 public class product implements Serializable {
 
-    private renter Renter;
-    private renter reserver;
+
     private String productKind;
     private String title, author, isbn;
     private String releaseDate;
@@ -24,21 +23,6 @@ public class product implements Serializable {
         this.title = title;
     }
 
-    public boolean isRented() {
-        if(Renter == null){
-            if (Renter.getStatus() == null) {
-                return false;
-            } else {
-                return true;
-            }
-        } else return true;
-    }
-
-    public boolean isReserved() {
-        if (reserver.getStatus() == null) {
-            return false;
-        } else return true;
-    }
 
     public String getReleaseDate() {
         return releaseDate;
@@ -79,9 +63,7 @@ public class product implements Serializable {
     @Override
     public String toString() {
         return "product{" +
-                "Renter=" + Renter +
-                ", reserver=" + reserver +
-                ", productKind='" + productKind + '\'' +
+                "productKind='" + productKind + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", isbn='" + isbn + '\'' +
